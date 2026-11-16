@@ -1,0 +1,161 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage[hidelinks]{hyperref}
+
+\setlist[itemize]{leftmargin=*,topsep=3pt,itemsep=2pt}
+\setlist[enumerate]{leftmargin=*,topsep=3pt,itemsep=5pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\newcommand{\paper}{\emph{STP-RAG: Semantic Transition Profiles for Adaptive Chunking and Selective Context}}
+
+\title{Peer Review of \paper}
+\author{Anonymous Reviewer}
+\date{September 22, 2026}
+
+\begin{document}
+\maketitle
+
+\section*{Recommendation}
+
+\textbf{Reject in the present form; encourage resubmission after a complete experimental reconstruction.}
+
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+Overall score & 3/10 (weak reject to reject) \\
+Reviewer confidence & 4/5 \\
+Novelty & 4/10 \\
+Technical soundness & 3/10 \\
+Empirical support & 2/10 \\
+Clarity & 7/10 \\
+Reproducibility & 2/10 \\
+\bottomrule
+\end{tabularx}
+
+The paper is unusually candid about negative findings and missing evidence, and its central question---whether local semantic transitions can guide RAG chunking---is worthwhile. However, the submission does not currently provide enough information to determine what experiment was run, reproduce the proposed method, validate the statistical claims, or separate the effects of STP from larger indexes and longer prompts. The strongest reported result is also not attributable to the proposed transition profile: selective context improves HotpotQA generation while retrieval is unchanged, but no equal-budget context control is included. On QASPER, fixed-size chunking is both more accurate and faster than every proposed variant on the reported retrieval axes. These are not merely presentation defects; they prevent a sound assessment of the main scientific claims.
+
+\section*{Summary and claimed contribution}
+
+The paper proposes a Semantic Transition Profile (STP) constructed from adjacent-embedding displacement (``velocity''), the change in that displacement (``acceleration''), a trailing-window standard deviation (``volatility''), and structural cues. A linear boundary score guides adaptive segmentation, and the profile also informs attachment of selected historical context. Six systems are reported on HotpotQA and QASPER: fixed-size, similarity-threshold, velocity-only, velocity plus acceleration, full STP, and STP with selective context.
+
+The empirical outcome is mixed. Velocity-only has the best HotpotQA retrieval, while selective context has the best HotpotQA answer F1. Fixed-size chunking has the best QASPER retrieval and answer scores and the lowest reported QASPER retrieval latency. Higher-order transition signals therefore do not show a consistent advantage. The manuscript acknowledges much of this accurately.
+
+\section*{Strengths}
+
+\begin{itemize}
+  \item The research question is practically relevant: chunk boundaries and attached context can materially affect both evidence recovery and answer generation.
+  \item The paper distinguishes retrieval metrics from answer metrics and avoids claiming that a retrieval gain automatically implies an end-to-end gain.
+  \item Negative results are retained. In particular, the QASPER degradation from selective context and the superiority of fixed-size chunking are not hidden.
+  \item The ablation sequence is directionally useful, and the inclusion of simple baselines is appropriate.
+  \item The writing, tables, and figures are generally clear. The discussion of descriptive versus inferential conclusions is more careful than is typical.
+  \item The limitations section correctly identifies several serious omissions, including unavailable query-level outputs, incomplete timing metadata, and absent matched-budget controls.
+\end{itemize}
+
+\section*{Major concerns}
+
+\begin{enumerate}
+  \item \textbf{The described method is not reproducible and may not be the method that produced the tables.}
+
+  Essential definitions are left unresolved: the base text unit, progression variable $\Delta p_i$, volatility window and initialization, structural feature encoding, all learned weights, boundary threshold, minimum/target/maximum chunk sizes, context horizon, context-ranking rule, and context budget. The paper explicitly says that these details ``still need to be checked against the run configuration,'' while also stating that the configuration is unavailable. The selective-context algorithm is especially underspecified: ``reference cues and dependency relevance'' is a motivation, not an executable selection rule. A methods paper cannot defer its operative method to an absent file.
+
+  The manuscript must provide exact pseudocode and frozen parameter values sufficient for an independent implementation, and must reconcile every equation with the actual code used to generate the results.
+
+  \item \textbf{The evaluation population and retrieval task are undefined.}
+
+  The number of documents and questions, split identifiers, sampling procedure, HotpotQA candidate-corpus scope, QASPER filtering, treatment of unanswerable and multi-reference questions, evidence-to-chunk relevance mapping, and MRR cutoff are all missing. Without these details, Recall@5 values such as 1.000 cannot be interpreted: they could reflect full-corpus retrieval, retrieval over a small per-question candidate set, or another restricted setting.
+
+  The EM values are also concerning. HotpotQA EM values of 0.120, 0.200, and 0.240 and QASPER EM of 0.040 are exactly compatible with increments of $1/25$. This does not prove that only 25 questions were evaluated, but it makes disclosure of the denominator urgent. If the evaluation did use approximately 25 questions, the paper's cross-dataset conclusions and three-decimal reporting are substantially overconfident.
+
+  \item \textbf{The comparison is confounded by index size, chunk granularity, and prompt length.}
+
+  Full STP creates 9.313 versus 3.400 chunks per HotpotQA document and 47.959 versus 12.429 chunks per QASPER document. Thus, adaptive methods are not compared at a matched number of chunks, matched indexed tokens, matched storage footprint, or matched retrieval-token budget. The selective-context arm additionally changes the amount and composition of generator input, yet prompt token counts are not reported. An answer-quality gain can therefore arise from supplying more text rather than from better transition modeling.
+
+  Required controls include matched-chunk-count and matched-index-token baselines, a fixed generator evidence budget, and context baselines such as the immediately preceding units, fixed-window context, random context of equal length, and relevance-selected context without STP. Index size, retrieved tokens, attached tokens, and final prompt tokens should be reported.
+
+  \item \textbf{The ablations do not identify the contribution of STP components.}
+
+  ``Full STP'' adds volatility and structural cues together. There is no volatility-only addition, no structure-only addition, and no interaction analysis. Selective context is tested only on full STP, so the paper cannot show that the profile is necessary for the context gain. Acceleration appears actively harmful on both datasets for answer quality, yet the design does not investigate why or demonstrate that the complete profile uses it beneficially.
+
+  The paper should use a factorial or at least component-wise ablation: velocity; velocity plus acceleration; velocity plus volatility; velocity plus structure; all combinations justified by the hypothesis; and the same context policy applied to fixed-size, similarity, velocity-only, and full-STP chunks.
+
+  \item \textbf{The statistical evidence is not auditable and the seed-based summaries are misleading.}
+
+  Almost all retrieval metrics, EM values, and chunk counts have a reported across-seed standard deviation of 0.000. This suggests that the seeds do not induce independent retrieval evaluations and may affect only generation or a small part of the pipeline. Repeating a deterministic test set three times does not quantify uncertainty over questions or documents. The paper needs to define exactly what each seed changes.
+
+  More seriously, the text quotes paired-bootstrap intervals and $p<0.05$ claims from an unavailable ``walkthrough,'' including a degenerate QASPER interval $[0.0466,0.0466]$. Since the predictions and resampling procedure are unavailable, these claims are not verifiable and should not appear as scientific evidence, even with a caveat. Report paired query-level or document-clustered intervals from released predictions, specify the bootstrap unit, statistic, interval construction, and multiplicity correction, and separate dataset-sampling uncertainty from run-to-run randomness.
+
+  \item \textbf{The principal HotpotQA gain is not connected convincingly to retrieval or to the proposed profile.}
+
+  Full STP and STP plus selective context have identical reported Recall@5 and MRR, but F1 changes from 0.283 to 0.410. This may be a meaningful generation-stage effect, yet the paper does not state whether attached context changes indexed embeddings, retrieved text, reranking, or only the final prompt. Nor does it report evidence coverage, context precision, prompt length, truncation, answer faithfulness, or qualitative examples. The mechanism behind the gain therefore remains unknown.
+
+  At minimum, the authors should trace representative successes and failures, measure whether appended spans contain gold evidence, report prompt-budget effects, and test whether an equal-length non-STP context policy obtains the same gain.
+
+  \item \textbf{The novelty case omits the literature closest to the technical mechanism.}
+
+  The related-work section covers prominent RAG architectures, but the core method is a local text-boundary/change-point detector over adjacent representations. The paper needs to situate itself against classical text segmentation, lexical cohesion methods, embedding-based semantic chunking, neural segmentation, and general change-point detection. Comparing only against fixed-size and a vaguely specified similarity threshold is insufficient to establish that velocity, acceleration, and volatility constitute a novel or competitive segmentation method.
+
+  A stronger evaluation should include well-defined sentence/paragraph/section baselines, recursive splitting, a tuned adjacent-similarity baseline, and at least one established semantic segmentation or chunking method under the same encoder and budget.
+
+  \item \textbf{RQ3 is not supported by the experimental design.}
+
+  HotpotQA and QASPER differ in domain, document length, question type, evidence annotation, answer format, retrieval setting, and likely sample size. The reversal of the context effect cannot be attributed specifically to ``multi-hop Wikipedia'' versus ``scientific-paper'' structure. The manuscript partly acknowledges this, but still frames RQ3 as a dataset-dependent context explanation. A controlled analysis should stratify by measurable properties such as evidence-hop count, evidence distance, section distance, document length, answerability, and added-context length.
+
+  \item \textbf{The paper reads as an editorial reconstruction rather than a report owned by the experimenters.}
+
+  Repeated phrases such as ``supplied aggregate measurements,'' ``reporting materials,'' and ``the implementation walkthrough reports'' signal that the manuscript authors cannot verify their own experiment. Transparency is preferable to fabrication, but this provenance is not adequate for archival publication. The paper should be rebuilt from the experiment repository, run manifests, configurations, logs, and per-question predictions. If these artifacts cannot be recovered, the empirical claims should be treated as unverified preliminary observations, not as a completed evaluation.
+\end{enumerate}
+
+\section*{Technical questions for the authors}
+
+\begin{enumerate}
+  \item What exactly is $u_i$ (sentence, paragraph, token window, or another unit), and how is $\Delta p_i$ measured? If adjacent units vary in length, why should dividing cosine displacement by token distance be preferable to controlling unit size?
+  \item Does the trailing volatility window include the current transition? How are the first transitions initialized, and is the population rather than sample standard deviation intentional?
+  \item Since acceleration is signed, can a sharp positive transition followed by a negative acceleration suppress a plausible boundary? Were absolute acceleration, curvature magnitude, or change-point scores considered?
+  \item How are headings, paragraph breaks, equations, lists, and other structures encoded in $S_i$? Is $S_i$ scalar or vector-valued?
+  \item What objective did Optuna optimize, on which development examples, with how many trials, and separately or jointly for the two datasets? Were baseline hyperparameters given comparable tuning budgets?
+  \item Which embedding model, tokenizer, index backend, distance measure, and model revisions were used? Were embeddings normalized before indexing as well as before STP computation?
+  \item Does selective context alter the chunk embedding, the stored chunk text, the retrieved evidence, or only the generator prompt? Why then do the two full-STP arms have identical retrieval metrics but different reported retrieval latencies?
+  \item How is a retrieved chunk judged relevant when a gold evidence span crosses a chunk boundary or appears in attached context? Is attached context credited in Recall@5?
+  \item What decoding settings and exact \texttt{phi3:mini} model digest were used? How are answers parsed and normalized for HotpotQA and QASPER?
+  \item What operations are included in build time and retrieval latency? Were embedding, index construction, disk I/O, warm-up, and caching included? What hardware was used?
+\end{enumerate}
+
+\section*{Minor and presentation comments}
+
+\begin{itemize}
+  \item The custom one-column \texttt{IEEEtran} layout with a \texttt{geometry} override is unlikely to comply with a standard IEEE conference template. The target venue and page policy should be identified before submission.
+  \item Move the result tables from the middle of Methodology to the Results section, after the experimental setup has defined the data and metrics.
+  \item Define ``similarity-threshold'' precisely and report all baseline hyperparameters; it is currently impossible to reproduce even the main non-adaptive semantic baseline.
+  \item Report mean chunk length, its distribution, total indexed tokens, and retrieved tokens, not only chunks per document.
+  \item Avoid emphasizing ``36 runs'' as though it implied 36 independent samples. The effective inferential units are questions/documents, not method--seed cells.
+  \item If the bootstrap cannot be reconstructed, remove the numerical intervals and associated significance claims entirely rather than preserving them as hearsay.
+  \item The architecture figure is useful, but it should show whether context is attached before embedding/indexing or after retrieval; that distinction is central to the experiment.
+  \item ``Historical context'' implies only preceding text. Explain why following context is excluded, especially for definitions, captions, and scientific discourse where clarification may follow a statement.
+  \item The paper should include qualitative boundary visualizations and examples of selected context. These would make the meaning of velocity, acceleration, and volatility concrete and expose common failure modes.
+  \item If the venue uses double-blind review, remove author identities and institution information from the review version.
+\end{itemize}
+
+\section*{Required revision path}
+
+For a credible resubmission, I would consider the following indispensable:
+
+\begin{enumerate}
+  \item Recover and release the executable implementation, exact configuration, manifests, model revisions, and per-query predictions.
+  \item Fully specify the evaluation populations and retrieval corpora, and rerun on adequately sized documented splits.
+  \item Compare all methods under matched index, retrieval, and prompt-token budgets.
+  \item Add component-wise STP ablations and equal-budget context controls across chunkers.
+  \item Add competitive text-segmentation and semantic-chunking baselines under the same encoder.
+  \item Recompute uncertainty over the appropriate paired question/document units and release the data needed to verify it.
+  \item Provide mechanism-focused analyses: boundary quality, evidence coverage, context precision, prompt length, and representative success/failure cases.
+\end{enumerate}
+
+\section*{Final assessment}
+
+The manuscript's honesty is a genuine strength: its own results do not support a universal advantage for STP, and the authors generally say so. Nevertheless, candor about missing evidence cannot substitute for that evidence. At present, the paper offers an interesting hypothesis and a set of unverified aggregate observations, but not a reproducible method or a controlled empirical demonstration. The appropriate next step is a substantial experimental rebuild rather than a light textual revision.
+
+\end{document}

@@ -1,0 +1,172 @@
+{
+  "_about": "Original sample passages written for the dashboard (no external sources). Each paragraph is a list of sentences. Topic starts and answer sentences are hand-marked by the author with short 'needle' prefixes; they are illustrations, not benchmark labels. Organisations and places are fictional.",
+  "samples": [
+    {
+      "id": "handbook",
+      "title": "Staff handbook",
+      "kind": "Policy text (fictional company)",
+      "blurb": "Four policies. The switch from leave to expenses happens in the middle of a paragraph.",
+      "paragraphs": [
+        [
+          "Every full-time employee receives twenty-five days of paid annual leave, plus public holidays.",
+          "Leave is calculated from your start date, so someone who joins in July receives roughly half the allowance in their first year.",
+          "Please book time off through the HR portal at least two weeks in advance, and check the team calendar before you do.",
+          "Up to five unused days can be carried into the next year; anything beyond that is lost on the first of January."
+        ],
+        [
+          "If you fall ill while on holiday, tell your manager the same day and those days will be recorded as sick leave instead.",
+          "Business expenses are repaid through the monthly payroll run once a claim has been approved.",
+          "Attach a photo of every receipt to the claim, because card statements alone are not accepted.",
+          "Train travel should be booked in standard class unless the journey is longer than four hours.",
+          "Claims older than ninety days are refused, so submit them at the end of each trip rather than saving them up."
+        ],
+        [
+          "Your laptop is encrypted, and it must be locked whenever you step away from it, even inside the office.",
+          "Passwords need at least fourteen characters, and the password manager provided by IT will generate them for you.",
+          "Never install browser extensions that IT has not approved, since several have been caught copying customer data.",
+          "If a device is lost or stolen, report it to the IT help desk within one hour so it can be wiped remotely."
+        ],
+        [
+          "Staff may work from home up to three days a week, as agreed with their manager.",
+          "The company pays a one-off allowance of £300 toward a desk and chair for your home setup.",
+          "Core hours are ten until four, and you should be reachable on chat during that time wherever you are working."
+        ]
+      ],
+      "topics": [
+        { "label": "Annual leave", "needle": "Every full-time employee" },
+        { "label": "Expenses", "needle": "Business expenses are repaid" },
+        { "label": "Laptops and passwords", "needle": "Your laptop is encrypted" },
+        { "label": "Working from home", "needle": "Staff may work from home" }
+      ],
+      "questions": [
+        { "q": "How many unused leave days can I carry over?", "needle": "Up to five unused days" },
+        { "q": "What do I need to attach to an expense claim?", "needle": "Attach a photo of every receipt" },
+        { "q": "What should I do if my laptop is stolen?", "needle": "If a device is lost or stolen" }
+      ]
+    },
+    {
+      "id": "guide",
+      "title": "Town guide",
+      "kind": "Travel writing (fictional town)",
+      "blurb": "Four topics. The section on seasons runs across a paragraph break.",
+      "paragraphs": [
+        [
+          "Saltmere grew up around a medieval salt works, and the shallow evaporation pans can still be seen at low tide.",
+          "By the 1800s the harbour shipped salt, coal and slate along the coast, and the population tripled in forty years.",
+          "The railway arrived in 1872, bringing the first holidaymakers from the industrial towns inland.",
+          "Most of the painted terraces on the seafront date from that boom."
+        ],
+        [
+          "Fish is landed every morning at the north quay, and several cafés along the harbour cook whatever came in that day.",
+          "The local speciality is smoked mackerel pâté, served on dark rye bread with pickled cucumber.",
+          "On Saturdays a farmers' market fills the old salt warehouse with cheese, honey and cider from the surrounding valleys.",
+          "Book ahead for dinner in August, when even small restaurants are full by seven."
+        ],
+        [
+          "The town centre is compact, and nearly everything worth seeing is within a twenty-minute walk of the station.",
+          "Parking is scarce in summer, so the park-and-ride site on the bypass is the easier option for drivers.",
+          "A coastal bus runs every half hour to the neighbouring villages and stops at the start of the cliff path."
+        ],
+        [
+          "Late May and September are the best months to visit, with warm days and far fewer crowds.",
+          "July and August bring the regatta and the lantern festival, but prices for rooms can double."
+        ],
+        [
+          "Winter is quiet and many cafés close, though the storms that roll in off the bay draw photographers from all over the country.",
+          "Whatever the season, pack a waterproof, because the weather on this stretch of coast changes quickly."
+        ]
+      ],
+      "topics": [
+        { "label": "History", "needle": "Saltmere grew up" },
+        { "label": "Food", "needle": "Fish is landed" },
+        { "label": "Getting around", "needle": "The town centre is compact" },
+        { "label": "When to visit", "needle": "Late May and September" }
+      ],
+      "questions": [
+        { "q": "When did the railway reach the town?", "needle": "The railway arrived in 1872" },
+        { "q": "Where can I buy local cheese?", "needle": "On Saturdays a farmers' market" },
+        { "q": "What is the best time of year to visit?", "needle": "Late May and September" }
+      ]
+    },
+    {
+      "id": "plant",
+      "title": "Plant care",
+      "kind": "How-to leaflet",
+      "blurb": "Four topics in three paragraphs. Repotting starts halfway through the paragraph on pests.",
+      "paragraphs": [
+        [
+          "Fiddle-leaf figs need a lot of bright, indirect light, ideally from a window that faces east or south.",
+          "A plant that sits too far from the glass will drop its lower leaves and grow tall and thin as it reaches for the sun.",
+          "Turn the pot a quarter turn every week or two so that all sides get an equal share of light.",
+          "Strong afternoon sun through a south-west window can scorch the leaves, leaving brown patches that never recover."
+        ],
+        [
+          "Water only when the top five centimetres of compost feel dry to the touch.",
+          "Pour slowly until water runs out of the drainage holes, then empty the saucer after half an hour.",
+          "Overwatering is the most common cause of death, because roots sitting in wet soil begin to rot within days.",
+          "In winter the plant grows slowly and may need water only once every two or three weeks."
+        ],
+        [
+          "Check the undersides of the leaves each month for spider mites, which leave fine webbing and pale speckles.",
+          "Wiping the leaves with a damp cloth removes dust and also dislodges most pests before they spread.",
+          "A bad infestation can be treated with insecticidal soap, sprayed every five days for about three weeks.",
+          "Repot a young plant every spring into a container no more than five centimetres wider than the old one.",
+          "Use a free-draining mix, such as two parts compost to one part bark chips.",
+          "Older plants can stay in the same pot for years if you replace the top layer of compost each spring."
+        ]
+      ],
+      "topics": [
+        { "label": "Light", "needle": "Fiddle-leaf figs need" },
+        { "label": "Watering", "needle": "Water only when" },
+        { "label": "Pests", "needle": "Check the undersides" },
+        { "label": "Repotting", "needle": "Repot a young plant" }
+      ],
+      "questions": [
+        { "q": "How often should I water in winter?", "needle": "In winter the plant grows slowly" },
+        { "q": "How do I spot spider mites?", "needle": "Check the undersides" },
+        { "q": "What soil mix should I use when repotting?", "needle": "Use a free-draining mix" }
+      ]
+    },
+    {
+      "id": "rag",
+      "title": "How RAG works",
+      "kind": "Explainer",
+      "blurb": "A plain-language explainer of the setting this project studies. Here topics and paragraphs line up.",
+      "paragraphs": [
+        [
+          "A language model only knows what was in its training data, which may be months old and never included your own documents.",
+          "Retrieval-augmented generation works around this by looking up relevant passages first and giving them to the model along with the question.",
+          "The model then writes its answer from those passages instead of relying on memory alone."
+        ],
+        [
+          "Before anything can be looked up, every document has to be cut into smaller pieces called chunks.",
+          "Chunks that are too large bury the useful sentence among unrelated text, and the model may miss it.",
+          "Chunks that are too small lose the surrounding context that explains what a sentence refers to.",
+          "Cutting where the topic changes, rather than after a fixed number of words, tries to keep each chunk about one thing."
+        ],
+        [
+          "Each chunk is turned into an embedding, a list of numbers that places texts with similar meaning close together.",
+          "When a question arrives, it is embedded the same way, and the chunks whose embeddings are closest to it are retrieved.",
+          "Only a handful of chunks fit in the prompt, so the ranking decides what the model gets to see."
+        ],
+        [
+          "The retrieved chunks are pasted into the prompt, usually with an instruction to answer only from them.",
+          "Because the sources are known, the answer can point back to the exact passage it came from.",
+          "If the right chunk was never retrieved, though, the model has nothing to go on and may guess.",
+          "That is why the way documents are chunked has a direct effect on whether answers are correct."
+        ]
+      ],
+      "topics": [
+        { "label": "What RAG is", "needle": "A language model only knows" },
+        { "label": "Chunking", "needle": "Before anything can be looked up" },
+        { "label": "Retrieval", "needle": "Each chunk is turned into" },
+        { "label": "Answering", "needle": "The retrieved chunks are pasted" }
+      ],
+      "questions": [
+        { "q": "What is an embedding?", "needle": "Each chunk is turned into" },
+        { "q": "Why are very large chunks a problem?", "needle": "Chunks that are too large" },
+        { "q": "What happens if the right chunk is not retrieved?", "needle": "If the right chunk was never retrieved" }
+      ]
+    }
+  ]
+}

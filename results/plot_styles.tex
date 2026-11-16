@@ -1,0 +1,25 @@
+\definecolor{stpfixed}{HTML}{333333}
+\definecolor{stpsimilarity}{HTML}{999999}
+\definecolor{stpvelocity}{HTML}{0072B2}
+\definecolor{stpacceleration}{HTML}{E69F00}
+\definecolor{stpfull}{HTML}{009E73}
+\definecolor{stpcontext}{HTML}{CC79A7}
+\definecolor{stpanswer}{HTML}{D55E00}
+\pgfplotsset{
+stpaxis/.style={
+  width=0.44\linewidth,height=48mm,
+  axis lines=left,axis line style={-},
+  tick align=outside,tick label style={font=\footnotesize,/pgf/number format/fixed,/pgf/number format/precision=3},
+  label style={font=\footnotesize},title style={font=\small\bfseries},
+  grid=major,grid style={black!12},
+  scaled ticks=false,
+  legend style={draw=none,font=\footnotesize,column sep=5pt},
+  legend cell align=left,
+},
+stpfixed/.style={color=stpfixed,mark=square*},
+stpsimilarity/.style={color=stpsimilarity,mark=triangle*,mark options={rotate=180}},
+stpvelocity/.style={color=stpvelocity,mark=*},
+stpacceleration/.style={color=stpacceleration,mark=triangle*},
+stpfull/.style={color=stpfull,mark=diamond*},
+stpcontext/.style={color=stpcontext,mark=pentagon*},
+}

@@ -1,0 +1,16 @@
+\begin{tikzpicture}
+\begin{groupplot}[stpaxis,group style={group size=2 by 1,horizontal sep=14mm},xmin=-0.095,xmax=0.145,ymin=-0.5,ymax=4.5,y dir=reverse,ytick={0,1,2,3,4},xtick={-0.05,0,0.05,0.10},xlabel={Difference from velocity + structure arm}]
+\nextgroupplot[title={HotpotQA},yticklabels={Fixed,Similarity,Vel.+acc.,STP,STP+ctx},legend to name=stp-delta-legend,legend columns=2]
+\addplot[black!65,no marks,forget plot] coordinates {(0,-0.5) (0,4.5)};
+\addplot[xcomb,semithick,mark size=1.8pt,stpvelocity] coordinates {(-0.013,-0.14) (-0.020,0.86) (-0.007,1.86) (-0.013,2.86) (-0.013,3.86)};
+\addlegendentry{Recall@5 (150 queries)}
+\addplot[xcomb,semithick,mark size=1.8pt,color=stpanswer,mark=square*] coordinates {(0.014,0.14) (-0.020,1.14) (-0.061,2.14) (-0.061,3.14) (0.066,4.14)};
+\addlegendentry{Answer F1 (25 queries)}
+\nextgroupplot[title={QASPER},yticklabels=\empty]
+\addplot[black!65,no marks,forget plot] coordinates {(0,-0.5) (0,4.5)};
+\addplot[xcomb,semithick,mark size=1.8pt,stpvelocity] coordinates {(0.127,-0.14) (0.042,0.86) (0.005,1.86) (0.047,2.86) (0.047,3.86)};
+\addplot[xcomb,semithick,mark size=1.8pt,color=stpanswer,mark=square*] coordinates {(0.027,0.14) (-0.029,1.14) (-0.023,2.14) (0.000,3.14) (-0.037,4.14)};
+\end{groupplot}
+\end{tikzpicture}
+\par\smallskip
+\pgfplotslegendfromname{stp-delta-legend}

@@ -1,0 +1,196 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.9in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,tabularx}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setlength{\emergencystretch}{2em}
+\setlist[itemize]{leftmargin=*,topsep=3pt,itemsep=3pt}
+\setlist[enumerate]{leftmargin=*,topsep=3pt,itemsep=7pt}
+
+\newcommand{\paper}{\emph{STP-RAG: Semantic Transition Profiles for Adaptive Chunking and Selective Context}}
+\newcommand{\location}[1]{\textbf{Location:} #1}
+\newcommand{\problem}{\textbf{Problem:} }
+\newcommand{\impact}{\textbf{Why it matters:} }
+\newcommand{\fix}{\textbf{Suggested fix:} }
+
+\title{Technical and Editorial Review of \paper}
+\author{Anonymous Review}
+\date{September 22, 2026}
+
+\begin{document}
+\maketitle
+
+\section*{Overall Assessment}
+
+The revision is substantially more transparent than the earlier manuscript: it reports negative results, distinguishes pilot evidence from confirmatory evidence, states that the layout is not a venue-compliant IEEE submission, and incorporates the implementation audit into the interpretation. The abstract is a single paragraph of approximately 265 words and covers the requested problem, method, findings, percentages, limitations, and five keywords. The introduction and literature review now contain a clear research gap and relevant segmentation literature.
+
+The paper nevertheless requires major revision before it can function as a scientific report of STP-RAG. The most serious remaining issue is that the mathematically specified ``reference method'' is not demonstrably the method that produced the reported tables. In addition, Eq.~(7) contains a definite typesetting error and several undefined quantities, the claimed reuse of the transition profile for context is absent from the context equation, and the deterministic-pipeline statement contradicts nonzero F1 standard deviations in the tables. The current results should remain explicitly labeled as audited pilot observations until these inconsistencies are resolved.
+
+\section*{Highest-Priority Technical Findings}
+
+\begin{enumerate}
+  \item \textbf{Definite equation error and undefined context-ranking quantities.}
+
+  \location{Section 3.3, Eq.~(7), manuscript lines 202--210.}
+
+  \problem The source contains \texttt{+lambda\_r} rather than \verb|+\lambda_r|. The compiled paper consequently prints the italic word ``lambda'' instead of the Greek symbol $\lambda_r$. Moreover, $e_{c_i}$ is never defined; $R$, $S$, and $\operatorname{dist}$ have only verbal descriptions; their numerical ranges and normalizations are absent; and $\mathcal H_i$ appears in Eq.~(8) without a formal definition.
+
+  \impact Equation~(7) is not implementation-ready. Even after correcting the missing backslash, adding cosine similarity, overlap, structural affinity, and distance is meaningful only if their scales and signs are fixed. The undefined chunk embedding also leaves open whether it is pooled from base units, separately encoded, or computed from context-augmented text.
+
+  \fix Correct the coefficient to $\lambda_r$. Define $e_{c_i}$, the candidate set $\mathcal H_i$, the exact formulas and ranges for $R$ and $S$, the unit of $\operatorname{dist}$, all normalization rules, and whether the score is evaluated before or after context augmentation. Avoid the collision between structural vector $\mathbf{s}_i$ and structural-affinity function $S(u_j,c_i)$ by renaming one of them.
+
+  \item \textbf{The formal context policy does not actually reuse the Semantic Transition Profile.}
+
+  \location{Introduction lines 60--64; Fig.~1 lines 76--98; Section 3.3 and Eq.~(7).}
+
+  \problem The manuscript's central framing says that semantic velocity, acceleration, volatility, and structure are a shared control signal for segmentation and context allocation. Figure~1 even draws a dashed ``profile reuse'' arrow. However, Eq.~(7) contains only cosine similarity, reference/entity overlap, structural affinity, and distance. No term depends on $\mathbf z_i$, $v_i$, $a_i^+$, or $\sigma_i$, and no rule maps the profile to $H_i^-$, $H_i^+$, $B_{\mathrm{ctx}}$, or the $\lambda$ weights.
+
+  \impact The principal claimed integration between chunking and context is unsupported by the mathematical specification. As written, the context selector could be attached to any chunker without using STP.
+
+  \fix Either define an explicit mapping such as $(H_i^-,H_i^+,B_{\mathrm{ctx}},\boldsymbol\lambda_i)=f(\mathbf z_i)$, or narrow the claim to ``adaptive chunking followed by a separate relevance-based context selector.'' The confirmatory experiment should compare the same selector across fixed-size, similarity, pure-velocity, and full-STP chunks.
+
+  \item \textbf{Figure~1 depicts one context placement while its caption declares the placement unresolved.}
+
+  \location{Figure~1, manuscript lines 81--96.}
+
+  \problem The arrows show selective context attachment before the chunk index, which implies that augmented chunks are indexed. The caption and Section 3.3 state that context might instead be appended only after retrieval.
+
+  \impact These alternatives define different retrieval systems and different relevance accounting. The figure currently presents an unresolved implementation choice as a settled pipeline.
+
+  \fix Draw two explicit branches: (A) augment then embed/index, and (B) retrieve base chunks then augment the generator prompt. Mark which branch generated the pilot results after checking the code and artifacts.
+
+  \item \textbf{The ``executable reference procedure'' is not executable from the paper.}
+
+  \location{Sections 3.1--3.3 and the caption at line 240.}
+
+  \problem The paper omits the window $w$, $\epsilon$, all boundary and context weights, $\tau_b$, $L_{\min}$, $L_t$, $L_{\max}$, the length unit, context horizons, token budget, encoder revision, and development-set normalization statistics. It also does not specify whether boundary $i$ is placed before $u_i$ or after $u_i$, how the ``best admissible candidate'' is selected when $L_{\max}$ is approached, or the actual soft penalty involving $L_t$.
+
+  \impact An independent reader cannot reproduce the proposed algorithm, and different reasonable interpretations will yield different chunks. Calling the procedure executable overstates its completeness.
+
+  \fix Publish a complete parameter table and exact segmentation pseudocode, including interval conventions and forced-boundary behavior. Otherwise rename the caption ``Reference algorithm skeleton'' and state that it becomes executable only with the released frozen configuration.
+
+  \item \textbf{Median/IQR normalization can become numerically degenerate.}
+
+  \location{Eq.~(4), lines 177--181, especially for $a_i^+$.}
+
+  \problem Positive acceleration is zero whenever $v_i\leq v_{i-1}$. If at least 75\% of development values are zero, $\operatorname{IQR}_{\mathrm{dev}}(a^+)=0$, and the scale is determined entirely by unspecified $\epsilon$. Similar low-variance cases can occur in short or homogeneous corpora.
+
+  \impact Boundary scores may become arbitrarily large or depend on an undocumented numerical constant rather than a stable feature scale.
+
+  \fix Specify $\epsilon$ and a fallback scale, for example IQR $\rightarrow$ MAD $\rightarrow$ standard deviation $\rightarrow 1$, with an explicit constant-feature rule. Report how often each fallback is used.
+
+  \item \textbf{The reference equations and the audited pilot implementation are not reconciled.}
+
+  \location{Reference Methodology, Section 3.4, Results, and Conclusion.}
+
+  \problem The paper defines sentence units, positive acceleration, bidirectional context candidates, and a budgeted ranking policy, but the reported tables come from a legacy pipeline whose exact correspondence to those choices is not shown. The audit identifies a structurally contaminated \texttt{velocity\_only} arm and preceding context expansion, but the paper does not provide a component-by-component mapping from code to Eqs.~(1)--(8).
+
+  \impact The results cannot be interpreted as an empirical test of the newly written reference method. At present, the manuscript combines a proposed specification with observations from a different or incompletely identified implementation.
+
+  \fix Add a compact ``reference versus pilot implementation'' table covering base unit, acceleration sign, volatility initialization, structural encoding, boundary rule, context direction, augmentation stage, weights, budgets, and models. State explicitly that no result validates a reference-only component until the reference method is rerun.
+
+  \item \textbf{The deterministic-pipeline claim contradicts the reported F1 standard deviations.}
+
+  \location{Abstract; Section 3.4 line 253; Results line 271; Tables 2--3 and Fig.~4.}
+
+  \problem The text states that seeds do not change generation and that the three rows are identical deterministic pseudo-replicates. Nevertheless, the tables report nonzero F1 standard deviations for several systems: for example HotpotQA similarity-threshold $0.324\pm0.012$ and QASPER velocity plus acceleration $0.082\pm0.004$. Figure~4 reproduces these nonzero error bars. The uploaded audit separately claims that seed results are identical to four decimal places.
+
+  \impact Both statements cannot be true. The discrepancy undermines the provenance of the aggregate tables and the paper's statistical correction.
+
+  \fix Recover the three raw result files and publish every seed-level value. Identify any nondeterministic operation or differing query subset. If all predictions are identical, regenerate the tables with zero F1 variation or report a single point estimate. Keep runtime repetitions separate from prediction variability.
+
+  \item \textbf{The ``velocity-only'' label remains false in tables and figures.}
+
+  \location{Tables 2--3; Fig.~3 caption and axis; Fig.~4 legend; Results.}
+
+  \problem The text correctly states that \texttt{velocity\_only} retains structural weight $w_s$, yet the generated assets still call it ``Velocity-only'' or ``Velocity.'' Figure~3 reports ``Difference from velocity-only,'' which is actually difference from velocity plus structure.
+
+  \impact Readers can easily miss the qualification in prose and interpret the deltas as a clean component ablation.
+
+  \fix Rename the row and all plot labels to ``Velocity + structure (legacy label: velocity-only).'' Do not use this arm to answer whether velocity alone helps.
+
+  \item \textbf{The quantitative percentages are arithmetically correct but not confirmatory improvements.}
+
+  \location{Abstract and Section 5.1.}
+
+  \problem The reported 19.2\%, 14.5\%, 18.7\%, 21.1\%, 44.9\%, and 35.2\% relative changes are consistent with the displayed rounded means. However, answer metrics use 25 questions, context changes prompt volume from roughly 345 to 945 tokens, and the comparison arm is not pure velocity. Calling these changes ``improvements'' can imply a controlled treatment effect.
+
+  \impact A three-answer difference can double HotpotQA EM from $3/25$ to $6/25$, while unmatched evidence volume can explain part of the F1 change. Relative percentages amplify small-denominator pilot fluctuations.
+
+  \fix Use ``reported relative increase/decrease in the 25-query pilot,'' give the absolute counts where available, and avoid causal language until matched-budget and paired-query analyses are complete.
+
+  \item \textbf{Evaluation definitions remain insufficient for interpreting Recall@5 and MRR.}
+
+  \location{Sections 3.4, 4, and 5; Tables 2--3.}
+
+  \problem The paper reports that QASPER evidence is aligned by substring matching but does not define exactly how a chunk is credited when evidence crosses boundaries, whether attached context counts as retrieved evidence, how multiple gold spans are aggregated, or the MRR cutoff and tie handling. The HotpotQA constructed-document and shared-index procedure is summarized but not fully specified.
+
+  \impact Recall@5 values, especially 1.000 on a small constructed corpus, cannot be compared to standard benchmark results without the relevance mapping and retrieval population.
+
+  \fix Add formal per-query relevance definitions, the MRR formula and cutoff, context-credit rules, document construction and distractor sampling, and denominator counts for every metric. Report the QASPER exclusion rate explicitly as $42/149=28.2\%$ and analyze selection bias.
+\end{enumerate}
+
+\section*{Notation and Terminology Drift Check}
+
+\begin{tabularx}{\textwidth}{@{}p{0.13\textwidth}p{0.29\textwidth}X@{}}
+\toprule
+Symbol/term & First definition & Later usage or conflict \\
+\midrule
+$v_i$ & Adjacent cosine displacement, called semantic velocity in Eq.~(1) & The ``velocity-only'' experimental arm also contains structural weighting, so the system label does not match the mathematical descriptor. \\
+$a_i^+$ & Positive onset of increased displacement in Eq.~(2) & The table label ``Velocity + acceleration'' does not establish whether the legacy implementation used $a_i^+$ or signed $a_i$. This needs code-level reconciliation. \\
+$\mathbf{s}_i$ / $S$ & $\mathbf{s}_i$ is a vector of structural indicators & $S(u_j,c_i)$ is later a scalar structural-affinity function. The similar names obscure whether they are related. \\
+$c_i$, $e_{c_i}$, $\tilde c_i$ & $c_i$ is a base chunk; $\tilde c_i$ is augmented text & $e_{c_i}$ is undefined, and the paper does not state whether retrieval embeds $c_i$ or $\tilde c_i$. \\
+$H_i^-,H_i^+$ / $\mathcal H_i$ & The former are configurable horizons & The latter appears in Eq.~(8) as a context set without an explicit definition. \\
+STP & Body text uses singular ``Semantic Transition Profile'' & The title uses plural ``Profiles,'' while the expansion ``Semantic Transition Profile Guided'' also needs compound-adjective hyphenation. \\
+\bottomrule
+\end{tabularx}
+
+The key equations were also checked for dimensions, signs, branches, and coordinate conventions. Cosine displacement, $a_i^+$, and $\sigma_i$ are dimensionless when $\Delta p_i=1$; no coordinate transformation, inverse-trigonometric branch, or quadrant convention occurs in this manuscript. The principal dimensional ambiguity is instead the unspecified unit of $L_{\min}$, $L_t$, $L_{\max}$, and $\operatorname{dist}$, and the unnormalized mixture of terms in Eq.~(7).
+
+\section*{Editorial and Presentation Findings}
+
+\begin{itemize}
+  \item \location{Algorithm block, lines 215--242.} The block is headed ``Algorithm 1'' but is placed in a \texttt{figure} environment and compiled as ``Figure 2.'' Use an algorithm float/caption or call it a procedure consistently. This is a cross-reference defect, not merely a style preference.
+  \item \location{Abstract, line 49.} Hyphenate the expanded name as ``Semantic Transition Profile-Guided RAG.'' Decide whether the formal name uses singular ``Profile'' or plural ``Profiles'' and apply it consistently.
+  \item \location{RQ1, line 67.} ``Prespecified'' is unsupported unless the metrics and hypotheses were fixed before examining the pilot results. Replace it with ``reported'' or cite a dated protocol/configuration proving prespecification.
+  \item \location{Bibliography entry for Hearst (1997).} The compiled reference renders the proper algorithm name as ``Texttiling.'' Protect the capitalization in \texttt{references.bib} with \verb|{TextTiling}|.
+  \item \location{Related-work table.} The final build has an underfull-box warning in the row for RAPTOR and GraphRAG. It does not prevent compilation, but adjusting column widths or wording would improve the table's typography.
+\end{itemize}
+
+\subsection*{Proofing Sweep}
+
+The required mechanical scan was run on the compiled seven-page manuscript. The duplicated-period hits were mathematical ellipses, and the semicolon-capitalization hits were legitimate proper names or sentence constructions; they are false positives rather than copy errors. No duplicated comma, malformed ``into ... into'' frame, product-name capitalization error, or inverse-trigonometric branch pattern was found. The high-confidence manual proofing defects are the missing backslash in $\lambda_r$, the algorithm/figure numbering conflict, the inaccurate ``velocity-only'' labels, and the unprotected ``TextTiling'' capitalization noted above.
+
+\section*{Items Requiring External Verification}
+
+\begin{itemize}
+  \item The code-level claims attributed to the internal audit---determinism, exact dataset construction, query dropping, token estimates, encoder conflict, and active $w_s$---cannot be independently verified from the manuscript package because the cited repository files and Windows \texttt{file:///} links are not included. Archive the audited commit and release a checksum-addressed supplement.
+  \item Verify which encoder actually generated each index, including model revision, tokenizer revision, pooling, normalization, and cache provenance.
+  \item Verify the exact Ollama \texttt{phi3:mini} digest, quantization, prompt template, context length, decoding parameters, and whether temperature zero was fully deterministic on the used backend.
+  \item Verify the per-seed F1 values against raw predictions before retaining any standard deviation or statement that all outputs were identical.
+  \item The citation keys all resolve locally: 20 unique cited entries are present, with no uncited or duplicate BibTeX entries. Publication metadata should still be checked against primary publisher/proceedings records before submission, and the internal audit should be cited as a project artifact rather than independent scientific evidence.
+\end{itemize}
+
+\section*{Required Revision Order}
+
+\begin{enumerate}
+  \item Correct and fully define Eq.~(7), then make the context policy actually depend on STP or narrow the novelty claim.
+  \item Separate the proposed reference method from the legacy pilot implementation with an explicit mapping and accurate pipeline figure.
+  \item Resolve the deterministic-versus-nonzero-standard-deviation contradiction from raw files.
+  \item Rename the contaminated velocity arm in every table, figure, caption, and comparison.
+  \item Publish complete parameters, evaluation definitions, model revisions, manifests, prompts, and per-query predictions.
+  \item Rerun with uncapped populations, repaired QASPER alignment, matched token budgets, clean factorial ablations, and paired query/document uncertainty.
+\end{enumerate}
+
+\section*{Recommendation}
+
+\textbf{Major revision.} The manuscript is commendably candid and now has a coherent seven-page narrative, but it should not be presented as an empirical validation of the reference STP-RAG method until the method--implementation mapping, context mechanism, aggregate provenance, and evaluation controls are resolved. In its present form, the defensible contribution is a formal research hypothesis plus an audited description of preliminary legacy results.
+
+\end{document}

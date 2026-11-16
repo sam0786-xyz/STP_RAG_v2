@@ -1,0 +1,27 @@
+\begin{tikzpicture}
+\begin{groupplot}[stpaxis,group style={group size=2 by 1,horizontal sep=16mm}]
+\nextgroupplot[title={HotpotQA},xlabel={Mean retrieval latency (ms)},ylabel={Recall@5},ymin=0.975,ymax=1.006,legend to name=stp-latency-legend,legend columns=6,]
+\addplot[only marks,mark size=2.1pt,stpfixed,error bars/.cd,x dir=both,x explicit,y dir=both,y explicit] coordinates {(1.717,0.987) +- (0.243,0.000)};
+\addlegendentry{Fixed}
+\addplot[only marks,mark size=2.1pt,stpsimilarity,error bars/.cd,x dir=both,x explicit,y dir=both,y explicit] coordinates {(3.972,0.980) +- (0.478,0.000)};
+\addlegendentry{Similarity}
+\addplot[only marks,mark size=2.1pt,stpvelocity,error bars/.cd,x dir=both,x explicit,y dir=both,y explicit] coordinates {(2.564,1.000) +- (0.019,0.000)};
+\addlegendentry{Velocity}
+\addplot[only marks,mark size=2.1pt,stpacceleration,error bars/.cd,x dir=both,x explicit,y dir=both,y explicit] coordinates {(2.953,0.993) +- (0.111,0.000)};
+\addlegendentry{Vel.+acc.}
+\addplot[only marks,mark size=2.1pt,stpfull,error bars/.cd,x dir=both,x explicit,y dir=both,y explicit] coordinates {(2.822,0.987) +- (0.015,0.000)};
+\addlegendentry{STP}
+\addplot[only marks,mark size=2.1pt,stpcontext,error bars/.cd,x dir=both,x explicit,y dir=both,y explicit] coordinates {(3.210,0.987) +- (0.411,0.000)};
+\addlegendentry{STP+ctx}
+\addplot[black!65,dashed,no marks,forget plot] coordinates {(1.717,0.987) (2.564,1.000)};
+\nextgroupplot[title={QASPER},xlabel={Mean retrieval latency (ms)},ylabel={Recall@5},ymin=0.23,ymax=0.40,]
+\addplot[only marks,mark size=2.1pt,stpfixed,error bars/.cd,x dir=both,x explicit,y dir=both,y explicit] coordinates {(2.724,0.379) +- (0.174,0.000)};
+\addplot[only marks,mark size=2.1pt,stpsimilarity,error bars/.cd,x dir=both,x explicit,y dir=both,y explicit] coordinates {(4.198,0.294) +- (0.589,0.000)};
+\addplot[only marks,mark size=2.1pt,stpvelocity,error bars/.cd,x dir=both,x explicit,y dir=both,y explicit] coordinates {(5.879,0.252) +- (0.223,0.000)};
+\addplot[only marks,mark size=2.1pt,stpacceleration,error bars/.cd,x dir=both,x explicit,y dir=both,y explicit] coordinates {(5.088,0.257) +- (0.589,0.000)};
+\addplot[only marks,mark size=2.1pt,stpfull,error bars/.cd,x dir=both,x explicit,y dir=both,y explicit] coordinates {(6.592,0.299) +- (1.072,0.000)};
+\addplot[only marks,mark size=2.1pt,stpcontext,error bars/.cd,x dir=both,x explicit,y dir=both,y explicit] coordinates {(6.902,0.299) +- (0.796,0.000)};
+\end{groupplot}
+\end{tikzpicture}
+\par\smallskip
+\pgfplotslegendfromname{stp-latency-legend}

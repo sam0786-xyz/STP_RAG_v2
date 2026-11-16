@@ -1,0 +1,19 @@
+{
+  "unchanged": true,
+  "sha256": {
+    "STP_RAG_Research_Paper_Revised.tex": "edecdc9444c7a45fd74a2e3f40be84b04731489834d72ab9c1bec11bae3694bb",
+    "STP_RAG_Research_Paper_Revised.pdf": "94ab6c9bbfc5f411d86347f7f0f18ddadfff92386ed4c9c6fbae149fb6cd55df",
+    "references.bib": "48766290da841cbc437cc9f319f5aa4acf551c5479ceed383d29b2d35bf04adf",
+    "MANUSCRIPT_NOTES.md": "8bc9d0794ddeecb19c4366dfa2273faff29ab3061a585de6cb6d204776656160",
+    "results/summary_metrics.csv": "825acaaed8480619462a61f1c78ee3e4d77cb8ef4b2862eb8795487146e06a54",
+    "results/table_hotpotqa.tex": "1ab88c994fbffe31bb53d6bb13520cdc313d0539cbbb07a48daae1430763f2f2",
+    "results/plot_delta.tex": "848415e3acc7f6fc58808e8493d2ce3f061f0035497a73a84375f74ac9a46cb7",
+    "results/plot_structure.tex": "d42c5fe774422fea47aa7ca54da1c278a8097bfbb8f2a51861ef232a41a1071b",
+    "results/plot_latency.tex": "8d841a67f6bc8e6725046a3daaf471da467854e0add11a19156887f7d7019c9b",
+    "results/plot_styles.tex": "6c9d8801b78750b12893a565b707d2b363ab85c44e57ddea3bb8d5405fac331b",
+    "results/table_qasper.tex": "f022ec6430396291d1216e59aa87dded60fd2ab024db029617d2c5219c919ba1",
+    "results/plots/delta_vs_baseline.png": "919464767e26ff089882c169a1b19211b1e7d1640b3354e1f631edf44cb9629b",
+    "results/plots/structure_breakdown.png": "68313737ed8b9c387eac9e2ff1f9fce09a32c3e4c7574d770ed54aab2bf10bae",
+    "results/plots/pareto_latency_recall.png": "ded003f51fe32401d96dfaf213148b499b7b493f60921a5b834f7e943219bedc"
+  }
+}

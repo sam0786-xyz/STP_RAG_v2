@@ -1,0 +1,12 @@
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lccccccc@{}}
+\toprule
+Method & Recall@5 & MRR & EM & F1 & Chunks/doc. & Build (s) & Retrieval (ms) \\
+\midrule
+Fixed-size & $0.987\pm0.000$ & $0.917\pm0.000$ & $0.200\pm0.000$ & $0.358\pm0.000$ & $3.400\pm0.000$ & $0.297\pm0.178$ & $1.717\pm0.243$ \\
+Similarity-threshold & $0.980\pm0.000$ & $0.863\pm0.000$ & $0.200\pm0.000$ & $0.324\pm0.012$ & $10.527\pm0.000$ & $0.510\pm0.006$ & $3.972\pm0.478$ \\
+Velocity-only & $\mathbf{1.000\pm0.000}$ & $\mathbf{0.922\pm0.000}$ & $0.200\pm0.000$ & $0.344\pm0.001$ & $8.287\pm0.000$ & $0.383\pm0.003$ & $2.564\pm0.019$ \\
+Velocity + acceleration & $0.993\pm0.000$ & $0.912\pm0.000$ & $0.120\pm0.000$ & $0.283\pm0.002$ & $9.040\pm0.000$ & $0.439\pm0.039$ & $2.953\pm0.111$ \\
+Full STP & $0.987\pm0.000$ & $0.897\pm0.000$ & $0.120\pm0.000$ & $0.283\pm0.001$ & $9.313\pm0.000$ & $0.416\pm0.004$ & $2.822\pm0.015$ \\
+STP + selective context & $0.987\pm0.000$ & $0.897\pm0.000$ & $\mathbf{0.240\pm0.000}$ & $\mathbf{0.410\pm0.000}$ & $9.313\pm0.000$ & $1.064\pm0.605$ & $3.210\pm0.411$ \\
+\bottomrule
+\end{tabular*}

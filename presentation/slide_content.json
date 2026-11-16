@@ -1,0 +1,6694 @@
+[
+  {
+    "title": "STP-RAG",
+    "category": "Title",
+    "shapes": [
+      {
+        "kind": "text",
+        "x": 72,
+        "y": 64,
+        "w": 1420,
+        "h": 45,
+        "size": 14,
+        "color": "6ED4CC",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "EVALUATION 1 / 15 SEPTEMBER 2026"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 72,
+        "y": 164,
+        "w": 1050,
+        "h": 135,
+        "size": 62,
+        "color": "FFFFFF",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "STP-RAG"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 78,
+        "y": 314,
+        "w": 1390,
+        "h": 145,
+        "size": 30,
+        "color": "FFFFFF",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Semantic Transition Profiles for",
+          "Adaptive Chunking and Selective Context"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 78,
+        "y": 502,
+        "w": 1360,
+        "h": 74,
+        "fill": "203E56",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 104,
+        "y": 524,
+        "w": 1305,
+        "h": 43,
+        "size": 21,
+        "color": "A6E4DC",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "A feasibility, requirements, and evidence-led project presentation"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 78,
+        "y": 642,
+        "w": 1420,
+        "h": 55,
+        "size": 20,
+        "color": "FFFFFF",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Mohammad Sameer • Rajeev Kumar Gupta • Mohit Dev Tomar"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 78,
+        "y": 716,
+        "w": 1390,
+        "h": 78,
+        "size": 16,
+        "color": "C2D1DE",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Department of Computer Science and Engineering",
+          "Sharda School of Computing Science and Engineering, Sharda University"
+        ]
+      }
+    ],
+    "notes": "Introduce the project in one sentence: we study how chunk boundaries and selectively attached context change evidence retrieval and answer quality. This deck follows the uploaded Evaluation 1 rubric; it is not a claim that every implementation detail has already been independently verified."
+  },
+  {
+    "title": "What this evaluation should establish",
+    "category": "Rubric alignment | 50 marks",
+    "shapes": [
+      {
+        "kind": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 14,
+        "h": 900,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 28,
+        "w": 1480,
+        "h": 28,
+        "size": 11,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "RUBRIC ALIGNMENT | 50 MARKS"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 72,
+        "w": 1470,
+        "h": 85,
+        "size": 29,
+        "color": "14283F",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "What this evaluation should establish"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 62,
+        "y": 824,
+        "x2": 1538,
+        "y2": 824,
+        "color": "D9E2EA",
+        "width": 1
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 841,
+        "w": 1390,
+        "h": 35,
+        "size": 9.5,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Source: uploaded evaluation rubric, September 15, 2026"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1480,
+        "y": 838,
+        "w": 58,
+        "h": 36,
+        "size": 12,
+        "color": "007F82",
+        "bold": true,
+        "align": "right",
+        "lines": [
+          "02"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 170,
+        "w": 474,
+        "h": 168,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 80,
+        "y": 188,
+        "w": 368,
+        "h": 45,
+        "size": 18,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Feasibility"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 462,
+        "y": 186,
+        "w": 55,
+        "h": 43,
+        "size": 23,
+        "color": "2768B4",
+        "bold": true,
+        "align": "right",
+        "lines": [
+          "5"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 80,
+        "y": 243,
+        "w": 437,
+        "h": 80,
+        "size": 15,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Technical, operational, cost and",
+          "schedule analysis"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 563,
+        "y": 170,
+        "w": 474,
+        "h": 168,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 581,
+        "y": 188,
+        "w": 368,
+        "h": 45,
+        "size": 18,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Project objectives"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 963,
+        "y": 186,
+        "w": 55,
+        "h": 43,
+        "size": 23,
+        "color": "2768B4",
+        "bold": true,
+        "align": "right",
+        "lines": [
+          "5"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 581,
+        "y": 243,
+        "w": 437,
+        "h": 80,
+        "size": 15,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Specific goals with measurable",
+          "acceptance checks"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 1064,
+        "y": 170,
+        "w": 474,
+        "h": 168,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 1082,
+        "y": 188,
+        "w": 368,
+        "h": 45,
+        "size": 18,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Relevant constraints"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1464,
+        "y": 186,
+        "w": 55,
+        "h": 43,
+        "size": 23,
+        "color": "2768B4",
+        "bold": true,
+        "align": "right",
+        "lines": [
+          "5"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1082,
+        "y": 243,
+        "w": 437,
+        "h": 80,
+        "size": 15,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Economic, environmental, safety and",
+          "sustainability"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 361,
+        "w": 474,
+        "h": 168,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 80,
+        "y": 379,
+        "w": 368,
+        "h": 45,
+        "size": 18,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Requirements relevance"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 462,
+        "y": 377,
+        "w": 55,
+        "h": 43,
+        "size": 23,
+        "color": "2768B4",
+        "bold": true,
+        "align": "right",
+        "lines": [
+          "5"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 80,
+        "y": 434,
+        "w": 437,
+        "h": 80,
+        "size": 15,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Every requirement connects to the",
+          "project title"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 563,
+        "y": 361,
+        "w": 474,
+        "h": 168,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 581,
+        "y": 379,
+        "w": 368,
+        "h": 45,
+        "size": 18,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Requirements quality"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 963,
+        "y": 377,
+        "w": 55,
+        "h": 43,
+        "size": 23,
+        "color": "2768B4",
+        "bold": true,
+        "align": "right",
+        "lines": [
+          "5"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 581,
+        "y": 434,
+        "w": 437,
+        "h": 80,
+        "size": 15,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Clear, testable functional and",
+          "non-functional criteria"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 1064,
+        "y": 361,
+        "w": 474,
+        "h": 168,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 1082,
+        "y": 379,
+        "w": 368,
+        "h": 45,
+        "size": 18,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Responsibilities"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1464,
+        "y": 377,
+        "w": 55,
+        "h": 43,
+        "size": 23,
+        "color": "2768B4",
+        "bold": true,
+        "align": "right",
+        "lines": [
+          "5"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1082,
+        "y": 434,
+        "w": 437,
+        "h": 80,
+        "size": 15,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Named ownership backed by actual",
+          "work evidence"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 552,
+        "w": 474,
+        "h": 168,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 80,
+        "y": 570,
+        "w": 368,
+        "h": 45,
+        "size": 18,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Oral communication"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 462,
+        "y": 568,
+        "w": 55,
+        "h": 43,
+        "size": 23,
+        "color": "2768B4",
+        "bold": true,
+        "align": "right",
+        "lines": [
+          "5"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 80,
+        "y": 625,
+        "w": 437,
+        "h": 80,
+        "size": 15,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Explain the diagrams, trade-offs and",
+          "limitations"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 563,
+        "y": 552,
+        "w": 474,
+        "h": 168,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 581,
+        "y": 570,
+        "w": 368,
+        "h": 45,
+        "size": 18,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Written communication"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 963,
+        "y": 568,
+        "w": 55,
+        "h": 43,
+        "size": 23,
+        "color": "2768B4",
+        "bold": true,
+        "align": "right",
+        "lines": [
+          "5"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 581,
+        "y": 625,
+        "w": 437,
+        "h": 80,
+        "size": 15,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Readable slides, consistent terms and",
+          "citations"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 1064,
+        "y": 552,
+        "w": 474,
+        "h": 168,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 1082,
+        "y": 570,
+        "w": 368,
+        "h": 45,
+        "size": 18,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Guide's assessment"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1464,
+        "y": 568,
+        "w": 55,
+        "h": 43,
+        "size": 23,
+        "color": "2768B4",
+        "bold": true,
+        "align": "right",
+        "lines": [
+          "10"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1082,
+        "y": 625,
+        "w": 437,
+        "h": 80,
+        "size": 15,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Review evidence and address the",
+          "guide's feedback"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 747,
+        "w": 1476,
+        "h": 59,
+        "fill": "E7F3F2",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 83,
+        "y": 760,
+        "w": 1434,
+        "h": 42,
+        "size": 17,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Focus: a justified project plan and specification—not only model accuracy."
+        ]
+      }
+    ],
+    "notes": "The rubric contains eight five-mark categories plus ten guide marks: fifty in total. Spend most of the talk demonstrating feasibility, objectives, constraints, requirement traceability, and accountability. Communication is assessed throughout. Do not imply that this slide guarantees marks."
+  },
+  {
+    "title": "The problem: a correct statement can lose its context",
+    "category": "Problem definition | illustrative diagram",
+    "shapes": [
+      {
+        "kind": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 14,
+        "h": 900,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 28,
+        "w": 1480,
+        "h": 28,
+        "size": 11,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "PROBLEM DEFINITION | ILLUSTRATIVE DIAGRAM"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 72,
+        "w": 1470,
+        "h": 85,
+        "size": 29,
+        "color": "14283F",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "The problem: a correct statement can lose its context"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 62,
+        "y": 824,
+        "x2": 1538,
+        "y2": 824,
+        "color": "D9E2EA",
+        "width": 1
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 841,
+        "w": 1390,
+        "h": 35,
+        "size": 9.5,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Background: Lewis et al., 2020; Chen et al., 2024. Toy example—not benchmark evidence."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1480,
+        "y": 838,
+        "w": 58,
+        "h": 36,
+        "size": 12,
+        "color": "007F82",
+        "bold": true,
+        "align": "right",
+        "lines": [
+          "03"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 65,
+        "y": 165,
+        "w": 1470,
+        "h": 60,
+        "size": 23,
+        "color": "14283F",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Question: Which calibration factor applies to sensor A?"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 260,
+        "w": 703,
+        "h": 270,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 260,
+        "w": 6,
+        "h": 270,
+        "fill": "B34E4E",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 279,
+        "w": 655,
+        "h": 58,
+        "size": 20,
+        "color": "B34E4E",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Fixed boundary: dependency split"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 343,
+        "w": 655,
+        "h": 175,
+        "size": 20,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Chunk 1: “The calibration factor is 0.85.”",
+          "Chunk 2: “Apply this factor only to sensor A.”"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 835,
+        "y": 260,
+        "w": 703,
+        "h": 270,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "rect",
+        "x": 835,
+        "y": 260,
+        "w": 6,
+        "h": 270,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 859,
+        "y": 279,
+        "w": 655,
+        "h": 58,
+        "size": 20,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Context: evidence reconnected"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 859,
+        "y": 343,
+        "w": 655,
+        "h": 175,
+        "size": 20,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Retrieved statement + relevant earlier",
+          "context:",
+          "“Factor = 0.85” + “applies to sensor A.”"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 774,
+        "y": 345,
+        "w": 52,
+        "h": 60,
+        "size": 27,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "→"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 82,
+        "y": 558,
+        "w": 674,
+        "h": 102,
+        "size": 21,
+        "color": "B34E4E",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Risk: a retrieved chunk may be relevant",
+          "but incomplete."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 853,
+        "y": 558,
+        "w": 650,
+        "h": 142,
+        "size": 20,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Design goal: preserve useful",
+          "dependencies without copying",
+          "everything."
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 747,
+        "w": 1476,
+        "h": 59,
+        "fill": "E7F3F2",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 83,
+        "y": 760,
+        "w": 1434,
+        "h": 42,
+        "size": 16,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Research question: when do transition signals and selected context help—and when do they hurt?"
+        ]
+      }
+    ],
+    "notes": "Explain the example without calling it an experimental result. The example only illustrates the dependency problem. Avoid saying that STP necessarily produces this boundary or always recovers the right context. Existing RAG and granularity work motivate the problem; the proposed focus is reuse of a transition profile across representation decisions."
+  },
+  {
+    "title": "Four objectives with observable deliverables",
+    "category": "Formulation of project objectives | 5 marks",
+    "shapes": [
+      {
+        "kind": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 14,
+        "h": 900,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 28,
+        "w": 1480,
+        "h": 28,
+        "size": 11,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "FORMULATION OF PROJECT OBJECTIVES | 5 MARKS"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 72,
+        "w": 1470,
+        "h": 85,
+        "size": 29,
+        "color": "14283F",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Four objectives with observable deliverables"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 62,
+        "y": 824,
+        "x2": 1538,
+        "y2": 824,
+        "color": "D9E2EA",
+        "width": 1
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 841,
+        "w": 1390,
+        "h": 35,
+        "size": 9.5,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "STP-RAG | Evaluation 1"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1480,
+        "y": 838,
+        "w": 58,
+        "h": 36,
+        "size": 12,
+        "color": "007F82",
+        "bold": true,
+        "align": "right",
+        "lines": [
+          "04"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 169,
+        "w": 723,
+        "h": 252,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 169,
+        "w": 6,
+        "h": 252,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 188,
+        "w": 675,
+        "h": 58,
+        "size": 20,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "O1 Adaptive representation"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 252,
+        "w": 675,
+        "h": 157,
+        "size": 18,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Compute velocity, acceleration, volatility and",
+          "structural cues; construct bounded, source-linked",
+          "chunks."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 361,
+        "w": 672,
+        "h": 57,
+        "size": 15,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Check: deterministic signals and valid boundaries."
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 815,
+        "y": 169,
+        "w": 723,
+        "h": 252,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "rect",
+        "x": 815,
+        "y": 169,
+        "w": 6,
+        "h": 252,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 839,
+        "y": 188,
+        "w": 675,
+        "h": 58,
+        "size": 20,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "O2 Selective context"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 839,
+        "y": 252,
+        "w": 675,
+        "h": 157,
+        "size": 18,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Attach relevant earlier units as an optional",
+          "component rather than copying all previous text."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 839,
+        "y": 361,
+        "w": 672,
+        "h": 57,
+        "size": 15,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Check: compare the same STP arm with context OFF /",
+          "ON."
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 447,
+        "w": 723,
+        "h": 252,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 447,
+        "w": 6,
+        "h": 252,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 466,
+        "w": 675,
+        "h": 58,
+        "size": 20,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "O3 Controlled evaluation"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 530,
+        "w": 675,
+        "h": 157,
+        "size": 18,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Compare six arms on HotpotQA and QASPER",
+          "with consistent retrieval and generation settings."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 639,
+        "w": 672,
+        "h": 57,
+        "size": 15,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Check: Recall@5, MRR, EM and F1 for every arm."
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 815,
+        "y": 447,
+        "w": 723,
+        "h": 252,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "rect",
+        "x": 815,
+        "y": 447,
+        "w": 6,
+        "h": 252,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 839,
+        "y": 466,
+        "w": 675,
+        "h": 58,
+        "size": 20,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "O4 Cost and reproducibility"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 839,
+        "y": 530,
+        "w": 675,
+        "h": 157,
+        "size": 18,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Record chunk count, build time, retrieval latency,",
+          "configurations and predictions."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 839,
+        "y": 639,
+        "w": 672,
+        "h": 57,
+        "size": 15,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Check: a complete run manifest and reproducible",
+          "outputs."
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 747,
+        "w": 1476,
+        "h": 59,
+        "fill": "E7F3F2",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 83,
+        "y": 760,
+        "w": 1434,
+        "h": 42,
+        "size": 16,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Objectives define what will be tested; they do not promise that STP wins on every dataset."
+        ]
+      }
+    ],
+    "notes": "Give the objective, then point to its acceptance check. Distinguish a requirement or planned deliverable from evidence that it has passed. O4 is not fully demonstrated by aggregate tables alone: configuration and prediction files are still needed."
+  },
+  {
+    "title": "System architecture: representation first, retrieval second",
+    "category": "Requirements relevance | project-title alignment",
+    "shapes": [
+      {
+        "kind": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 14,
+        "h": 900,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 28,
+        "w": 1480,
+        "h": 28,
+        "size": 11,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "REQUIREMENTS RELEVANCE | PROJECT-TITLE ALIGNMENT"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 72,
+        "w": 1470,
+        "h": 85,
+        "size": 29,
+        "color": "14283F",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "System architecture: representation first, retrieval second"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 62,
+        "y": 824,
+        "x2": 1538,
+        "y2": 824,
+        "color": "D9E2EA",
+        "width": 1
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 841,
+        "w": 1390,
+        "h": 35,
+        "size": 9.5,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "STP-RAG | Evaluation 1"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1480,
+        "y": 838,
+        "w": 58,
+        "h": 36,
+        "size": 12,
+        "color": "007F82",
+        "bold": true,
+        "align": "right",
+        "lines": [
+          "05"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 171,
+        "w": 1465,
+        "h": 37,
+        "size": 14,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "DOCUMENT CONSTRUCTION"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 224,
+        "w": 264,
+        "h": 98,
+        "fill": "E7F3F2",
+        "stroke": "D9E2EA",
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 74,
+        "y": 239.0,
+        "w": 240,
+        "h": 72,
+        "size": 17,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "Ordered units",
+          "+ structure"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 326,
+        "y": 244,
+        "w": 39,
+        "h": 60,
+        "size": 27,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "→"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 365,
+        "y": 224,
+        "w": 264,
+        "h": 98,
+        "fill": "E7F3F2",
+        "stroke": "D9E2EA",
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 377,
+        "y": 239.0,
+        "w": 240,
+        "h": 72,
+        "size": 17,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "Unit",
+          "embeddings"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 629,
+        "y": 244,
+        "w": 39,
+        "h": 60,
+        "size": 27,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "→"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 668,
+        "y": 224,
+        "w": 264,
+        "h": 98,
+        "fill": "E7F3F2",
+        "stroke": "D9E2EA",
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 680,
+        "y": 239.0,
+        "w": 240,
+        "h": 72,
+        "size": 17,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "STP profile",
+          "v, a, σ, S"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 932,
+        "y": 244,
+        "w": 39,
+        "h": 60,
+        "size": 27,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "→"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 971,
+        "y": 224,
+        "w": 264,
+        "h": 98,
+        "fill": "E7F3F2",
+        "stroke": "D9E2EA",
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 983,
+        "y": 239.0,
+        "w": 240,
+        "h": 72,
+        "size": 17,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "Adaptive",
+          "chunks"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1235,
+        "y": 244,
+        "w": 39,
+        "h": 60,
+        "size": 27,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "→"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 1274,
+        "y": 224,
+        "w": 264,
+        "h": 98,
+        "fill": "E7F3F2",
+        "stroke": "D9E2EA",
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 1286,
+        "y": 239.0,
+        "w": 240,
+        "h": 72,
+        "size": 17,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "Selective",
+          "context"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 366,
+        "y": 362,
+        "w": 1165,
+        "h": 43,
+        "size": 18,
+        "color": "2768B4",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Dev calibration → frozen parameters; no test-set tuning"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 1450,
+        "y": 327,
+        "x2": 1450,
+        "y2": 435,
+        "color": "007F82",
+        "width": 3
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 439,
+        "w": 1100,
+        "h": 38,
+        "size": 14,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "QUERY TIME"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 500,
+        "w": 302,
+        "h": 106,
+        "fill": "FFFFFF",
+        "stroke": "D9E2EA",
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 74,
+        "y": 536.0,
+        "w": 278,
+        "h": 38,
+        "size": 17,
+        "color": "14283F",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "Question"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 364,
+        "y": 526,
+        "w": 66,
+        "h": 60,
+        "size": 27,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "→"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 430,
+        "y": 500,
+        "w": 302,
+        "h": 106,
+        "fill": "FFFFFF",
+        "stroke": "D9E2EA",
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 442,
+        "y": 519.0,
+        "w": 278,
+        "h": 72,
+        "size": 17,
+        "color": "14283F",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "Top-five",
+          "retrieval"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 732,
+        "y": 526,
+        "w": 66,
+        "h": 60,
+        "size": 27,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "→"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 798,
+        "y": 500,
+        "w": 302,
+        "h": 106,
+        "fill": "FFFFFF",
+        "stroke": "D9E2EA",
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 810,
+        "y": 519.0,
+        "w": 278,
+        "h": 72,
+        "size": 17,
+        "color": "14283F",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "phi3:mini",
+          "generation"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1100,
+        "y": 526,
+        "w": 66,
+        "h": 60,
+        "size": 27,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "→"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 1166,
+        "y": 500,
+        "w": 302,
+        "h": 106,
+        "fill": "FFFFFF",
+        "stroke": "D9E2EA",
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 1178,
+        "y": 519.0,
+        "w": 278,
+        "h": 72,
+        "size": 17,
+        "color": "14283F",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "Answer +",
+          "source context"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1245,
+        "y": 431,
+        "w": 290,
+        "h": 48,
+        "size": 18,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "Chunk index"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 1245,
+        "y": 455,
+        "x2": 581,
+        "y2": 455,
+        "color": "007F82",
+        "width": 3
+      },
+      {
+        "kind": "text",
+        "x": 554,
+        "y": 455,
+        "w": 54,
+        "h": 60,
+        "size": 27,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "↓"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 64,
+        "y": 665,
+        "w": 1470,
+        "h": 49,
+        "size": 20,
+        "color": "14283F",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Core scope: document segmentation, context attachment and controlled comparison."
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 747,
+        "w": 1476,
+        "h": 59,
+        "fill": "E7F3F2",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 83,
+        "y": 760,
+        "w": 1434,
+        "h": 42,
+        "size": 16,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Not evaluated here: a separate evidence-sufficiency or secondary-retrieval controller."
+        ]
+      }
+    ],
+    "notes": "Explain v as local semantic displacement, a as change in that displacement, and sigma as local variability. The same profile is reused for representation decisions. Encoder revision and index backend are not confirmed in the supplied experiment record, so do not name a particular encoder or vector database as measured fact. Context ON/OFF is an ablation, not a second retrieval stage."
+  },
+  {
+    "title": "Functional requirements trace directly to the title",
+    "category": "Relevance of project requirement specification | 5 marks",
+    "shapes": [
+      {
+        "kind": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 14,
+        "h": 900,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 28,
+        "w": 1480,
+        "h": 28,
+        "size": 11,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "RELEVANCE OF PROJECT REQUIREMENT SPECIFICATION | 5 MARKS"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 72,
+        "w": 1470,
+        "h": 85,
+        "size": 29,
+        "color": "14283F",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Functional requirements trace directly to the title"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 62,
+        "y": 824,
+        "x2": 1538,
+        "y2": 824,
+        "color": "D9E2EA",
+        "width": 1
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 841,
+        "w": 1390,
+        "h": 35,
+        "size": 9.5,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "STP-RAG | Evaluation 1"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1480,
+        "y": 838,
+        "w": 58,
+        "h": 36,
+        "size": 12,
+        "color": "007F82",
+        "bold": true,
+        "align": "right",
+        "lines": [
+          "06"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 178,
+        "w": 1476,
+        "h": 57,
+        "fill": "14283F",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 193,
+        "w": 64,
+        "h": 39,
+        "size": 16,
+        "color": "FFFFFF",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "ID"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 168,
+        "y": 193,
+        "w": 252,
+        "h": 39,
+        "size": 16,
+        "color": "FFFFFF",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Title term"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 448,
+        "y": 193,
+        "w": 452,
+        "h": 39,
+        "size": 16,
+        "color": "FFFFFF",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Functional requirement"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 928,
+        "y": 193,
+        "w": 452,
+        "h": 39,
+        "size": 16,
+        "color": "FFFFFF",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Acceptance evidence"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1408,
+        "y": 193,
+        "w": 116,
+        "h": 39,
+        "size": 16,
+        "color": "FFFFFF",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Goal"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 235,
+        "w": 1476,
+        "h": 98,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 252,
+        "w": 64,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "FR1"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 168,
+        "y": 252,
+        "w": 252,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Semantic transition",
+          "profiles"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 448,
+        "y": 252,
+        "w": 452,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Compute v, a, σ and structural",
+          "features."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 928,
+        "y": 252,
+        "w": 452,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Deterministic feature output"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1408,
+        "y": 252,
+        "w": 116,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "O1"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 333,
+        "w": 1476,
+        "h": 98,
+        "fill": "EAF0F5",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 350,
+        "w": 64,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "FR2"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 168,
+        "y": 350,
+        "w": 252,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Adaptive chunking"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 448,
+        "y": 350,
+        "w": 452,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Apply boundary rules within chunk",
+          "bounds."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 928,
+        "y": 350,
+        "w": 452,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "No invalid / out-of-range spans"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1408,
+        "y": 350,
+        "w": 116,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "O1"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 431,
+        "w": 1476,
+        "h": 98,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 448,
+        "w": 64,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "FR3"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 168,
+        "y": 448,
+        "w": 252,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Selective context"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 448,
+        "y": 448,
+        "w": 452,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Enable / disable relevant historical",
+          "attachment."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 928,
+        "y": 448,
+        "w": 452,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Paired context OFF / ON runs"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1408,
+        "y": 448,
+        "w": 116,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "O2"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 529,
+        "w": 1476,
+        "h": 98,
+        "fill": "EAF0F5",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 546,
+        "w": 64,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "FR4"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 168,
+        "y": 546,
+        "w": 252,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Retrieval +",
+          "generation"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 448,
+        "y": 546,
+        "w": 452,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Retrieve evidence and generate an",
+          "answer."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 928,
+        "y": 546,
+        "w": 452,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Source-linked retrieval records"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1408,
+        "y": 546,
+        "w": 116,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "O3"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 627,
+        "w": 1476,
+        "h": 98,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 644,
+        "w": 64,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "FR5"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 168,
+        "y": 644,
+        "w": 252,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Empirical evaluation"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 448,
+        "y": 644,
+        "w": 452,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Export metrics, settings and",
+          "predictions."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 928,
+        "y": 644,
+        "w": 452,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Complete per-run output record"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1408,
+        "y": 644,
+        "w": 116,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "O3–O4"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 747,
+        "w": 1476,
+        "h": 59,
+        "fill": "E7F3F2",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 83,
+        "y": 760,
+        "w": 1434,
+        "h": 42,
+        "size": 16,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Each requirement has an identifier, an observable behavior and a verification artifact."
+        ]
+      }
+    ],
+    "notes": "Treat this as the proposed project requirement specification, not an assertion that all tests have passed. This table supports title relevance and makes the objectives testable. Do not use vague requirements such as 'the system should be accurate' without defining a measurement."
+  },
+  {
+    "title": "Quality requirements: define how success is checked",
+    "category": "Quality of project requirement specification | 5 marks",
+    "shapes": [
+      {
+        "kind": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 14,
+        "h": 900,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 28,
+        "w": 1480,
+        "h": 28,
+        "size": 11,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "QUALITY OF PROJECT REQUIREMENT SPECIFICATION | 5 MARKS"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 72,
+        "w": 1470,
+        "h": 85,
+        "size": 29,
+        "color": "14283F",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Quality requirements: define how success is checked"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 62,
+        "y": 824,
+        "x2": 1538,
+        "y2": 824,
+        "color": "D9E2EA",
+        "width": 1
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 841,
+        "w": 1390,
+        "h": 35,
+        "size": 9.5,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "STP-RAG | Evaluation 1"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1480,
+        "y": 838,
+        "w": 58,
+        "h": 36,
+        "size": 12,
+        "color": "007F82",
+        "bold": true,
+        "align": "right",
+        "lines": [
+          "07"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 178,
+        "w": 1476,
+        "h": 57,
+        "fill": "14283F",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 193,
+        "w": 247,
+        "h": 39,
+        "size": 16,
+        "color": "FFFFFF",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Quality attribute"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 351,
+        "y": 193,
+        "w": 704,
+        "h": 39,
+        "size": 16,
+        "color": "FFFFFF",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Requirement"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1083,
+        "y": 193,
+        "w": 441,
+        "h": 39,
+        "size": 16,
+        "color": "FFFFFF",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Verification artifact"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 235,
+        "w": 1476,
+        "h": 98,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 252,
+        "w": 247,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Reproducibility"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 351,
+        "y": 252,
+        "w": 704,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Freeze data splits and parameters; retain seeds and",
+          "model settings."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1083,
+        "y": 252,
+        "w": 441,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Manifest, checksum and saved",
+          "outputs"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 333,
+        "w": 1476,
+        "h": 98,
+        "fill": "EAF0F5",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 350,
+        "w": 247,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Evaluation fairness"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 351,
+        "y": 350,
+        "w": 704,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Use the same task setting; report all six arms and",
+          "unfavorable results."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1083,
+        "y": 350,
+        "w": 441,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Comparable configurations and full",
+          "tables"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 431,
+        "w": 1476,
+        "h": 98,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 448,
+        "w": 247,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Efficiency"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 351,
+        "y": 448,
+        "w": 704,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Measure build, retrieval and generation separately; track",
+          "chunk count."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1083,
+        "y": 448,
+        "w": 441,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Timing boundaries, hardware and",
+          "token budgets"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 529,
+        "w": 1476,
+        "h": 98,
+        "fill": "EAF0F5",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 546,
+        "w": 247,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Traceability"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 351,
+        "y": 546,
+        "w": 704,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Map retrieved and appended evidence back to source",
+          "units."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1083,
+        "y": 546,
+        "w": 441,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Document IDs, offsets and",
+          "provenance records"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 627,
+        "w": 1476,
+        "h": 98,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 644,
+        "w": 247,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Reporting integrity"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 351,
+        "y": 644,
+        "w": 704,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Separate descriptive gains from verified statistical",
+          "conclusions."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1083,
+        "y": 644,
+        "w": 441,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Paired predictions and documented",
+          "inference"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 747,
+        "w": 1476,
+        "h": 59,
+        "fill": "E7F3F2",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 83,
+        "y": 760,
+        "w": 1434,
+        "h": 42,
+        "size": 16,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Acceptance criteria are specified here; aggregate results alone do not verify every criterion."
+        ]
+      }
+    ],
+    "notes": "Explain one example: a retrieval time without hardware, caching conditions and timing boundaries is not a portable performance guarantee. For the final SRS, assign requirement IDs, priority, dependencies and agreed numeric resource ceilings after measuring available hardware. Do not invent latency targets or sample counts."
+  },
+  {
+    "title": "Feasibility: what is supported, what remains uncertain",
+    "category": "Level of analysis of feasibility | 5 marks",
+    "shapes": [
+      {
+        "kind": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 14,
+        "h": 900,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 28,
+        "w": 1480,
+        "h": 28,
+        "size": 11,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "LEVEL OF ANALYSIS OF FEASIBILITY | 5 MARKS"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 72,
+        "w": 1470,
+        "h": 85,
+        "size": 29,
+        "color": "14283F",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Feasibility: what is supported, what remains uncertain"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 62,
+        "y": 824,
+        "x2": 1538,
+        "y2": 824,
+        "color": "D9E2EA",
+        "width": 1
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 841,
+        "w": 1390,
+        "h": 35,
+        "size": 9.5,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "STP-RAG | Evaluation 1"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1480,
+        "y": 838,
+        "w": 58,
+        "h": 36,
+        "size": 12,
+        "color": "007F82",
+        "bold": true,
+        "align": "right",
+        "lines": [
+          "08"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 170,
+        "w": 723,
+        "h": 252,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 170,
+        "w": 6,
+        "h": 252,
+        "fill": "2768B4",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 189,
+        "w": 675,
+        "h": 58,
+        "size": 20,
+        "color": "2768B4",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Technical"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 253,
+        "w": 675,
+        "h": 157,
+        "size": 18,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Reported runs use local phi3:mini. Aggregate",
+          "metrics exist for 36 runs."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 346,
+        "w": 669,
+        "h": 76,
+        "size": 15,
+        "color": "B34E4E",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Still needed: executable code, model revisions and raw",
+          "logs."
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 815,
+        "y": 170,
+        "w": 723,
+        "h": 252,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "rect",
+        "x": 815,
+        "y": 170,
+        "w": 6,
+        "h": 252,
+        "fill": "2768B4",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 839,
+        "y": 189,
+        "w": 675,
+        "h": 58,
+        "size": 20,
+        "color": "2768B4",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Operational"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 839,
+        "y": 253,
+        "w": 675,
+        "h": 157,
+        "size": 18,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "A flat chunk-index pipeline supports",
+          "component-level comparison."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 839,
+        "y": 346,
+        "w": 669,
+        "h": 76,
+        "size": 15,
+        "color": "B34E4E",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Still needed: ingestion / retrieval demo and provenance",
+          "inspection."
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 448,
+        "w": 723,
+        "h": 252,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 448,
+        "w": 6,
+        "h": 252,
+        "fill": "2768B4",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 467,
+        "w": 675,
+        "h": 58,
+        "size": 20,
+        "color": "2768B4",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Economic"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 531,
+        "w": 675,
+        "h": 157,
+        "size": 18,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Local compute is a design option; there is no",
+          "verified cost estimate."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 624,
+        "w": 669,
+        "h": 76,
+        "size": 15,
+        "color": "B34E4E",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Still needed: hardware capacity, storage and runtime",
+          "budget."
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 815,
+        "y": 448,
+        "w": 723,
+        "h": 252,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "rect",
+        "x": 815,
+        "y": 448,
+        "w": 6,
+        "h": 252,
+        "fill": "2768B4",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 839,
+        "y": 467,
+        "w": 675,
+        "h": 58,
+        "size": 20,
+        "color": "2768B4",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Schedule"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 839,
+        "y": 531,
+        "w": 675,
+        "h": 157,
+        "size": 18,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Next work can be divided into logging, verification",
+          "and evaluation tasks."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 839,
+        "y": 624,
+        "w": 669,
+        "h": 76,
+        "size": 15,
+        "color": "B34E4E",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Still needed: owners and dates approved with the guide."
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 747,
+        "w": 1476,
+        "h": 59,
+        "fill": "E7F3F2",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 83,
+        "y": 760,
+        "w": 1434,
+        "h": 42,
+        "size": 16,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Feasibility is conditional and evidence-based—not proof of large-scale deployment readiness."
+        ]
+      }
+    ],
+    "notes": "The supplied walkthrough reports completed implementation, calibration and tests, but their code and logs were not provided with the paper materials. Present this distinction confidently. Economic feasibility must be measured; local inference does not mean zero cost. Schedule feasibility needs actual dates agreed by the team and guide."
+  },
+  {
+    "title": "Constraints and mitigations—not unsupported promises",
+    "category": "Relevant constraints | economic, environmental, safety and sustainability | 5 marks",
+    "shapes": [
+      {
+        "kind": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 14,
+        "h": 900,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 28,
+        "w": 1480,
+        "h": 28,
+        "size": 11,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "RELEVANT CONSTRAINTS | ECONOMIC, ENVIRONMENTAL, SAFETY AND SUSTAINABILITY | 5 MARKS"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 72,
+        "w": 1470,
+        "h": 85,
+        "size": 29,
+        "color": "14283F",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Constraints and mitigations—not unsupported promises"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 62,
+        "y": 824,
+        "x2": 1538,
+        "y2": 824,
+        "color": "D9E2EA",
+        "width": 1
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 841,
+        "w": 1390,
+        "h": 35,
+        "size": 9.5,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "STP-RAG | Evaluation 1"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1480,
+        "y": 838,
+        "w": 58,
+        "h": 36,
+        "size": 12,
+        "color": "007F82",
+        "bold": true,
+        "align": "right",
+        "lines": [
+          "09"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 178,
+        "w": 1476,
+        "h": 57,
+        "fill": "14283F",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 193,
+        "w": 232,
+        "h": 39,
+        "size": 16,
+        "color": "FFFFFF",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Constraint"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 336,
+        "y": 193,
+        "w": 602,
+        "h": 39,
+        "size": 16,
+        "color": "FFFFFF",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Project impact"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 966,
+        "y": 193,
+        "w": 558,
+        "h": 39,
+        "size": 16,
+        "color": "FFFFFF",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Mitigation / measurement"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 235,
+        "w": 1476,
+        "h": 98,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 252,
+        "w": 232,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Compute / cost"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 336,
+        "y": 252,
+        "w": 602,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "More chunks and context can increase storage",
+          "and runtime."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 966,
+        "y": 252,
+        "w": 558,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Set and measure corpus, chunk and prompt",
+          "budgets."
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 333,
+        "w": 1476,
+        "h": 98,
+        "fill": "EAF0F5",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 350,
+        "w": 232,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Environment"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 336,
+        "y": 350,
+        "w": 602,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Embedding, indexing and generation consume",
+          "compute resources."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 966,
+        "y": 350,
+        "w": 558,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Reuse valid caches; measure resource use",
+          "before claiming savings."
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 431,
+        "w": 1476,
+        "h": 98,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 448,
+        "w": 232,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Safety / reliability"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 336,
+        "y": 448,
+        "w": 602,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Relevant retrieval does not guarantee a supported",
+          "answer."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 966,
+        "y": 448,
+        "w": 558,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Retain source evidence and inspect",
+          "unsupported-answer cases."
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 529,
+        "w": 1476,
+        "h": 98,
+        "fill": "EAF0F5",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 546,
+        "w": 232,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Data / privacy"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 336,
+        "y": 546,
+        "w": 602,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Access conditions and confidential inputs",
+          "constrain corpus use."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 966,
+        "y": 546,
+        "w": 558,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Record dataset provenance; avoid",
+          "unapproved sensitive material."
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 627,
+        "w": 1476,
+        "h": 98,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 644,
+        "w": 232,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Sustainability"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 336,
+        "y": 644,
+        "w": 602,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Model and configuration changes can break",
+          "comparability."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 966,
+        "y": 644,
+        "w": 558,
+        "h": 76,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Version artifacts and maintain reproducible",
+          "baselines."
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 747,
+        "w": 1476,
+        "h": 59,
+        "fill": "E7F3F2",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 83,
+        "y": 760,
+        "w": 1434,
+        "h": 42,
+        "size": 16,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "No measured monetary cost, energy saving or safety certification is claimed."
+        ]
+      }
+    ],
+    "notes": "Map these directly to the rubric's economic, environmental, safety and sustainability examples. Environmental statements are design considerations, not measured energy results. Grounding is a proposed safeguard, not a guarantee that generated answers are correct."
+  },
+  {
+    "title": "Validation plan: isolate components rather than add everything",
+    "category": "Feasibility and requirement verification",
+    "shapes": [
+      {
+        "kind": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 14,
+        "h": 900,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 28,
+        "w": 1480,
+        "h": 28,
+        "size": 11,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "FEASIBILITY AND REQUIREMENT VERIFICATION"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 72,
+        "w": 1470,
+        "h": 85,
+        "size": 29,
+        "color": "14283F",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Validation plan: isolate components rather than add everything"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 62,
+        "y": 824,
+        "x2": 1538,
+        "y2": 824,
+        "color": "D9E2EA",
+        "width": 1
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 841,
+        "w": 1390,
+        "h": 35,
+        "size": 9.5,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Study design and run count: supplied implementation walkthrough. Dataset sources: Yang et al., 2018; Dasigi et al., 2021."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1480,
+        "y": 838,
+        "w": 58,
+        "h": 36,
+        "size": 12,
+        "color": "007F82",
+        "bold": true,
+        "align": "right",
+        "lines": [
+          "10"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 181,
+        "w": 304,
+        "h": 94,
+        "fill": "E7F3F2",
+        "stroke": "D9E2EA",
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 74,
+        "y": 194.0,
+        "w": 280,
+        "h": 72,
+        "size": 17,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "HotpotQA",
+          "+ QASPER"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 370,
+        "y": 203,
+        "w": 60,
+        "h": 60,
+        "size": 27,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "→"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 433,
+        "y": 181,
+        "w": 304,
+        "h": 94,
+        "fill": "E7F3F2",
+        "stroke": "D9E2EA",
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 445,
+        "y": 194.0,
+        "w": 280,
+        "h": 72,
+        "size": 17,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "Development-only",
+          "calibration"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 744,
+        "y": 203,
+        "w": 60,
+        "h": 60,
+        "size": 27,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "→"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 806,
+        "y": 181,
+        "w": 304,
+        "h": 94,
+        "fill": "E7F3F2",
+        "stroke": "D9E2EA",
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 818,
+        "y": 194.0,
+        "w": 280,
+        "h": 72,
+        "size": 17,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "Freeze splits",
+          "+ parameters"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1116,
+        "y": 203,
+        "w": 60,
+        "h": 60,
+        "size": 27,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "→"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 1184,
+        "y": 181,
+        "w": 354,
+        "h": 94,
+        "fill": "E7F3F2",
+        "stroke": "D9E2EA",
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 1196,
+        "y": 194.0,
+        "w": 330,
+        "h": 72,
+        "size": 17,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "Three seeds",
+          "42 / 123 / 999"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 335,
+        "w": 1460,
+        "h": 43,
+        "size": 15,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "SIX COMPARISON ARMS"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 398,
+        "w": 230,
+        "h": 107,
+        "fill": "FFFFFF",
+        "stroke": "D9E2EA",
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 74,
+        "y": 434.5,
+        "w": 206,
+        "h": 38,
+        "size": 17,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "Fixed-size"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 311,
+        "y": 398,
+        "w": 230,
+        "h": 107,
+        "fill": "FFFFFF",
+        "stroke": "D9E2EA",
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 323,
+        "y": 417.5,
+        "w": 206,
+        "h": 72,
+        "size": 17,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "Similarity",
+          "threshold"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 560,
+        "y": 398,
+        "w": 230,
+        "h": 107,
+        "fill": "E7F3F2",
+        "stroke": "D9E2EA",
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 572,
+        "y": 417.5,
+        "w": 206,
+        "h": 72,
+        "size": 17,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "Velocity",
+          "only"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 809,
+        "y": 398,
+        "w": 230,
+        "h": 107,
+        "fill": "E7F3F2",
+        "stroke": "D9E2EA",
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 821,
+        "y": 417.5,
+        "w": 206,
+        "h": 72,
+        "size": 17,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "Velocity +",
+          "acceleration"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 1058,
+        "y": 398,
+        "w": 230,
+        "h": 107,
+        "fill": "E7F3F2",
+        "stroke": "D9E2EA",
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 1070,
+        "y": 434.5,
+        "w": 206,
+        "h": 38,
+        "size": 17,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "Full STP"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 1307,
+        "y": 398,
+        "w": 230,
+        "h": 107,
+        "fill": "E7F3F2",
+        "stroke": "D9E2EA",
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 1319,
+        "y": 417.5,
+        "w": 206,
+        "h": 72,
+        "size": 17,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "STP +",
+          "context"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 557,
+        "w": 714,
+        "h": 156,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 557,
+        "w": 6,
+        "h": 156,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 576,
+        "w": 666,
+        "h": 58,
+        "size": 20,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Retrieval and answers"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 640,
+        "w": 666,
+        "h": 61,
+        "size": 20,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Recall@5 • MRR • EM • F1"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 800,
+        "y": 557,
+        "w": 738,
+        "h": 156,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "rect",
+        "x": 800,
+        "y": 557,
+        "w": 6,
+        "h": 156,
+        "fill": "2768B4",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 824,
+        "y": 576,
+        "w": 690,
+        "h": 58,
+        "size": 20,
+        "color": "2768B4",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Structure and cost"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 824,
+        "y": 640,
+        "w": 690,
+        "h": 61,
+        "size": 19,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Chunks/doc. • build time • retrieval latency"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 747,
+        "w": 1476,
+        "h": 59,
+        "fill": "E7F3F2",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 83,
+        "y": 760,
+        "w": 1434,
+        "h": 42,
+        "size": 16,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "6 arms × 3 seeds × 2 datasets = 36 reported runs. Raw-run verification remains open."
+        ]
+      }
+    ],
+    "notes": "Show how each arm answers an objective. Full STP versus velocity-only is not a clean structure-only or volatility-only test; those isolated controls are still absent. Dataset sample counts, retrieval setting and metric mappings must be supplied before making benchmark-wide claims."
+  },
+  {
+    "title": "Preliminary evidence: context helps one dataset, hurts another",
+    "category": "Feasibility evidence | not a universal performance claim",
+    "shapes": [
+      {
+        "kind": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 14,
+        "h": 900,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 28,
+        "w": 1480,
+        "h": 28,
+        "size": 11,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "FEASIBILITY EVIDENCE | NOT A UNIVERSAL PERFORMANCE CLAIM"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 72,
+        "w": 1470,
+        "h": 85,
+        "size": 29,
+        "color": "14283F",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Preliminary evidence: context helps one dataset, hurts another"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 62,
+        "y": 824,
+        "x2": 1538,
+        "y2": 824,
+        "color": "D9E2EA",
+        "width": 1
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 841,
+        "w": 1390,
+        "h": 35,
+        "size": 9.5,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Source: supplied aggregate tables; means across three seeds. Four selected arms shown; all six appear in backup slide 15."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1480,
+        "y": 838,
+        "w": 58,
+        "h": 36,
+        "size": 12,
+        "color": "007F82",
+        "bold": true,
+        "align": "right",
+        "lines": [
+          "11"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 93,
+        "y": 164,
+        "w": 600,
+        "h": 55,
+        "size": 24,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "HotpotQA"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 141,
+        "y": 561.0,
+        "x2": 701,
+        "y2": 561.0,
+        "color": "D9E2EA",
+        "width": 1
+      },
+      {
+        "kind": "text",
+        "x": 83,
+        "y": 549.0,
+        "w": 48,
+        "h": 35,
+        "size": 12,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "right",
+        "lines": [
+          "0.0"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 141,
+        "y": 491.66666666666663,
+        "x2": 701,
+        "y2": 491.66666666666663,
+        "color": "D9E2EA",
+        "width": 1
+      },
+      {
+        "kind": "text",
+        "x": 83,
+        "y": 479.66666666666663,
+        "w": 48,
+        "h": 35,
+        "size": 12,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "right",
+        "lines": [
+          "0.1"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 141,
+        "y": 422.3333333333333,
+        "x2": 701,
+        "y2": 422.3333333333333,
+        "color": "D9E2EA",
+        "width": 1
+      },
+      {
+        "kind": "text",
+        "x": 83,
+        "y": 410.3333333333333,
+        "w": 48,
+        "h": 35,
+        "size": 12,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "right",
+        "lines": [
+          "0.2"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 141,
+        "y": 353.0,
+        "x2": 701,
+        "y2": 353.0,
+        "color": "D9E2EA",
+        "width": 1
+      },
+      {
+        "kind": "text",
+        "x": 83,
+        "y": 341.0,
+        "w": 48,
+        "h": 35,
+        "size": 12,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "right",
+        "lines": [
+          "0.3"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 141,
+        "y": 283.66666666666663,
+        "x2": 701,
+        "y2": 283.66666666666663,
+        "color": "D9E2EA",
+        "width": 1
+      },
+      {
+        "kind": "text",
+        "x": 83,
+        "y": 271.66666666666663,
+        "w": 48,
+        "h": 35,
+        "size": 12,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "right",
+        "lines": [
+          "0.4"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 159,
+        "y": 312.7866666666667,
+        "w": 91,
+        "h": 248.2133333333333,
+        "fill": "5C6D7E",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 146,
+        "y": 274.7866666666667,
+        "w": 120,
+        "h": 36,
+        "size": 17,
+        "color": "5C6D7E",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "0.358"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 140,
+        "y": 580,
+        "w": 135,
+        "h": 54,
+        "size": 14,
+        "color": "14283F",
+        "bold": false,
+        "align": "center",
+        "lines": [
+          "Fixed"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 298,
+        "y": 322.49333333333334,
+        "w": 91,
+        "h": 238.50666666666663,
+        "fill": "2768B4",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 285,
+        "y": 284.49333333333334,
+        "w": 120,
+        "h": 36,
+        "size": 17,
+        "color": "2768B4",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "0.344"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 279,
+        "y": 580,
+        "w": 135,
+        "h": 54,
+        "size": 14,
+        "color": "14283F",
+        "bold": false,
+        "align": "center",
+        "lines": [
+          "Velocity"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 437,
+        "y": 364.7866666666667,
+        "w": 91,
+        "h": 196.2133333333333,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 424,
+        "y": 326.7866666666667,
+        "w": 120,
+        "h": 36,
+        "size": 17,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "0.283"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 418,
+        "y": 580,
+        "w": 135,
+        "h": 54,
+        "size": 14,
+        "color": "14283F",
+        "bold": false,
+        "align": "center",
+        "lines": [
+          "STP"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 576,
+        "y": 276.73333333333335,
+        "w": 91,
+        "h": 284.26666666666665,
+        "fill": "D88715",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 563,
+        "y": 238.73333333333335,
+        "w": 120,
+        "h": 36,
+        "size": 17,
+        "color": "D88715",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "0.410"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 557,
+        "y": 580,
+        "w": 135,
+        "h": 54,
+        "size": 14,
+        "color": "14283F",
+        "bold": false,
+        "align": "center",
+        "lines": [
+          "STP + ctx"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 143,
+        "y": 221,
+        "w": 570,
+        "h": 29,
+        "size": 12,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Answer F1 | identical vertical scale"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 864,
+        "y": 164,
+        "w": 600,
+        "h": 55,
+        "size": 24,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "QASPER"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 912,
+        "y": 561.0,
+        "x2": 1472,
+        "y2": 561.0,
+        "color": "D9E2EA",
+        "width": 1
+      },
+      {
+        "kind": "text",
+        "x": 854,
+        "y": 549.0,
+        "w": 48,
+        "h": 35,
+        "size": 12,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "right",
+        "lines": [
+          "0.0"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 912,
+        "y": 491.66666666666663,
+        "x2": 1472,
+        "y2": 491.66666666666663,
+        "color": "D9E2EA",
+        "width": 1
+      },
+      {
+        "kind": "text",
+        "x": 854,
+        "y": 479.66666666666663,
+        "w": 48,
+        "h": 35,
+        "size": 12,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "right",
+        "lines": [
+          "0.1"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 912,
+        "y": 422.3333333333333,
+        "x2": 1472,
+        "y2": 422.3333333333333,
+        "color": "D9E2EA",
+        "width": 1
+      },
+      {
+        "kind": "text",
+        "x": 854,
+        "y": 410.3333333333333,
+        "w": 48,
+        "h": 35,
+        "size": 12,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "right",
+        "lines": [
+          "0.2"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 912,
+        "y": 353.0,
+        "x2": 1472,
+        "y2": 353.0,
+        "color": "D9E2EA",
+        "width": 1
+      },
+      {
+        "kind": "text",
+        "x": 854,
+        "y": 341.0,
+        "w": 48,
+        "h": 35,
+        "size": 12,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "right",
+        "lines": [
+          "0.3"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 912,
+        "y": 283.66666666666663,
+        "x2": 1472,
+        "y2": 283.66666666666663,
+        "color": "D9E2EA",
+        "width": 1
+      },
+      {
+        "kind": "text",
+        "x": 854,
+        "y": 271.66666666666663,
+        "w": 48,
+        "h": 35,
+        "size": 12,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "right",
+        "lines": [
+          "0.4"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 930,
+        "y": 469.48,
+        "w": 91,
+        "h": 91.52,
+        "fill": "5C6D7E",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 917,
+        "y": 431.48,
+        "w": 120,
+        "h": 36,
+        "size": 17,
+        "color": "5C6D7E",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "0.132"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 911,
+        "y": 580,
+        "w": 135,
+        "h": 54,
+        "size": 14,
+        "color": "14283F",
+        "bold": false,
+        "align": "center",
+        "lines": [
+          "Fixed"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 1069,
+        "y": 488.2,
+        "w": 91,
+        "h": 72.8,
+        "fill": "2768B4",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 1056,
+        "y": 450.2,
+        "w": 120,
+        "h": 36,
+        "size": 17,
+        "color": "2768B4",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "0.105"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1050,
+        "y": 580,
+        "w": 135,
+        "h": 54,
+        "size": 14,
+        "color": "14283F",
+        "bold": false,
+        "align": "center",
+        "lines": [
+          "Velocity"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 1208,
+        "y": 488.2,
+        "w": 91,
+        "h": 72.8,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 1195,
+        "y": 450.2,
+        "w": 120,
+        "h": 36,
+        "size": 17,
+        "color": "007F82",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "0.105"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1189,
+        "y": 580,
+        "w": 135,
+        "h": 54,
+        "size": 14,
+        "color": "14283F",
+        "bold": false,
+        "align": "center",
+        "lines": [
+          "STP"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 1347,
+        "y": 513.8533333333334,
+        "w": 91,
+        "h": 47.14666666666667,
+        "fill": "D88715",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 1334,
+        "y": 475.85333333333335,
+        "w": 120,
+        "h": 36,
+        "size": 17,
+        "color": "D88715",
+        "bold": true,
+        "align": "center",
+        "lines": [
+          "0.068"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1328,
+        "y": 580,
+        "w": 135,
+        "h": 54,
+        "size": 14,
+        "color": "14283F",
+        "bold": false,
+        "align": "center",
+        "lines": [
+          "STP + ctx"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 914,
+        "y": 221,
+        "w": 570,
+        "h": 29,
+        "size": 12,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Answer F1 | identical vertical scale"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 653,
+        "w": 719,
+        "h": 132,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 653,
+        "w": 6,
+        "h": 132,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 672,
+        "w": 671,
+        "h": 58,
+        "size": 20,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "HotpotQA"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 736,
+        "w": 671,
+        "h": 37,
+        "size": 18,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "STP + context: +0.066 F1 vs velocity-only."
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 808,
+        "y": 653,
+        "w": 730,
+        "h": 132,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "rect",
+        "x": 808,
+        "y": 653,
+        "w": 6,
+        "h": 132,
+        "fill": "B34E4E",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 832,
+        "y": 672,
+        "w": 682,
+        "h": 58,
+        "size": 20,
+        "color": "B34E4E",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "QASPER"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 832,
+        "y": 736,
+        "w": 682,
+        "h": 37,
+        "size": 18,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Fixed-size leads; context drops F1 by 0.037."
+        ]
+      }
+    ],
+    "notes": "These are reported aggregate means, not rerun results. HotpotQA F1 increases from 0.344 to 0.410 versus velocity-only; against STP without context the gain is 0.127. QASPER F1 drops from 0.105 to 0.068 with context, and fixed-size is best overall in the supplied table. This is why feasibility and novelty should not be defended using a universal superiority claim. No significance or energy/cost claim follows from this figure."
+  },
+  {
+    "title": "Responsibilities must be backed by actual artifacts",
+    "category": "Fulfillment of responsibilities | 5 marks",
+    "shapes": [
+      {
+        "kind": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 14,
+        "h": 900,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 28,
+        "w": 1480,
+        "h": 28,
+        "size": 11,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "FULFILLMENT OF RESPONSIBILITIES | 5 MARKS"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 72,
+        "w": 1470,
+        "h": 85,
+        "size": 29,
+        "color": "14283F",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Responsibilities must be backed by actual artifacts"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 62,
+        "y": 824,
+        "x2": 1538,
+        "y2": 824,
+        "color": "D9E2EA",
+        "width": 1
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 841,
+        "w": 1390,
+        "h": 35,
+        "size": 9.5,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "STP-RAG | Evaluation 1"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1480,
+        "y": 838,
+        "w": 58,
+        "h": 36,
+        "size": 12,
+        "color": "007F82",
+        "bold": true,
+        "align": "right",
+        "lines": [
+          "12"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 63,
+        "y": 162,
+        "w": 1468,
+        "h": 68,
+        "size": 18,
+        "color": "B34E4E",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "PROPOSED allocation only—confirm with the team before presenting as actual contributions."
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 259,
+        "w": 1476,
+        "h": 57,
+        "fill": "14283F",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 274,
+        "w": 349,
+        "h": 39,
+        "size": 17,
+        "color": "FFFFFF",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Owner to confirm"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 453,
+        "y": 274,
+        "w": 371,
+        "h": 39,
+        "size": 17,
+        "color": "FFFFFF",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Workstream"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 852,
+        "y": 274,
+        "w": 672,
+        "h": 39,
+        "size": 17,
+        "color": "FFFFFF",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Evidence to show"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 316,
+        "w": 1476,
+        "h": 114,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 333,
+        "w": 349,
+        "h": 92,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Mohammad Sameer",
+          "(proposed)"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 453,
+        "y": 333,
+        "w": 371,
+        "h": 92,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Data preparation and",
+          "provenance"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 852,
+        "y": 333,
+        "w": 672,
+        "h": 92,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Split manifest, unit extraction, source mapping,",
+          "preprocessing checks"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 430,
+        "w": 1476,
+        "h": 114,
+        "fill": "EAF0F5",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 447,
+        "w": 349,
+        "h": 92,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Rajeev Kumar Gupta",
+          "(proposed)"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 453,
+        "y": 447,
+        "w": 371,
+        "h": 92,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "STP and selective context"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 852,
+        "y": 447,
+        "w": 672,
+        "h": 92,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Feature tests, segmentation code, calibration file,",
+          "context examples"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 544,
+        "w": 1476,
+        "h": 114,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 561,
+        "w": 349,
+        "h": 92,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Mohit Dev Tomar",
+          "(proposed)"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 453,
+        "y": 561,
+        "w": 371,
+        "h": 92,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Evaluation and reporting"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 852,
+        "y": 561,
+        "w": 672,
+        "h": 92,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Run logs, metric scripts, ablation tables, figures and",
+          "error analysis"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 83,
+        "y": 690,
+        "w": 1440,
+        "h": 80,
+        "size": 19,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "All members: cross-review requirements, reproduce at least one run, rehearse and answer",
+          "questions."
+        ]
+      }
+    ],
+    "notes": "Actual individual contributions were not supplied. The slide intentionally labels this as a proposal; replace it with an accurate allocation, commit history, logbook entries and guide-reviewed work before evaluation. Do not present proposed tasks as completed contributions. If the responsibilities differ, edit this slide."
+  },
+  {
+    "title": "Milestones: reported progress vs verified evidence",
+    "category": "Feasibility, accountability and guide review",
+    "shapes": [
+      {
+        "kind": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 14,
+        "h": 900,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 28,
+        "w": 1480,
+        "h": 28,
+        "size": 11,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "FEASIBILITY, ACCOUNTABILITY AND GUIDE REVIEW"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 72,
+        "w": 1470,
+        "h": 85,
+        "size": 29,
+        "color": "14283F",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Milestones: reported progress vs verified evidence"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 62,
+        "y": 824,
+        "x2": 1538,
+        "y2": 824,
+        "color": "D9E2EA",
+        "width": 1
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 841,
+        "w": 1390,
+        "h": 35,
+        "size": 9.5,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "STP-RAG | Evaluation 1"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1480,
+        "y": 838,
+        "w": 58,
+        "h": 36,
+        "size": 12,
+        "color": "007F82",
+        "bold": true,
+        "align": "right",
+        "lines": [
+          "13"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 209,
+        "w": 350,
+        "h": 360,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 209,
+        "w": 6,
+        "h": 360,
+        "fill": "2768B4",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 228,
+        "w": 302,
+        "h": 58,
+        "size": 20,
+        "color": "2768B4",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "1 Reported"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 292,
+        "w": 302,
+        "h": 265,
+        "size": 19,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Implementation, dev",
+          "calibration and 36",
+          "runs are described in",
+          "the walkthrough."
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 438,
+        "y": 209,
+        "w": 350,
+        "h": 360,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "rect",
+        "x": 438,
+        "y": 209,
+        "w": 6,
+        "h": 360,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 462,
+        "y": 228,
+        "w": 302,
+        "h": 58,
+        "size": 20,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "2 Available"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 462,
+        "y": 292,
+        "w": 302,
+        "h": 265,
+        "size": 19,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "The manuscript,",
+          "aggregate result",
+          "tables and result",
+          "diagrams are",
+          "available."
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 814,
+        "y": 209,
+        "w": 350,
+        "h": 360,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "rect",
+        "x": 814,
+        "y": 209,
+        "w": 6,
+        "h": 360,
+        "fill": "D88715",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 838,
+        "y": 228,
+        "w": 302,
+        "h": 58,
+        "size": 20,
+        "color": "D88715",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "3 Verify next"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 838,
+        "y": 292,
+        "w": 302,
+        "h": 265,
+        "size": 19,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Obtain manifests,",
+          "configurations, code,",
+          "test logs and paired",
+          "predictions."
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 1190,
+        "y": 209,
+        "w": 350,
+        "h": 360,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "rect",
+        "x": 1190,
+        "y": 209,
+        "w": 6,
+        "h": 360,
+        "fill": "14283F",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 1214,
+        "y": 228,
+        "w": 302,
+        "h": 58,
+        "size": 20,
+        "color": "14283F",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "4 Review"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1214,
+        "y": 292,
+        "w": 302,
+        "h": 265,
+        "size": 19,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Audit metrics and",
+          "uncertainty; agree",
+          "responsibilities and",
+          "dates with the guide."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 65,
+        "y": 619,
+        "w": 1450,
+        "h": 47,
+        "size": 24,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Before evaluation"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 65,
+        "y": 677,
+        "w": 1460,
+        "h": 100,
+        "size": 22,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Confirm the guide's name, presentation duration, real task owners and a dated evidence",
+          "log."
+        ]
+      }
+    ],
+    "notes": "Do not invent milestone completion dates or a guide endorsement. The walkthrough reports seventeen passing tests, but the test log is not among the supplied materials. Bring the actual test output if it exists. Use a dated logbook and an agreed schedule to demonstrate responsibility and readiness."
+  },
+  {
+    "title": "Evaluation 1 takeaway",
+    "category": "Summary and discussion",
+    "shapes": [
+      {
+        "kind": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 14,
+        "h": 900,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 28,
+        "w": 1480,
+        "h": 28,
+        "size": 11,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "SUMMARY AND DISCUSSION"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 72,
+        "w": 1470,
+        "h": 85,
+        "size": 29,
+        "color": "14283F",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Evaluation 1 takeaway"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 62,
+        "y": 824,
+        "x2": 1538,
+        "y2": 824,
+        "color": "D9E2EA",
+        "width": 1
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 841,
+        "w": 1390,
+        "h": 35,
+        "size": 9.5,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "STP-RAG | Evaluation 1"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1480,
+        "y": 838,
+        "w": 58,
+        "h": 36,
+        "size": 12,
+        "color": "007F82",
+        "bold": true,
+        "align": "right",
+        "lines": [
+          "14"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 175,
+        "w": 1476,
+        "h": 151,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 175,
+        "w": 6,
+        "h": 151,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 194,
+        "w": 1428,
+        "h": 58,
+        "size": 20,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "A specific, testable project"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 258,
+        "w": 1428,
+        "h": 56,
+        "size": 21,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Transition-guided chunking and context, evaluated against simple baselines."
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 351,
+        "w": 1476,
+        "h": 151,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 351,
+        "w": 6,
+        "h": 151,
+        "fill": "2768B4",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 370,
+        "w": 1428,
+        "h": 58,
+        "size": 20,
+        "color": "2768B4",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Evidence supports a bounded claim"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 434,
+        "w": 1428,
+        "h": 56,
+        "size": 21,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Mixed results: context helps HotpotQA but reduces QASPER answer F1."
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 527,
+        "w": 1476,
+        "h": 151,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 527,
+        "w": 6,
+        "h": 151,
+        "fill": "D88715",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 546,
+        "w": 1428,
+        "h": 58,
+        "size": 20,
+        "color": "D88715",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Next commitment"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 86,
+        "y": 610,
+        "w": 1428,
+        "h": 56,
+        "size": 21,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Make the experiment record auditable and close the requirement-verification gaps."
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 747,
+        "w": 1476,
+        "h": 59,
+        "fill": "E7F3F2",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 83,
+        "y": 760,
+        "w": 1434,
+        "h": 42,
+        "size": 17,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Guide feedback sought: scope • acceptance criteria • responsibilities • realistic milestones"
+        ]
+      }
+    ],
+    "notes": "Close with what has been specified, what the preliminary data show, and what remains to be verified. Invite guide feedback on the requirement specification and feasibility constraints, rather than merely asking whether the result number is good. Use the two backup slides only if needed."
+  },
+  {
+    "title": "Backup: all six ablation arms",
+    "category": "Q&A backup | complete comparison",
+    "shapes": [
+      {
+        "kind": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 14,
+        "h": 900,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 28,
+        "w": 1480,
+        "h": 28,
+        "size": 11,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Q&A BACKUP | COMPLETE COMPARISON"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 72,
+        "w": 1470,
+        "h": 85,
+        "size": 29,
+        "color": "14283F",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Backup: all six ablation arms"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 62,
+        "y": 824,
+        "x2": 1538,
+        "y2": 824,
+        "color": "D9E2EA",
+        "width": 1
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 841,
+        "w": 1390,
+        "h": 35,
+        "size": 9.5,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Source: supplied HotpotQA and QASPER aggregate results. Rounded means only; three reported seeds."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1480,
+        "y": 838,
+        "w": 58,
+        "h": 36,
+        "size": 12,
+        "color": "007F82",
+        "bold": true,
+        "align": "right",
+        "lines": [
+          "15"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 190,
+        "w": 1476,
+        "h": 57,
+        "fill": "14283F",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 205,
+        "w": 456,
+        "h": 39,
+        "size": 17,
+        "color": "FFFFFF",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Method"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 560,
+        "y": 205,
+        "w": 220,
+        "h": 39,
+        "size": 17,
+        "color": "FFFFFF",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Hotpot R@5"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 808,
+        "y": 205,
+        "w": 220,
+        "h": 39,
+        "size": 17,
+        "color": "FFFFFF",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Hotpot F1"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1056,
+        "y": 205,
+        "w": 220,
+        "h": 39,
+        "size": 17,
+        "color": "FFFFFF",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "QASPER R@5"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1304,
+        "y": 205,
+        "w": 220,
+        "h": 39,
+        "size": 17,
+        "color": "FFFFFF",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "QASPER F1"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 247,
+        "w": 1476,
+        "h": 75,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 264,
+        "w": 456,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Fixed-size"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 560,
+        "y": 264,
+        "w": 220,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "0.987"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 808,
+        "y": 264,
+        "w": 220,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "0.358"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1056,
+        "y": 264,
+        "w": 220,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "0.379"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1304,
+        "y": 264,
+        "w": 220,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "0.132"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 322,
+        "w": 1476,
+        "h": 75,
+        "fill": "EAF0F5",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 339,
+        "w": 456,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Similarity-threshold"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 560,
+        "y": 339,
+        "w": 220,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "0.980"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 808,
+        "y": 339,
+        "w": 220,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "0.324"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1056,
+        "y": 339,
+        "w": 220,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "0.294"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1304,
+        "y": 339,
+        "w": 220,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "0.076"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 397,
+        "w": 1476,
+        "h": 75,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 414,
+        "w": 456,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Velocity-only"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 560,
+        "y": 414,
+        "w": 220,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "1.000"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 808,
+        "y": 414,
+        "w": 220,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "0.344"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1056,
+        "y": 414,
+        "w": 220,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "0.252"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1304,
+        "y": 414,
+        "w": 220,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "0.105"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 472,
+        "w": 1476,
+        "h": 75,
+        "fill": "EAF0F5",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 489,
+        "w": 456,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Velocity + acceleration"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 560,
+        "y": 489,
+        "w": 220,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "0.993"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 808,
+        "y": 489,
+        "w": 220,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "0.283"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1056,
+        "y": 489,
+        "w": 220,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "0.257"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1304,
+        "y": 489,
+        "w": 220,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "0.082"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 547,
+        "w": 1476,
+        "h": 75,
+        "fill": "FFFFFF",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 564,
+        "w": 456,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Full STP"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 560,
+        "y": 564,
+        "w": 220,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "0.987"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 808,
+        "y": 564,
+        "w": 220,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "0.283"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1056,
+        "y": 564,
+        "w": 220,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "0.299"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1304,
+        "y": 564,
+        "w": 220,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "0.105"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 622,
+        "w": 1476,
+        "h": 75,
+        "fill": "EAF0F5",
+        "stroke": null,
+        "radius": 0
+      },
+      {
+        "kind": "text",
+        "x": 76,
+        "y": 639,
+        "w": 456,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "STP + context"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 560,
+        "y": 639,
+        "w": 220,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "0.987"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 808,
+        "y": 639,
+        "w": 220,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "0.410"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1056,
+        "y": 639,
+        "w": 220,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "0.299"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1304,
+        "y": 639,
+        "w": 220,
+        "h": 53,
+        "size": 17,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "0.068"
+        ]
+      },
+      {
+        "kind": "rect",
+        "x": 62,
+        "y": 747,
+        "w": 1476,
+        "h": 59,
+        "fill": "E7F3F2",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 83,
+        "y": 760,
+        "w": 1434,
+        "h": 42,
+        "size": 15,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "No claim of statistical significance: paired predictions and bootstrap details still require verification."
+        ]
+      }
+    ],
+    "notes": "Use this table to avoid selective reporting. Higher recall is not the same as a better answer. Full STP does not reduce QASPER chunk count: it creates more chunks than velocity-only. If asked about p-values or the very narrow reported confidence intervals, state that the underlying bootstrap record must be audited."
+  },
+  {
+    "title": "Backup: sources and evidence boundaries",
+    "category": "Written communication | references",
+    "shapes": [
+      {
+        "kind": "rect",
+        "x": 0,
+        "y": 0,
+        "w": 14,
+        "h": 900,
+        "fill": "007F82",
+        "stroke": null,
+        "radius": 14
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 28,
+        "w": 1480,
+        "h": 28,
+        "size": 11,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "WRITTEN COMMUNICATION | REFERENCES"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 72,
+        "w": 1470,
+        "h": 85,
+        "size": 29,
+        "color": "14283F",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "Backup: sources and evidence boundaries"
+        ]
+      },
+      {
+        "kind": "line",
+        "x": 62,
+        "y": 824,
+        "x2": 1538,
+        "y2": 824,
+        "color": "D9E2EA",
+        "width": 1
+      },
+      {
+        "kind": "text",
+        "x": 62,
+        "y": 841,
+        "w": 1390,
+        "h": 35,
+        "size": 9.5,
+        "color": "5C6D7E",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Bibliographic details are taken from the unchanged manuscript and references.bib."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 1480,
+        "y": 838,
+        "w": 58,
+        "h": 36,
+        "size": 12,
+        "color": "007F82",
+        "bold": true,
+        "align": "right",
+        "lines": [
+          "16"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 65,
+        "y": 169,
+        "w": 1470,
+        "h": 40,
+        "size": 18,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "[1] Lewis et al. (2020)"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 65,
+        "y": 212,
+        "w": 1460,
+        "h": 69,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. NeurIPS 33, 9459–9474."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 65,
+        "y": 288,
+        "w": 1470,
+        "h": 40,
+        "size": 18,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "[2] Chen et al. (2024)"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 65,
+        "y": 331,
+        "w": 1460,
+        "h": 69,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Dense X Retrieval: What Retrieval Granularity Should We Use? EMNLP, 15159–15177."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 65,
+        "y": 407,
+        "w": 1470,
+        "h": 40,
+        "size": 18,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "[3] Yang et al. (2018)"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 65,
+        "y": 450,
+        "w": 1460,
+        "h": 69,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "HotpotQA: A Dataset for Diverse, Explainable Multi-hop Question Answering. EMNLP, 2369–2380."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 65,
+        "y": 526,
+        "w": 1470,
+        "h": 40,
+        "size": 18,
+        "color": "007F82",
+        "bold": true,
+        "align": "left",
+        "lines": [
+          "[4] Dasigi et al. (2021)"
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 65,
+        "y": 569,
+        "w": 1460,
+        "h": 69,
+        "size": 16,
+        "color": "14283F",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "A Dataset of Information-Seeking Questions and Answers Anchored in Research Papers. NAACL, 4599–4610."
+        ]
+      },
+      {
+        "kind": "text",
+        "x": 65,
+        "y": 678,
+        "w": 1460,
+        "h": 114,
+        "size": 17,
+        "color": "B34E4E",
+        "bold": false,
+        "align": "left",
+        "lines": [
+          "Project evidence: supplied implementation walkthrough and aggregate tables.",
+          "Not independently checked here: code execution, test logs, split sizes and statistical inference."
+        ]
+      }
+    ],
+    "notes": "These references are reused from the manuscript, not newly reviewed literature for this deck. If asked for reproducibility, show actual experiment artifacts rather than treating the paper or these slides as evidence that code has been rerun. The teacher's rubric is the source of the presentation structure."
+  }
+]

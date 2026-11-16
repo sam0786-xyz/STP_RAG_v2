@@ -1,0 +1,12 @@
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lccccccc@{}}
+\toprule
+Arm & Recall@5 & MRR & EM ($k$/25) & F1 & Chunks/doc. & Build (s) & Retrieval (ms) \\
+\midrule
+Fixed-size & \textbf{0.379} & \textbf{0.226} & \textbf{0.040 (1)} & \textbf{0.132} & 12.43 & 0.390{\scriptsize$\pm$0.035} & 2.724{\scriptsize$\pm$0.174} \\
+Similarity threshold & 0.294 & 0.214 & 0.000 (0) & 0.076{\scriptsize$\pm$0.001} & 29.53 & 0.795{\scriptsize$\pm$0.059} & 4.198{\scriptsize$\pm$0.589} \\
+Velocity + structure$^{\dagger}$ & 0.252 & 0.187 & 0.000 (0) & 0.105{\scriptsize$\pm$0.001} & 41.80 & 1.005{\scriptsize$\pm$0.034} & 5.879{\scriptsize$\pm$0.223} \\
+Velocity + acceleration$^{\ddagger}$ & 0.257 & 0.164 & 0.000 (0) & 0.082{\scriptsize$\pm$0.004} & 43.35 & 1.969{\scriptsize$\pm$1.405} & 5.088{\scriptsize$\pm$0.589} \\
+Full STP & 0.299 & 0.180 & 0.000 (0) & 0.105{\scriptsize$\pm$0.002} & 47.96 & 1.335{\scriptsize$\pm$0.184} & 6.592{\scriptsize$\pm$1.072} \\
+Full STP + context & 0.299 & 0.180 & 0.000 (0) & 0.068 & 47.96 & 1.527{\scriptsize$\pm$0.066} & 6.902{\scriptsize$\pm$0.796} \\
+\bottomrule
+\end{tabular*}

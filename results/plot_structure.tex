@@ -1,0 +1,26 @@
+\begin{tikzpicture}
+\begin{groupplot}[stpaxis,group style={group size=2 by 1,horizontal sep=16mm}]
+\nextgroupplot[title={HotpotQA},xlabel={Mean chunks per document},ylabel={Answer F1},ymin=0,ymax=0.45,legend to name=stp-structure-legend,legend columns=6,]
+\addplot[only marks,mark size=2.1pt,stpfixed,error bars/.cd,x dir=both,x explicit,y dir=both,y explicit] coordinates {(3.400,0.358) +- (0.000,0.000)};
+\addlegendentry{Fixed}
+\addplot[only marks,mark size=2.1pt,stpsimilarity,error bars/.cd,x dir=both,x explicit,y dir=both,y explicit] coordinates {(10.527,0.324) +- (0.000,0.012)};
+\addlegendentry{Similarity}
+\addplot[only marks,mark size=2.1pt,stpvelocity,error bars/.cd,x dir=both,x explicit,y dir=both,y explicit] coordinates {(8.287,0.344) +- (0.000,0.001)};
+\addlegendentry{Velocity}
+\addplot[only marks,mark size=2.1pt,stpacceleration,error bars/.cd,x dir=both,x explicit,y dir=both,y explicit] coordinates {(9.040,0.283) +- (0.000,0.002)};
+\addlegendentry{Vel.+acc.}
+\addplot[only marks,mark size=2.1pt,stpfull,error bars/.cd,x dir=both,x explicit,y dir=both,y explicit] coordinates {(9.313,0.283) +- (0.000,0.001)};
+\addlegendentry{STP}
+\addplot[only marks,mark size=2.1pt,stpcontext,error bars/.cd,x dir=both,x explicit,y dir=both,y explicit] coordinates {(9.313,0.410) +- (0.000,0.000)};
+\addlegendentry{STP+ctx}
+\nextgroupplot[title={QASPER},xlabel={Mean chunks per document},ylabel={Answer F1},ymin=0,ymax=0.45,]
+\addplot[only marks,mark size=2.1pt,stpfixed,error bars/.cd,x dir=both,x explicit,y dir=both,y explicit] coordinates {(12.429,0.132) +- (0.000,0.000)};
+\addplot[only marks,mark size=2.1pt,stpsimilarity,error bars/.cd,x dir=both,x explicit,y dir=both,y explicit] coordinates {(29.531,0.076) +- (0.000,0.001)};
+\addplot[only marks,mark size=2.1pt,stpvelocity,error bars/.cd,x dir=both,x explicit,y dir=both,y explicit] coordinates {(41.796,0.105) +- (0.000,0.001)};
+\addplot[only marks,mark size=2.1pt,stpacceleration,error bars/.cd,x dir=both,x explicit,y dir=both,y explicit] coordinates {(43.347,0.082) +- (0.000,0.004)};
+\addplot[only marks,mark size=2.1pt,stpfull,error bars/.cd,x dir=both,x explicit,y dir=both,y explicit] coordinates {(47.959,0.105) +- (0.000,0.002)};
+\addplot[only marks,mark size=2.1pt,stpcontext,error bars/.cd,x dir=both,x explicit,y dir=both,y explicit] coordinates {(47.959,0.068) +- (0.000,0.000)};
+\end{groupplot}
+\end{tikzpicture}
+\par\smallskip
+\pgfplotslegendfromname{stp-structure-legend}
