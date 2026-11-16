@@ -1,0 +1,492 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=0.7in]{geometry}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,tabularx,array,multirow}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{placeins}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+\pgfplotsset{compat=1.18}
+\input{results/plot_styles.tex}
+\usetikzlibrary{arrows.meta,positioning,calc,fit}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage[hidelinks]{hyperref}
+\usepackage[style=ieee,backend=biber,doi=true,url=false,isbn=false,maxbibnames=6,minbibnames=3,giveninits=true]{biblatex}
+\addbibresource{references.bib}
+
+\renewcommand*{\bibfont}{\footnotesize}
+\setlength{\bibitemsep}{1pt}
+\setlength{\emergencystretch}{1.5em}
+\setlength{\parindent}{0.18in}
+\setlength{\parskip}{0pt}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\floatsep}{7pt plus 2pt minus 2pt}
+\setlength{\intextsep}{7pt plus 2pt minus 2pt}
+\setlist[itemize]{leftmargin=0.22in,topsep=2pt,itemsep=1pt,parsep=0pt}
+\setlist[enumerate]{leftmargin=0.25in,topsep=2pt,itemsep=1pt,parsep=0pt}
+\titlespacing*{\section}{0pt}{8pt}{3pt}
+\titlespacing*{\subsection}{0pt}{6pt}{2pt}
+\titlespacing*{\paragraph}{0pt}{3pt}{0.6em}
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.8}
+\setcounter{totalnumber}{5}
+\raggedbottom
+
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\median}{median}
+\DeclareMathOperator{\IQR}{IQR}
+\DeclareMathOperator{\MAD}{MAD}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\newcommand{\tok}{\operatorname{tok}}
+\newcommand{\ctx}{\mathrm{ctx}}
+
+\title{\textbf{STP-RAG: Semantic Transition Profile-Guided\\Adaptive Chunking and Selective Context\\for Retrieval-Augmented Generation}}
+\author{Mohammad Sameer, Rajeev Kumar Gupta, Mohit Dev Tomar,\\
+Dharm Raj, Parma Nand, Rani Astya\\[2pt]
+{\fontsize{7}{8.4}\selectfont\texttt{tech.geek.sameer@gmail.com; rajeevg0521@gmail.com; mohitdevtomar8@gmail.com}}\\[-1pt]
+{\fontsize{7}{8.4}\selectfont\texttt{dharmraj4u@gmail.com; parmaastya@gmail.com; astyarani@gmail.com}}\\[2pt]
+\small Department of Computer Science and Engineering, Sharda University, Greater Noida, India}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent Retrieval-augmented generation (RAG) indexes documents as chunks, so the segmentation policy decides which statements, definitions and qualifications can be retrieved together. Fixed-size chunking is predictable but ignores where topics change, while similarity-threshold chunking reacts to the size of a change but not to its dynamics. We specify STP-RAG, a method that summarises local semantic change with a semantic transition profile (STP) composed of semantic velocity, positive acceleration, volatility and structural cues, and uses the same profile for two decisions: where to place chunk boundaries under length bounds, and which neighbouring units to attach as context under a fixed token budget. We also audit a six-arm pilot run on HotpotQA and QASPER with a local phi3:mini generator. On HotpotQA, adding selective context to full STP raised answer F1 from 0.283 to 0.410 (+44.9\%) and exceeded fixed-size chunking (0.358, +14.5\%). On QASPER, fixed-size chunking was best on every quality metric: full STP reached a Recall@5 of 0.299 against 0.379 ($-$21.1\%), and context reduced F1 from 0.105 to 0.068 ($-$35.2\%). The audit shows why these figures are not confirmatory. Generation was scored on 25 questions per dataset, 42 of 149 QASPER questions were dropped by substring evidence alignment, the nominal velocity-only arm retained structural weighting, and fixed top-3 retrieval passed roughly 960 prompt tokens for fixed-size chunks against 345 for full STP and 945 with context. The HotpotQA gain is therefore consistent with restored prompt volume rather than better selection. We contribute a fully parameterised reference specification, a component-level reconciliation of that specification with the pilot code, and a pre-specified confirmatory protocol with matched token budgets, factorial ablations, competitive segmenters, mechanism metrics and paired, document-clustered inference, released together with an open evaluation harness.
+\end{abstract}
+
+\noindent\textbf{Keywords:} retrieval-augmented generation; text segmentation; adaptive chunking; context selection; evaluation methodology
+
+%==========================================================================
+\section{Introduction}
+\label{sec:intro}
+
+Retrieval-augmented generation (RAG) conditions a language model on passages retrieved from an external collection at answer time \cite{lewis2020rag}. Dense Passage Retrieval (DPR) showed that separately trained question and passage encoders are effective for open-domain question answering \cite{karpukhin2020dpr}. Both systems take the passage as given. In practice every document must first be divided into retrievable chunks, and that division fixes the granularity of everything downstream: whether a definition and the condition that limits it are retrieved together, whether an exception travels with its rule, and how much text the generator must read to find one fact.
+
+Fixed-size chunking remains common because it is simple and makes index size predictable, but its boundaries need not coincide with changes of topic or argument. Smaller chunks are more focused yet sever links between neighbouring statements; larger chunks keep those links but dilute the evidence. Dense X Retrieval made this trade-off concrete by showing that both retrieval accuracy and downstream answer quality depend on the retrieval unit \cite{chen2024densex}. Longer context windows do not remove the problem, because models use evidence less reliably when it is buried among irrelevant text \cite{liu2024lostmiddle}.
+
+Prior work attacks the problem from several directions: lexical-cohesion segmentation, learned topic-boundary detectors, proposition-level retrieval units, contextualised chunk embeddings, and hierarchical or graph representations built over the corpus. Most of these methods either train a boundary detector, change the retrieval unit, or add a representation layer. Less explored is the direct use of the \emph{dynamics} of local semantic change: how large a change is, whether it is accelerating, and how much it fluctuates within a short window. We ask whether these quantities can serve as one control signal for two decisions that are usually designed separately, namely where to cut and what neighbouring context to attach, without assuming that a single granularity or a single context policy suits every region of every document.
+
+STP-RAG treats the cosine displacement between adjacent unit embeddings as semantic velocity, its positive change as acceleration and its local spread as volatility. Structural cues such as headings and paragraph breaks are added because they often mark real boundaries even when embeddings move only slightly. We test whether one compact, interpretable profile can steer several representation decisions while every chunk remains traceable to its source offsets; fixed-size and learned segmenters remain the baselines it must beat.
+
+A pilot implementation was run before this specification was written. Our audit of that pilot, reported here, found that its comparisons are confounded by unequal prompt-token budgets, a structurally contaminated baseline, small generation samples and dropped queries. We therefore present the pilot as descriptive evidence and use it to motivate a confirmatory design. The research questions are framed for that design:
+
+\begin{itemize}
+  \item \textbf{RQ1.} Under a matched prompt-token budget, do acceleration, volatility, structure and selective context improve retrieval or answer quality over velocity-only and fixed-size baselines?
+  \item \textbf{RQ2.} How much of an observed quality difference is explained by chunk count, retrieved tokens and prompt tokens rather than by where the boundaries fall?
+  \item \textbf{RQ3.} Is the effect of selective context stable across multi-hop Wikipedia questions and long-document scientific questions, and which evidence properties predict it?
+\end{itemize}
+
+\noindent The paper makes four contributions:
+\begin{enumerate}
+  \item A reference specification of STP-RAG with every parameter, interval convention and numerical safeguard stated, including an explicit mapping from the profile to the context policy (Section~\ref{sec:method}).
+  \item A component-level reconciliation of the specification with the audited pilot code, which identifies where the pilot differs and which components no reported number can validate (Section~\ref{sec:audit}).
+  \item The pilot aggregates with corrected arm labels, absolute answer counts and a prompt-token account showing that the pilot cannot separate segmentation quality from evidence volume (Section~\ref{sec:results}).
+  \item A pre-specified confirmatory protocol with primary hypotheses, matched budgets, factorial ablations, competitive baselines, mechanism metrics and paired inference, implemented in an open evaluation harness (Section~\ref{sec:protocol}).
+\end{enumerate}
+
+Section~\ref{sec:related} reviews related work. Section~\ref{sec:method} defines the method, Section~\ref{sec:audit} audits the pilot, Section~\ref{sec:protocol} gives the confirmatory protocol, Section~\ref{sec:results} reports the pilot results, and Section~\ref{sec:limitations} discusses limitations and concludes.
+
+%==========================================================================
+\section{Related Work}
+\label{sec:related}
+
+\paragraph{Retrieval and generation.} RAG and DPR made dense evidence retrieval a standard ingredient of generation, but both treat the passage inventory as fixed \cite{lewis2020rag,karpukhin2020dpr}. Adaptive-RAG, Self-RAG and CRAG adapt retrieval behaviour at query time through routing, self-reflection and correction respectively, leaving the documents unchanged \cite{jeong2024adaptiverag,asai2024selfrag,yan2024crag}. STP-RAG acts earlier, on how documents are cut and augmented before any query arrives, and is complementary to these methods.
+
+\paragraph{Text segmentation.} TextTiling places boundaries at valleys of lexical cohesion \cite{hearst1997texttiling}, C99 clusters a ranked sentence-similarity matrix \cite{choi2000c99}, and TopicTiling scores boundaries from topic-model distributions \cite{riedl2012topictiling}. Supervised and transformer segmenters learn boundaries from labelled context \cite{koshorek2018textseg,lo2021transformer2}, and kernel change-point methods detect distribution shifts in a representation space \cite{arlot2019kernelchangepoint}. $P_k$ and WindowDiff evaluate a hypothesised segmentation against a reference independently of any downstream task \cite{beeferman1999statistical,pevzner2002windowdiff}. Semantic velocity is closest to similarity-based segmentation; the STP adds second-order and dispersion terms, and none of these segmenters couples its boundaries to a context policy for retrieval.
+
+\paragraph{Retrieval units and context.} Dense X Retrieval compares propositions, sentences and passages and finds different retrieval--generation balances for each \cite{chen2024densex}. Late Chunking encodes a long text once and pools token embeddings into chunks so that each chunk embedding carries surrounding context \cite{gunther2024latechunking}. RAPTOR builds a tree of recursive summaries \cite{sarthi2024raptor} and GraphRAG an entity graph with community summaries \cite{edge2024graphrag}; both add generated structure above the corpus at extra build cost. Lost in the Middle shows that where evidence sits in a prompt changes how well it is used \cite{liu2024lostmiddle}, which is one reason prompt volume must be controlled when comparing chunkers.
+
+\paragraph{Evaluating RAG.} Knollmeyer et al.\ survey evaluation dimensions, question types and metrics for RAG and argue that retrieval and generation must be measured separately \cite{knollmeyer2026evaluation}. Mereu et al.\ compare five language models in a sparsely documented technical domain and find that the benefit of retrieval varies by model and saturates with retrieval depth \cite{mereu2026specializing}. Both support reporting retrieval depth, context volume and per-stage metrics rather than a single answer score, which our protocol adopts. Table~\ref{tab:related} summarises how STP-RAG differs from these lines of work.
+
+\begin{table}[!htbp]
+\caption{Representative related work and the gap each leaves for STP-RAG.}
+\label{tab:related}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.2\textwidth}>{\raggedright\arraybackslash}p{0.33\textwidth}>{\raggedright\arraybackslash}X@{}}
+\toprule
+Work & Core idea & Gap relative to STP-RAG \\
+\midrule
+RAG \cite{lewis2020rag}, DPR \cite{karpukhin2020dpr} & Generation conditioned on densely retrieved passages & Passages are fixed in advance; segmentation is not studied. \\
+TextTiling \cite{hearst1997texttiling} & Boundaries at lexical-cohesion valleys & Vocabulary-based; sensitive to block size; no context policy. \\
+C99 \cite{choi2000c99}, TopicTiling \cite{riedl2012topictiling} & Ranked similarity clustering; topic-model scores & Segment only; quality bounded by the similarity or topic model. \\
+Neural segmenters \cite{koshorek2018textseg,lo2021transformer2} & Boundaries learnt from labelled context & Need labelled data; transfer across domains is unproven. \\
+Kernel change points \cite{arlot2019kernelchangepoint} & Distribution shifts in representation space & General-purpose; not retrieval-aware. \\
+Dense X \cite{chen2024densex} & Chooses among propositions, sentences, passages & Chooses one unit type; boundaries do not vary locally. \\
+Late Chunking \cite{gunther2024latechunking} & Contextual token pooling into chunks & Context enters embeddings only; no span selection for the prompt. \\
+RAPTOR \cite{sarthi2024raptor}, GraphRAG \cite{edge2024graphrag} & Summary tree; entity graph & Generated summaries and an extra build stage. \\
+Adaptive-RAG, Self-RAG, CRAG \cite{jeong2024adaptiverag,asai2024selfrag,yan2024crag} & Query-time routing, reflection, correction & Change retrieval behaviour, not document boundaries. \\
+Knollmeyer et al.\ \cite{knollmeyer2026evaluation} & Stage-wise RAG evaluation framework & Survey; proposes no chunking method. \\
+Mereu et al.\ \cite{mereu2026specializing} & Retrieval depth across several models & Holds document preparation constant; one domain. \\
+\midrule
+STP-RAG (this paper) & One transition profile drives boundaries and context & Confirmatory evidence pending the protocol in Section~\ref{sec:protocol}. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+We evaluate on HotpotQA, multi-hop questions whose supporting facts span several Wikipedia paragraphs \cite{yang2018hotpotqa}, and QASPER, information-seeking questions answered from full scientific papers \cite{dasigi2021qasper}. The two differ in document length, structure and evidence form, which makes them a useful contrast for RQ3.
+
+%==========================================================================
+\FloatBarrier
+\section{Reference Method}
+\label{sec:method}
+
+This section is a reference specification. It is deliberately complete so that an independent implementation produces the same chunks; Section~\ref{sec:audit} states which parts the pilot implemented. Table~\ref{tab:params} lists every parameter.
+
+\subsection{Units and Semantic Transition Profile}
+
+A document is an ordered sequence of sentence units $D=(u_1,\ldots,u_n)$, each stored with its section, paragraph and character offsets. Progression is measured in units, $p_i=i$, so $\Delta p_i=1$; another base unit or progression may be used only if it is declared and held constant across all compared methods. Each unit is encoded by a frozen encoder and $L_2$-normalised, giving $e_i\in\mathbb{R}^d$. Semantic velocity is the cosine displacement between neighbours,
+\begin{equation}
+v_i = 1 - e_{i-1}^{\mathsf T}e_i, \qquad i\ge 2,
+\label{eq:velocity}
+\end{equation}
+which lies in $[0,2]$ and is dimensionless because $\Delta p_i=1$. Unit length enters later as a constraint, not as a divisor. Positive acceleration records the onset of a steeper change,
+\begin{equation}
+a_i^+ = \max(0,\, v_i - v_{i-1}), \qquad i\ge 3,
+\label{eq:acceleration}
+\end{equation}
+with $a_2^+=0$. Clamping at zero matters: immediately after a velocity peak the signed acceleration becomes strongly negative, and that drop should not be counted as evidence for a boundary. The signed value is kept for diagnostics only. Volatility is the population standard deviation of velocity over a trailing window of at most $w$ valid values,
+\begin{equation}
+\sigma_i = \sqrt{\frac{1}{|W_i|}\sum_{j\in W_i}\left(v_j-\bar v_{W_i}\right)^2},\qquad W_i=\{\max(2,i-w+1),\ldots,i\},
+\label{eq:volatility}
+\end{equation}
+where $\bar v_{W_i}$ is the window mean. The window is truncated, not padded, near the start of a document, and $\sigma_2=0$. The population form is used because $W_i$ is a fixed local neighbourhood, not a sample from which a global variance is estimated.
+
+Each candidate boundary also carries a binary structural vector $\mathbf{s}_i\in\{0,1\}^5$ whose entries indicate whether $u_i$ starts a new section or heading, a new paragraph, a list item, a display equation, or a table or figure block. Each continuous feature $x\in\{v,a^+,\sigma\}$ is scaled robustly with statistics computed on the development split only:
+\begin{equation}
+\hat x_i = \frac{x_i-\median_{\mathrm{dev}}(x)}{\mathrm{scale}_{\mathrm{dev}}(x)},\qquad
+\mathrm{scale}(x)=\begin{cases}
+\IQR(x) & \text{if } \IQR(x)>\epsilon,\\
+1.4826\,\MAD(x) & \text{else if } \MAD(x)>\epsilon,\\
+\mathrm{sd}(x) & \text{else if } \mathrm{sd}(x)>\epsilon,\\
+1 & \text{otherwise.}
+\end{cases}
+\label{eq:normalise}
+\end{equation}
+The fallback chain prevents a degenerate scale: $a^+$ is zero at roughly half of all positions, so its IQR can collapse on short or homogeneous corpora, and without a fallback the scale would be set by an undocumented constant. An implementation must report how often each fallback fires. The semantic transition profile of position $i$ is
+\begin{equation}
+\mathbf{z}_i = \left[\hat v_i,\ \widehat{a^+_i},\ \hat\sigma_i,\ \mathbf{s}_i\right].
+\label{eq:profile}
+\end{equation}
+
+\subsection{Bounded Adaptive Segmentation}
+
+A boundary at position $i$ means a cut \emph{between} $u_{i-1}$ and $u_i$, so the candidates are $i\in\{2,\ldots,n\}$. Each candidate receives a score and a boundary probability,
+\begin{equation}
+b_i = w_v\hat v_i + w_a\widehat{a^+_i} + w_\sigma\hat\sigma_i + \mathbf{w}_s^{\mathsf T}\mathbf{s}_i + \beta, \qquad \pi_i = \frac{1}{1+e^{-b_i}}.
+\label{eq:boundary}
+\end{equation}
+Let $\tok(s,j)$ be the token count of units $u_s,\ldots,u_{j-1}$ under the encoder's tokenizer. Algorithm~\ref{alg:segment} scans left to right from the current chunk start $s$. A cut is accepted at $i$ when $\pi_i>\tau_b$ and $\tok(s,i)\ge L_{\min}$. When adding $u_i$ would make the chunk exceed $L_{\max}$, a cut is forced at the admissible candidate that best balances boundary strength against distance from the target length,
+\begin{equation}
+i^\star = \argmax_{\,j\in(s,i],\ \tok(s,j)\ge L_{\min}} \left[\pi_j - \gamma\,\frac{|\tok(s,j)-L_t(s)|}{L_t(s)}\right],
+\label{eq:forced}
+\end{equation}
+with ties resolved towards the later position. If no candidate is admissible, the cut is placed at $i$. A single unit longer than $L_{\max}$ forms its own chunk and is flagged. The target length may adapt to local volatility, $L_t(s)=\mathrm{clip}\!\left(L_t\,e^{-\eta\hat\sigma_s},\,L_{\min},\,L_{\max}\right)$, so volatile regions receive shorter targets; $\eta=0$ recovers a constant target and defines the fixed-budget ablation. Every chunk keeps its unit identifiers and character offsets.
+
+\begin{algorithm}[!htbp]
+\caption{Reference STP segmentation (indices are unit positions; a cut at $i$ starts a new chunk at $u_i$).}
+\label{alg:segment}
+\footnotesize
+\begin{algorithmic}[1]
+\Require units $u_{1..n}$ with tokens; profile scores $\pi_{2..n}$; $\tau_b$, $L_{\min}$, $L_t$, $L_{\max}$, $\gamma$, $\eta$
+\State $C\gets[\,]$; $s\gets1$
+\For{$i=2$ \textbf{to} $n$}
+  \If{$\tok(s,i+1)>L_{\max}$} \Comment{adding $u_i$ overflows the chunk}
+    \State $A\gets\{j\in(s,i]:\tok(s,j)\ge L_{\min}\}$
+    \State $c\gets i$ \textbf{if} $A=\varnothing$ \textbf{else} the maximiser of Eq.~\eqref{eq:forced} over $A$
+    \State append $(s,c-1)$ to $C$; $s\gets c$
+  \ElsIf{$\pi_i>\tau_b$ \textbf{and} $\tok(s,i)\ge L_{\min}$}
+    \State append $(s,i-1)$ to $C$; $s\gets i$
+  \EndIf
+\EndFor
+\State append $(s,n)$ to $C$ \textbf{and return} $C$ with offsets and token counts
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Profile-Guided Selective Context}
+
+Context selection runs after segmentation. For a base chunk $c_i$ spanning units $[\mathrm{start}_i,\mathrm{end}_i]$, its embedding $\bar e_i$ is the $L_2$-normalised mean of its unit embeddings, computed \emph{before} any augmentation. The profile sets how far the selector looks. Let $\pi_i^-=\pi_{\mathrm{start}_i}$ and $\pi_i^+=\pi_{\mathrm{end}_i+1}$ be the probabilities of the boundaries that open and close the chunk. A weak opening boundary suggests that the chunk continues the preceding topic, so the backward horizon grows as that boundary weakens:
+\begin{equation}
+H_i^- = \left\lceil H_{\max}\,(1-\pi_i^-)\right\rceil,\qquad H_i^+ = \left\lceil H_{\max}\,(1-\pi_i^+)\right\rceil .
+\label{eq:horizon}
+\end{equation}
+The candidate set is $\mathcal{H}_i=\{u_j:\mathrm{start}_i-H_i^-\le j<\mathrm{start}_i\}\cup\{u_j:\mathrm{end}_i<j\le\mathrm{end}_i+H_i^+\}$, restricted to the same document. Each candidate is scored with terms that all lie in $[0,1]$:
+\begin{equation}
+r(u_j,c_i) = \lambda_e\,\tfrac{1}{2}\left(1+e_j^{\mathsf T}\bar e_i\right) + \lambda_r\,R(u_j,c_i) + \lambda_a\,A(u_j,c_i) - \lambda_t\,T(u_j,c_i) - \lambda_d\,\frac{\dist(u_j,c_i)}{H_{\max}} .
+\label{eq:contextscore}
+\end{equation}
+Here $R$ is the Jaccard overlap between the sets of entities, numbers and cross-references (for example ``Table 2'' or ``Eq.~3'') in $u_j$ and in $c_i$; $A$ is a structural affinity equal to 1 if $u_j$ lies in the same section as $c_i$ and 0 otherwise; $\dist$ is the gap in units between $u_j$ and the nearest unit of $c_i$; and $T(u_j,c_i)=\max_k \pi_k$ over the boundaries between $u_j$ and $c_i$ is a \emph{transition barrier}. The barrier is the second place where the profile is reused: a candidate separated from the chunk by a strong transition is penalised even if it is lexically similar. Setting $\lambda_t=0$ and $H_i^\pm=H_{\max}$ gives a relevance-only selector that uses no STP information; the protocol applies that selector to every chunker as a control.
+
+Candidates with $r\ge\tau_r$ are sorted by descending score, with ties broken by smaller distance and then by earlier source position, and are added greedily while the attached tokens stay within the per-chunk budget $B_{\ctx}$. Selected units are concatenated in source order with explicit separators, giving the augmented chunk $\tilde c_i=[\,\mathrm{Ctx}^-_i\,\Vert\,c_i\,\Vert\,\mathrm{Ctx}^+_i\,]$.
+
+\paragraph{Placement.} Two systems are possible and must be declared. In \emph{branch A} the augmented chunk $\tilde c_i$ is embedded and indexed, so context changes retrieval. In \emph{branch B} base chunks are embedded and indexed, and context is attached only after retrieval, so it changes the prompt but not the ranking. Figure~\ref{fig:architecture} shows both. Retrieval credit is always computed on base text; context tokens are counted in the prompt budget in both branches.
+
+\begin{figure}[!htbp]
+\centering
+\begin{tikzpicture}[
+block/.style={draw,rounded corners=2pt,align=center,text width=24mm,minimum height=9mm,font=\scriptsize,fill=black!3},
+stp/.style={block,fill=blue!7},
+arr/.style={-{Latex[length=1.5mm]},semithick},
+lab/.style={font=\scriptsize\bfseries},
+x=30mm,y=-13mm]
+% row 0: shared index-building stages
+\node[block] (units) at (0,0) {Sentence units,\\offsets, structure};
+\node[stp]   (profile) at (1,0) {Transition profile\\$\mathbf{z}_i$ (Eqs.~1--5)};
+\node[stp]   (seg) at (2,0) {Bounded\\segmentation (Alg.~1)};
+% base chunks sit between the two branches
+\node[block,minimum height=22mm] (base) at (0,1.5) {Base chunks $c_i$\\with offsets\\and provenance};
+% branch A (row 1) and branch B (row 2)
+\node[stp]   (ctxA) at (1,1) {Select context\\(Eqs.~8--9)};
+\node[block] (embA) at (2,1) {Embed and index\\augmented $\tilde c_i$};
+\node[block] (retA) at (3,1) {Retrieve to a\\token budget};
+\node[block] (genA) at (4,1) {Generator\\prompt};
+\node[block] (embB) at (1,2) {Embed and index\\base $c_i$};
+\node[block] (retB) at (2,2) {Retrieve to a\\token budget};
+\node[stp]   (ctxB) at (3,2) {Select context\\(Eqs.~8--9)};
+\node[block] (genB) at (4,2) {Generator\\prompt};
+\node[lab,above=0.5mm of genA.north east,anchor=south east] {Branch A};
+\node[lab,below=0.5mm of genB.south east,anchor=north east] {Branch B};
+\draw[arr] (units)--(profile); \draw[arr] (profile)--(seg);
+\draw[arr] (seg.south) -- ++(0,-2mm) -| (base.north);
+\draw[arr] (base.east |- ctxA) -- (ctxA);
+\draw[arr] (base.east |- embB) -- (embB);
+\draw[arr] (ctxA)--(embA); \draw[arr] (embA)--(retA); \draw[arr] (retA)--(genA);
+\draw[arr] (embB)--(retB); \draw[arr] (retB)--(ctxB); \draw[arr] (ctxB)--(genB);
+\draw[arr,dashed,blue!60!black] (profile.south) -- (ctxA.north);
+\draw[arr,dashed,blue!60!black] (profile.north) -- (1,-0.5) -- node[above,font=\tiny]{profile reuse} (3.5,-0.5) -- (3.5,1.5) -- (3,1.5) -- (ctxB.north);
+\end{tikzpicture}
+\caption{STP-RAG with both context placements. Branch A changes what is indexed; branch B changes only the prompt. The pilot's identical retrieval scores with and without context, together with its generation code, are consistent with branch B (Section~\ref{sec:audit}). Shaded blue blocks use the transition profile.}
+\label{fig:architecture}
+\end{figure}
+
+\begin{table}[!htbp]
+\caption{Parameters of the reference method. Reference values are proposed defaults, to be frozen in the protocol manifest before the confirmatory run; boundary weights are calibrated on the development split only. ``Not released'' means the value exists in the pilot code or configuration but was not available to this audit.}
+\label{tab:params}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{0.27\textwidth}>{\raggedright\arraybackslash}p{0.24\textwidth}@{}}
+\toprule
+Symbol & Meaning & Reference value & Pilot \\
+\midrule
+$w$ & Volatility window (valid velocities) & 5 & Not released \\
+$\epsilon$ & Scale floor in Eq.~\eqref{eq:normalise} & $10^{-6}$ & Not released; no fallback \\
+$w_v,w_a,w_\sigma,\mathbf{w}_s,\beta$ & Boundary weights & Calibrated with Optuna \cite{akiba2019optuna}, 200 trials, objective dev Recall@1024 tokens & Calibrated; in checksummed \texttt{stp\_params.yaml}, not released \\
+$\tau_b$ & Boundary probability threshold & 0.5 & Not released \\
+$L_{\min},L_t,L_{\max}$ & Length bounds (encoder tokens) & 64, 192, 384 & Fixed-size window $\approx$400; STP bounds not released \\
+$\gamma$, $\eta$ & Target-length penalty; volatility adaptation & 0.5; 0 (fixed) or calibrated & Adaptive budget present, form not released \\
+$H_{\max}$ & Maximum context horizon (units) & 6 & Per-chunk horizon, not released \\
+$\lambda_e,\lambda_r,\lambda_a,\lambda_t,\lambda_d$ & Context-score weights & 1, 0.5, 0.25, 1, 0.25 & Not released \\
+$\tau_r$, $B_{\ctx}$ & Context score floor; per-chunk context budget & 0.30; 192 tokens & Relevance threshold present; budget $\approx$200 tokens (audit estimate) \\
+$B_{\mathrm{prompt}}$ & Prompt evidence budget & 512, 1024, 2048 tokens & Not matched: fixed top-3 chunks \\
+Decoding & Generator settings & Temperature 0, 64 new tokens, pinned digest & \texttt{phi3:mini}, temperature 0, digest unrecorded \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+%==========================================================================
+\FloatBarrier
+\section{Audit of the Pilot Implementation}
+\label{sec:audit}
+
+We audited the pilot repository in September 2026, covering its configuration files, data splits, pipeline code and result-compilation notebook \cite{stpaudit2026}. The aim was to establish exactly what produced the reported aggregates. Table~\ref{tab:reconcile} maps each component of the reference method to the pilot; the findings below explain the entries.
+
+\begin{table}[!htbp]
+\caption{Reference specification versus the audited pilot. ``Unverified'' means the pilot implements the component but the audit could not confirm that it matches the specification. No pilot number validates a component marked other than ``consistent''.}
+\label{tab:reconcile}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.05}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.15\textwidth}>{\raggedright\arraybackslash}p{0.29\textwidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{0.11\textwidth}@{}}
+\toprule
+Component & Reference & Pilot (audited) & Status \\
+\midrule
+Base unit & Sentence; $\Delta p_i=1$ & Structure-aware sentence units; STP computed with cumulative token positions, implying token-scaled progression & Differs \\
+Encoder & One pinned BGE model and revision & \texttt{bge-small-en-v1.5} in retrieval config; \texttt{bge-m3} default in precomputation; revisions unpinned & Conflict \\
+Acceleration & Positive part $a_i^+$ & Present; sign handling not confirmed & Unverified \\
+Volatility & Trailing population SD, window $w$ & Present; window and initialisation not released & Unverified \\
+Normalisation & Dev median/IQR with fallback chain & Stored normalisation statistics; no fallback & Partial \\
+Structure & Binary vector $\mathbf{s}_i$ & Scalar structural score & Differs \\
+Velocity-only arm & $w_a=w_\sigma=0$, $\mathbf{w}_s=\mathbf{0}$ & Structural weight $w_s$ active & Contaminated \\
+Context direction & Preceding and following & Predecessor units only & Differs \\
+Profile in context & Horizon Eq.~\eqref{eq:horizon}, barrier $T$ & Per-chunk horizon and threshold; dependence on profile not released & Unverified \\
+Placement & Declared branch A or B & Augmented text used in prompt; retrieval scores unchanged by context & Branch B (inferred) \\
+Prompt evidence & Matched token budget & Fixed top-3 chunks; Recall at top-5 & Differs \\
+Generator & Pinned digest, temperature 0 & \texttt{phi3:mini} tag; quantisation and digest unrecorded & Partial \\
+Records & Per-query JSONL and manifest & Aggregate scalars only & Missing \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\paragraph{Evaluation populations.} HotpotQA was run on 150 constructed documents of ten Wikipedia paragraphs each, with 150 queries sharing one 1,500-paragraph index. QASPER was run on 49 papers with 149 question--answer pairs. Gold evidence was mapped to chunks by case-insensitive substring matching, which failed for 42 questions (28.2\%); those questions were dropped, leaving 107 for retrieval metrics. Because long or paraphrased evidence is the most likely to fail substring matching, the retained subset may be biased towards short, extractive evidence.
+
+\paragraph{Generation sample.} Answer generation was capped at 25 questions per dataset (\texttt{max\_eval\_queries: 25}). One additional exact answer therefore moves EM by 0.04. On HotpotQA the EM values of 0.120 and 0.240 correspond to 3 and 6 correct answers.
+
+\paragraph{Prompt budget.} Every arm passed its top-3 chunks to the generator. Fixed-size chunks averaged about 300--350 tokens and full-STP chunks about 95--121 tokens, so the generator received roughly 960, 345 and 945 evidence tokens for fixed-size, full STP and full STP with context (Table~\ref{tab:budget}). Answer quality is thus confounded with the amount of evidence that reached the model.
+
+\paragraph{Ablation design.} The arm labelled \texttt{velocity\_only} keeps the structural weight $w_s$ and is therefore velocity plus structure; we relabel it throughout. The arms are cumulative rather than factorial, and context was applied only to full STP, so neither the contribution of individual signals nor the dependence of the context effect on the chunker can be identified.
+
+\paragraph{Determinism and reported deviations.} The audit states that seeds 42, 123 and 999 left chunking, retrieval and generation unchanged, which makes the earlier seed-level bootstrap invalid \cite{efron1993bootstrap}. The aggregate files nevertheless report non-zero F1 deviations for several arms, for example $0.324\pm0.012$ for the similarity threshold on HotpotQA. The two observations are compatible if retrieval is deterministic and generation is not. Every retrieval metric and every EM value has zero deviation; small deviations appear only in F1, which is the one metric that changes when a single generated token changes. Local inference at temperature 0 is not guaranteed to be bit-reproducible across runs, and the seed did not control that source of variation. We therefore read the F1 deviations as run-to-run generator noise and use them neither as seed effects nor as uncertainty estimates. This reading is an inference from the aggregates; confirming it requires the raw per-seed predictions, which the pilot did not keep.
+
+\paragraph{Models and records.} The retrieval configuration names \texttt{BAAI/bge-small-en-v1.5} \cite{xiao2023cpack}, while the embedding-precomputation script defaults to \texttt{BAAI/bge-m3} \cite{chen2024bgem3}; neither revision is pinned. The \texttt{phi3:mini} \cite{abdin2024phi3} digest and quantisation were not recorded. The STP parameter file is checksummed, but data splits, prompt templates and per-query predictions are not.
+
+%==========================================================================
+\section{Confirmatory Protocol}
+\label{sec:protocol}
+
+The protocol below is fixed before any confirmatory result is seen. Its manifest (parameters, splits, model digests and prompt template, each with a SHA-256 checksum) is committed before the run, and any later change is reported as a deviation.
+
+\subsection{Populations and Relevance}
+HotpotQA uses 1,000 distractor-setting test questions stratified equally between bridge and comparison types, retrieved against a shared index of all their paragraphs. QASPER uses the full official test split. Gold evidence is aligned to source character spans by exact span lookup with a token-overlap fallback (Jaccard $\ge0.7$ over a sliding window), so that no answerable question is dropped; unresolved questions are reported with their count. A retrieved chunk \emph{credits} a gold span $g$ when at least half of $g$'s characters fall inside the chunk's base text. Attached context never earns retrieval credit.
+
+\subsection{Budget Regimes}
+Three regimes separate segmentation from evidence volume. Under a matched \emph{prompt} budget, retrieved chunks, including any attached context, are packed in rank order into $B_{\mathrm{prompt}}\in\{512,1024,2048\}$ tokens and the last chunk is truncated at a unit boundary. Under a matched \emph{retrieval} budget we report Recall@$B$ tokens. Under matched \emph{granularity}, fixed-size chunking is run at 100, 250 and 400 tokens, and at the mean chunk length that full STP produces on each dataset.
+
+\subsection{Arms}
+Table~\ref{tab:arms} lists the segmentation arms. Each is crossed with three context policies: none, a naive equal-token neighbouring window, and the selector of Eq.~\eqref{eq:contextscore} in its relevance-only form ($\lambda_t=0$, fixed horizon) and its profile-guided form. Competitive baselines share the same encoder, index and budgets: TextTiling \cite{hearst1997texttiling}, C99 \cite{choi2000c99}, a percentile semantic splitter that cuts at the 95th percentile of adjacent cosine distance, a recursive heading-and-paragraph splitter, and a supervised segmenter \cite{koshorek2018textseg} where its training data permit.
+
+\begin{table}[!htbp]
+\caption{Factorial segmentation arms. The last two rows differ only in the adaptive target length ($\eta$).}
+\label{tab:arms}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{@{}lccccc>{\raggedright\arraybackslash}p{0.36\textwidth}@{}}
+\toprule
+Arm & $v$ & $a^+$ & $\sigma$ & $\mathbf{s}$ & $\eta\neq0$ & Question answered \\
+\midrule
+Fixed-size (four sizes) & -- & -- & -- & -- & -- & Length-only baseline \\
+Structure only & -- & -- & -- & \checkmark & -- & Value of headings and paragraphs alone \\
+Velocity only & \checkmark & -- & -- & -- & -- & Clean first-order baseline \\
+Velocity + structure & \checkmark & -- & -- & \checkmark & -- & Reproduces the pilot's ``velocity-only'' arm \\
+Acceleration only & -- & \checkmark & -- & -- & -- & Second-order signal alone \\
+Volatility only & -- & -- & \checkmark & -- & -- & Dispersion signal alone \\
+Kinematics only & \checkmark & \checkmark & \checkmark & -- & -- & STP without structural cues \\
+Full boundary, fixed target & \checkmark & \checkmark & \checkmark & \checkmark & -- & Boundaries without length adaptation \\
+Full STP & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & Proposed method \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Metrics}
+For query $q$ with gold spans $G_q$ and ranked chunks $c_{(1)},c_{(2)},\ldots$,
+\begin{equation}
+\mathrm{Recall@}K(q)=\frac{\left|\{g\in G_q:\exists k\le K,\ c_{(k)}\text{ credits }g\}\right|}{|G_q|},\qquad
+\mathrm{MRR@}10(q)=\begin{cases}1/k^\star & k^\star\le 10,\\ 0 & \text{otherwise,}\end{cases}
+\end{equation}
+where $k^\star$ is the first rank that credits any gold span. Recall@$B$ applies the same definition to the chunks that fit within $B$ tokens. EM and token F1 follow the SQuAD normalisation and take the maximum over gold answers \cite{rajpurkar2016squad}; QASPER answers are scored with its official evaluator, including unanswerable questions \cite{dasigi2021qasper}. Every metric is reported with its denominator. We add four mechanism metrics:
+\begin{itemize}
+  \item \textbf{Boundary quality:} $P_k$ and WindowDiff \cite{beeferman1999statistical,pevzner2002windowdiff}, with $k$ set to half the mean reference segment length. Reference boundaries are the paragraph boundaries of the constructed HotpotQA documents and the section and paragraph boundaries of QASPER papers.
+  \item \textbf{Evidence split rate:} the fraction of gold spans whose characters fall in two or more base chunks.
+  \item \textbf{Context precision:} the share of attached context tokens that lie inside gold evidence, together with the fraction of gold spans missing from the retrieved base chunks that the attached context recovers.
+  \item \textbf{Prompt economics:} F1 against prompt tokens, summarised as the area under the quality--budget curve over the three budgets.
+\end{itemize}
+Retrieval latency is measured after a warm-up of 20 queries, over five repetitions, with the timer around the vector search alone; end-to-end latency is reported separately, together with the hardware.
+
+\subsection{Hypotheses and Inference}
+Four primary hypotheses form one family, corrected with the Holm--Bonferroni procedure \cite{holm1979simple}; all other comparisons are exploratory.
+\begin{itemize}
+  \item \textbf{H1.} At $B_{\mathrm{prompt}}=1024$, full STP with profile-guided context has higher answer F1 than length-matched fixed-size chunking with relevance-only context.
+  \item \textbf{H2.} Full STP has a lower evidence split rate than length-matched fixed-size chunking.
+  \item \textbf{H3.} On the same base chunks, profile-guided context has higher context precision than relevance-only context.
+  \item \textbf{H4.} Kinematics only achieves higher Recall@1024 tokens than structure only.
+\end{itemize}
+For HotpotQA, uncertainty is a paired bootstrap over queries with 10,000 resamples and percentile 95\% intervals; for QASPER, papers are resampled with all of their questions to respect within-document dependence \cite{efron1993bootstrap,field2007bootstrapping}. $p$-values come from paired sign-flip permutation tests with 10,000 permutations \cite{dror2018hitchhiker}. Run-to-run repetition variance is reported separately from sampling uncertainty. As a planning assumption, if the per-query F1 difference has a standard deviation near 0.35, 1,000 paired HotpotQA queries give a 95\% interval half-width of about 0.022, so effects of roughly 0.03 F1 are detectable; the clustered QASPER analysis has fewer effective units and is correspondingly less sensitive.
+
+\subsection{Records and Harness}
+Every query produces one JSONL record containing the question, gold answers and spans, ranked chunk identifiers with scores and token counts, the attached context with provenance, the exact prompt and its token count, the raw and normalised generation, and every per-query metric. An open evaluation harness accompanies this paper. It implements the record schema, budget packing, all metrics above, $P_k$ and WindowDiff, the paired and clustered bootstraps, the permutation test and the Holm correction, together with a reference implementation of Algorithm~\ref{alg:segment} and Eq.~\eqref{eq:contextscore}. Its unit tests check each metric against hand-computed cases. The harness is the instrument for the confirmatory run; it has not been executed against the pilot system and contributes no results to this paper.
+
+%==========================================================================
+\FloatBarrier
+\section{Pilot Results}
+\label{sec:results}
+
+Tables~\ref{tab:hotpotqa} and~\ref{tab:qasper} reproduce the audited pilot aggregates without change, with corrected labels. Retrieval metrics use 150 HotpotQA and 107 aligned QASPER queries; EM and F1 use the 25 generated answers per dataset. A standard deviation is shown only where it is non-zero: retrieval metrics and EM are identical across the three seeds, and the remaining deviations reflect runtime and generator variation, not sampling uncertainty. No confidence intervals or significance tests are reported, because no per-query records exist from which to compute them.
+
+\begin{table}[!htbp]
+\caption{Pilot aggregates on HotpotQA. EM shows the number of exact answers out of 25 in parentheses. Bold marks the highest value in each quality column, including ties. $^\dagger$Legacy label \texttt{velocity\_only}; the structural weight is active. $^\ddagger$Legacy label \texttt{velocity\_acceleration}; structural weight and acceleration sign unverified.}
+\label{tab:hotpotqa}
+\centering\footnotesize
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.12}
+\input{results/table_hotpotqa.tex}
+\end{table}
+
+\begin{table}[!htbp]
+\caption{Pilot aggregates on QASPER. Retrieval metrics exclude the 42 of 149 questions (28.2\%) that substring alignment could not map; EM and F1 use 25 questions. Notation as in Table~\ref{tab:hotpotqa}.}
+\label{tab:qasper}
+\centering\footnotesize
+\setlength{\tabcolsep}{2pt}
+\renewcommand{\arraystretch}{1.12}
+\input{results/table_qasper.tex}
+\end{table}
+
+\subsection{RQ1: Components}
+On HotpotQA the velocity + structure arm has the highest Recall@5 (1.000) and MRR (0.922), but because it contains structure it cannot show whether velocity alone helps. Adding acceleration lowers F1 from 0.344 to 0.283 and EM from 5 to 3 correct answers out of 25, and full STP without context matches that F1. As designed, the pilot provides no evidence that acceleration or the full profile improves on simpler arms. Selective context raises full-STP F1 from 0.283 to 0.410 while leaving Recall@5 and MRR unchanged, a reported relative increase of 44.9\% in the 25-query pilot; it is also 19.2\% above the velocity + structure arm and 14.5\% above fixed-size chunking. The EM difference behind this is three answers (3 versus 6 of 25).
+
+On QASPER, fixed-size chunking is best on all four quality metrics. Full STP improves Recall@5 over velocity + structure (0.299 against 0.252, +18.7\%) but remains 21.1\% below fixed-size chunking (0.379). The two STP-family arms without context have the same F1 (0.105), and adding context lowers it to 0.068 ($-$35.2\%). Figure~\ref{fig:deltas} plots each arm's difference from the velocity + structure arm.
+
+\begin{figure}[!htbp]
+\centering
+\input{results/plot_delta.tex}
+\caption{Differences of rounded pilot means from the velocity + structure arm. These are descriptive point estimates; no confidence intervals are implied.}
+\label{fig:deltas}
+\end{figure}
+
+\subsection{RQ2: Resources and Evidence Volume}
+Granularity differs sharply between arms. Full STP produces 9.31 chunks per HotpotQA document against 3.40 for fixed-size chunking, and 47.96 against 12.43 per QASPER paper; note that on QASPER full STP produces \emph{more} chunks than velocity + structure (41.80), not fewer. Because every arm retrieves a fixed number of chunks, finer segmentation delivers less evidence per query. Table~\ref{tab:budget} sets the audit's token estimates beside answer F1. The two highest-F1 HotpotQA arms are also the two that delivered the most prompt tokens, and the context gain coincides with the prompt returning to roughly the fixed-size volume. The most economical explanation of the HotpotQA context effect is therefore restored evidence volume. Attributing it to the attachments that STP selected requires the matched-budget comparison of H1.
+
+\begin{table}[!htbp]
+\caption{Approximate evidence delivered to the generator under fixed top-3 retrieval (audit estimates), beside pilot HotpotQA answer F1. Token figures are estimates from mean chunk lengths, not per-query counts.}
+\label{tab:budget}
+\centering\footnotesize
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Arm & Mean chunk (tokens) & Prompt evidence, top-3 (tokens) & HotpotQA F1 \\
+\midrule
+Fixed-size & $\approx$300--350 & $\approx$960 & 0.358 \\
+Full STP & $\approx$95--121 & $\approx$345 & 0.283 \\
+Full STP + context & $\approx$115 + attached & $\approx$945 & 0.410 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Mean retrieval latency ranges from 1.72 to 3.97\,ms on HotpotQA and from 2.72 to 6.90\,ms on QASPER (Figure~\ref{fig:pareto}). On HotpotQA, fixed-size chunking and velocity + structure form the descriptive latency--recall frontier; on QASPER, fixed-size chunking is better on both axes. Latency grows with chunk count, as expected for a larger index. These timings depend on hardware, warm-up, caching and where the timer starts and stops, none of which was controlled, and they are not end-to-end response times.
+
+\begin{figure}[!htbp]
+\centering
+\input{results/plot_latency.tex}
+\caption{Pilot mean retrieval latency against Recall@5. Horizontal bars show the standard deviation across repetitions, not confidence intervals. The recall axes differ between panels.}
+\label{fig:pareto}
+\end{figure}
+
+\subsection{RQ3: The Context Effect Reverses Between Datasets}
+Full STP and full STP with context share the same base chunks within each dataset, so their difference isolates the attachment step as implemented. Context adds 0.127 F1 on HotpotQA and removes 0.037 on QASPER. Without the prompts, the attached spans and per-query records, the pilot cannot tell whether the reversal comes from evidence coverage, added noise, truncation or the generator. It would also be wrong to read the HotpotQA result as a general benefit that QASPER fails to show: the datasets differ in domain, document length, question type, evidence annotation and answer form. The confirmatory analysis therefore breaks the context effect down by number of evidence hops, distance between evidence pieces, cross-section evidence, document length, answerability and attached-context length.
+
+%==========================================================================
+\section{Limitations and Conclusion}
+\label{sec:limitations}
+
+\paragraph{Limitations.} The pilot scored only 25 generated answers per dataset and dropped 28.2\% of QASPER questions from retrieval evaluation. Encoder settings conflict, model revisions are unpinned, and no per-query outputs or token counts exist, so no confirmatory statistical or causal claim can be made from it. Its ablations are cumulative systems, not attributable components: the velocity arm contains structure and context is applied only to full STP. It reports no boundary metrics, evidence split rate, context precision or prompt cost. Recall counted in chunks favours arms with larger chunks, which is itself a reason to adopt token-denominated metrics. The reference method also has open risks: the boundary weights are calibrated on development data and may not transfer across domains, the profile depends on the chosen encoder, and the transition barrier assumes that strong semantic transitions separate unrelated material, which may fail in documents that alternate rapidly between closely linked topics. Finally, this is a single-column working manuscript; a submission must adopt the target venue's template, anonymity rules and page limit.
+
+\paragraph{Conclusion.} STP-RAG proposes one profile of semantic velocity, positive acceleration, volatility and structure to drive both adaptive chunking and context selection. In this specification the profile sets the context horizon and penalises candidates that lie across strong transitions, and every parameter, convention and safeguard is stated. The audit explains why the pilot's HotpotQA gain is hard to interpret: context restores prompt volume to about the fixed-size level, and the nominal velocity baseline is weighted by structure. It also records that fixed-size chunking was both more accurate and faster on QASPER. Comparing chunkers at a fixed number of retrieved chunks confounds segmentation with evidence volume, and the pilot shows how large that confound can be. The confirmatory protocol removes it with matched budgets and adds full populations, span-based alignment, pinned artifacts, per-query records, factorial ablations, competitive segmenters and paired inference. Under those controls the run will show whether the dynamics of semantic transitions improve retrieval and answers.
+
+\paragraph{Data and code availability.} The pilot aggregates, the scripts that generate every table and figure in this paper from them, and the evaluation harness described in Section~\ref{sec:protocol} are provided with the manuscript. The pilot implementation and its configuration will be archived at the audited commit with checksums before the confirmatory run.
+
+\printbibliography
+\end{document}

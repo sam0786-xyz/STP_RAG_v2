@@ -62,14 +62,12 @@ def fmt(mean: float, sd: float, bold: bool = False, always_sd: bool = False) -> 
     return rf"\textbf{{{body}}}" if bold else body
 
 
-def table(rows: list[dict]) -> str:
+HEADER = r"Arm & Recall@5 & MRR & EM ($k$/25) & F1 & Chunks/doc. & Build (s) & Retrieval (ms) \\"
+
+
+def rows_tex(rows: list[dict]) -> list[str]:
     best = {m: max(r[f"{m}_mean"] for r in rows) for m in QUALITY}
-    lines = [
-        r"\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lccccccc@{}}",
-        r"\toprule",
-        r"Arm & Recall@5 & MRR & EM ($k$/25) & F1 & Chunks/doc. & Build (s) & Retrieval (ms) \\",
-        r"\midrule",
-    ]
+    lines = []
     for r in rows:
         label = ARMS[r["method"]][0]
         cells = [label]
@@ -83,7 +81,23 @@ def table(rows: list[dict]) -> str:
         cells.append(fmt(r["build_mean"], r["build_sd"], always_sd=True))
         cells.append(fmt(r["latency_mean"], r["latency_sd"], always_sd=True))
         lines.append(" & ".join(cells) + r" \\")
-    lines += [r"\bottomrule", r"\end{tabular*}"]
+    return lines
+
+
+def table(rows: list[dict]) -> str:
+    lines = [r"\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lccccccc@{}}", r"\toprule", HEADER, r"\midrule"]
+    lines += rows_tex(rows) + [r"\bottomrule", r"\end{tabular*}"]
+    return "\n".join(lines) + "\n"
+
+
+def table_combined(data: dict[str, list[dict]]) -> str:
+    """Both datasets in one full-width table, for the two-column conference version."""
+    lines = [r"\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lccccccc@{}}", r"\toprule", HEADER, r"\midrule",
+             r"\multicolumn{8}{@{}l}{\textit{HotpotQA: 150 retrieval queries, 25 generated answers}} \\"]
+    lines += rows_tex(data["HotpotQA"])
+    lines += [r"\midrule",
+              r"\multicolumn{8}{@{}l}{\textit{QASPER: 107 aligned retrieval queries (42 of 149 dropped), 25 generated answers}} \\"]
+    lines += rows_tex(data["QASPER"]) + [r"\bottomrule", r"\end{tabular*}"]
     return "\n".join(lines) + "\n"
 
 
@@ -168,6 +182,7 @@ def main() -> None:
     data = load()
     (OUT / "table_hotpotqa.tex").write_text(table(data["HotpotQA"]))
     (OUT / "table_qasper.tex").write_text(table(data["QASPER"]))
+    (OUT / "table_pilot.tex").write_text(table_combined(data))
     (OUT / "plot_delta.tex").write_text(delta_plot(data))
     (OUT / "plot_latency.tex").write_text(latency_plot(data))
     export_json(data)
