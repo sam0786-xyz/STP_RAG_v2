@@ -8,7 +8,7 @@
 - `slide_content.json`: text, shape positions and notes used to build the deck.
 - `paper_integrity.json`: SHA-256 checks confirming that the existing manuscript, compiled paper, bibliography, notes and result files did not change during generation.
 
-The slide structure follows `prism-uploads/Screenshot 2026-09-15 at 11.05.22 AM.png`. The author names, title, study description and aggregate metrics come from the existing project materials. No research-paper files were edited. New references were not researched for this presentation; cited literature is reused from the paper.
+The slide structure follows `presentation/evaluation_1_inputs/evaluation_1_rubric_screenshot.png`. The author names, title, study description and aggregate metrics come from the existing project materials. No research-paper files were edited. New references were not researched for this presentation; cited literature is reused from the paper.
 
 ## How the deck addresses the rubric
 

@@ -1,0 +1,291 @@
+{
+    "plotting_plan": [
+        {
+            "figure_id": "fig_transition_profile_and_context_pipeline",
+            "title": "Reference design: transition profiles and selective context",
+            "plot_type": "diagram",
+            "data_source": "idea.md",
+            "objective": "Diagram the reference pipeline from sentence units and offsets through normalized transition features, constrained boundaries, retrieval, budgeted context selection, and provenance. Label it as a specification, not a verified implementation diagram.",
+            "aspect_ratio": "16:9"
+        },
+        {
+            "figure_id": "fig_hotpotqa_answer_f1_pilot",
+            "title": "HotpotQA pilot answer F1",
+            "plot_type": "plot",
+            "data_source": "experimental_log.md",
+            "objective": "Use a bar chart for fixed-size chunking (0.358), the nominal velocity-only arm labeled velocity + structure (0.344), and full STP with context (0.410). Mark values as descriptive and note unmatched budgets and the 25-query generation evaluation; do not add significance marks.",
+            "aspect_ratio": "4:3"
+        },
+        {
+            "figure_id": "fig_qasper_recall_and_context_f1",
+            "title": "QASPER pilot: retrieval and context sensitivity",
+            "plot_type": "plot",
+            "data_source": "experimental_log.md",
+            "objective": "Use two labeled bar-chart panels: Recall@5 for fixed-size (0.379), nominal velocity-only, labeled velocity + structure (0.252), and full STP (0.299); and answer F1 for full STP without context (0.105) and with context (0.068). Do not infer an unspecified context condition for the Recall@5 values or add significance marks.",
+            "aspect_ratio": "16:9"
+        },
+        {
+            "figure_id": "fig_audited_prompt_volume_estimates",
+            "title": "Audit estimates of generator evidence volume",
+            "plot_type": "plot",
+            "data_source": "experimental_log.md",
+            "objective": "Use a bar chart showing approximately 960, 345, and 945 evidence tokens for fixed-size, full STP, and full STP with context, respectively. Label these as estimates derived from mean chunk lengths, not per-query counts, and use them to expose a prompt-budget confound rather than explain a causal effect.",
+            "aspect_ratio": "4:3"
+        }
+    ],
+    "intro_related_work_plan": {
+        "introduction_strategy": {
+            "literature_target": "10\u201320 verified macro-level papers, subject to availability; prioritize surveys and foundational work rather than the technical baseline papers reserved for Related Work.",
+            "hook_hypothesis": "Investigate whether passage boundaries and context selection are consequential design choices in retrieval-augmented question answering.",
+            "problem_gap_hypothesis": "For the supplied HotpotQA and QASPER pilots, investigate whether local semantic transitions offer a useful segmentation and context-control signal; the mixed, budget-confounded results do not establish general superiority or causal effects.",
+            "search_directions": [
+                "Find foundational work establishing retrieval-augmented generation and the role of retrieved passages in question answering.",
+                "Find surveys or reviews of retrieval-augmented generation, document segmentation, and retrieval evaluation.",
+                "Find papers documenting practical consequences of splitting evidence or including irrelevant context in question-answering systems, without assuming these effects were measured in this pilot.",
+                "Identify 3\u20135 foundational papers on semantic text segmentation, sentence representation, or retrieval-based question answering; verify their relevance and primary-source details."
+            ],
+            "citation_policy": "Use verified primary sources; reserve recent method-specific comparisons for Related Work and avoid duplicating citations across the two sections where practicable.",
+            "citation_candidates": [
+                "Izacard2022FewshotLearning",
+                "Yu2024EvaluationRetrievalaugmented",
+                "Yang2018HotpotqaDataset",
+                "Xiong2020AnsweringComplex",
+                "Fan2024SurveyRag",
+                "Karpukhin2020DensePassage",
+                "Petroni2020KiltBenchmark",
+                "Zhao2024RetrievalaugmentedGeneration",
+                "Yu2023ChainofnoteEnhancing",
+                "Liu2023LostMiddle",
+                "Khattab2021BaleenRobust",
+                "Gao2023RetrievalaugmentedGeneration",
+                "Yates2020PretrainedTransformers",
+                "Lee2019LatentRetrieval",
+                "Zhao2022DenseText",
+                "Jia2017AdversarialExamples",
+                "Guu2020RealmRetrievalaugmented",
+                "Trivedi2022InterleavingRetrieval",
+                "Lewis2020RetrievalaugmentedGeneration",
+                "Dasigi2021DatasetInformationseeking",
+                "Chen2023DenseX",
+                "Zhu2023LargeLanguage",
+                "Izacard2020LeveragingPassage",
+                "Trivedi2021MusiqueMultihop",
+                "Asai2023SelfragLearning",
+                "Shi2023LargeLanguage",
+                "Reimers2019SentencebertSentence",
+                "Chen2017ReadingWikipedia",
+                "Hsieh2024RulerWhats"
+            ]
+        },
+        "related_work_strategy": {
+            "overview": "Target 30\u201350 verified papers across the clusters below if the literature supports them. Search only publications available through 2026-11. Use recent work for conceptual context, not as new experimental competitors; only arms recorded in the experimental log may be described as empirically compared.",
+            "subsections": [
+                {
+                    "subsection_title": "Fixed and Similarity-Based Segmentation",
+                    "methodology_cluster": "Fixed-size and similarity-threshold chunking",
+                    "sota_investigation_mission": "Find technical studies available through 2026-11 on fixed-size and similarity-based document segmentation and their evaluation. Fixed-size is a pilot arm; similarity-threshold is proposed for the confirmatory protocol only. Do not present untested papers as measured competitors.",
+                    "limitation_hypothesis": "Fixed boundaries may split definitions from qualifications or combine unrelated material; whether this harms the supplied datasets remains to be tested.",
+                    "limitation_search_queries": [
+                        "fixed-size passage segmentation split evidence question answering evaluation",
+                        "similarity-threshold text segmentation boundary errors heterogeneous documents"
+                    ],
+                    "bridge_to_our_method": "Investigate how the reference transition score and length constraints could adapt boundaries while retaining source offsets.",
+                    "citation_candidates": [
+                        "Choi2000AdvancesDomain",
+                        "Glavas2016UnsupervisedText",
+                        "Alemi2015TextSegmentation",
+                        "Utiyama2001StatisticalModel",
+                        "Eisenstein2008BayesianUnsupervised",
+                        "Koshorek2018TextSegmentation",
+                        "Arnold2019SectorNeural",
+                        "Qu2024SemanticChunking",
+                        "Wang2024SearchingBest",
+                        "Bai2023LongbenchBilingual"
+                    ]
+                },
+                {
+                    "subsection_title": "Transition- and Structure-Aware Segmentation",
+                    "methodology_cluster": "Local semantic transitions and document structure",
+                    "sota_investigation_mission": "Find technical studies available through 2026-11 using local semantic changes or document structure for segmentation. Compare concepts with the pilot's nominal velocity-only and full-STP arms, noting that the former actually includes structural weighting.",
+                    "limitation_hypothesis": "A single transition cue or structural cue may not capture all relevant boundary behavior; the pilot does not isolate these effects.",
+                    "limitation_search_queries": [
+                        "semantic transition text segmentation sensitivity local similarity boundaries",
+                        "document heading structure segmentation semantic boundary disagreement"
+                    ],
+                    "bridge_to_our_method": "Investigate the proposed combination of velocity, positive acceleration, volatility, and structural indicators; use the planned clean ablations to test their contributions.",
+                    "citation_candidates": [
+                        "Malioutov2006MinimumCut",
+                        "Lukasik2020TextSegmentation",
+                        "Fournier2012SegmentationSimilarity"
+                    ]
+                },
+                {
+                    "subsection_title": "Selective Context Around Retrieved Passages",
+                    "methodology_cluster": "Retrieval context expansion and selection",
+                    "sota_investigation_mission": "Find technical studies available through 2026-11 on selecting or expanding context around retrieved passages. The pilot evaluates full STP with and without context; relevance-only and profile-guided context comparisons are planned, not completed.",
+                    "limitation_hypothesis": "Uncontrolled context expansion can alter prompt volume and obscure whether selection quality matters; the audit identifies this confound in the present pilot.",
+                    "limitation_search_queries": [
+                        "retrieval context expansion question answering matched prompt token budget",
+                        "retrieved passage neighboring context selection relevance evidence precision"
+                    ],
+                    "bridge_to_our_method": "Describe budgeted, provenance-preserving selection as the reference design and investigate its value under matched prompt budgets in the confirmatory protocol.",
+                    "citation_candidates": [
+                        "Jiang2024LongragEnhancing",
+                        "Xu2023RecompImproving",
+                        "Jiang2023LongllmlinguaAccelerating",
+                        "Jiang2023LlmlinguaCompressing",
+                        "Sarthi2024RaptorRecursive",
+                        "Yu2024RankragUnifying",
+                        "Jiang2023ActiveRetrieval",
+                        "Li2024RetrievalAugmented",
+                        "Gunther2024LateChunking"
+                    ]
+                }
+            ]
+        }
+    },
+    "section_plan": [
+        {
+            "section_title": "Abstract",
+            "format_and_sizing": "One paragraph at 10-point type. No page limit or defensible word-count target is supplied; apply the selected venue's official limit later.",
+            "content_bullets": [
+                "Identify the work as a reference specification, confirmatory protocol, and audited pilot, not a completed benchmark.",
+                "State the transition-profile and selective-context ideas without implying the implementation fully realizes the specification.",
+                "Summarize mixed HotpotQA and QASPER observations, including the limited generation sample, QASPER evidence-alignment losses, and unmatched budgets.",
+                "Do not claim significance, causality, general superiority, or deployment speed."
+            ],
+            "citation_hints": []
+        },
+        {
+            "section_title": "Introduction",
+            "content_bullets": [
+                "Follow the macro-level investigation in intro_related_work_plan; do not draft literature claims before verification.",
+                "Frame contributions as a reference formulation, transparent mixed pilot, and planned confirmatory harness."
+            ],
+            "citation_hints": [
+                "research paper or technical report introducing 'retrieval-augmented generation (RAG)'"
+            ]
+        },
+        {
+            "section_title": "Related Work",
+            "content_bullets": [
+                "Follow the three micro-level clusters in intro_related_work_plan, keeping their literature scope distinct from the Introduction.",
+                "Distinguish pilot arms from proposed confirmatory baselines; do not imply untested comparisons."
+            ],
+            "citation_hints": [
+                "research paper or technical report introducing 'fixed-size chunking'",
+                "research paper or technical report introducing 'similarity-threshold chunking'"
+            ],
+            "citation_note": "Verify that each requested source is a uniquely attributable primary reference; if a generic technique has no single canonical source, cite an appropriate verified primary source rather than inventing one."
+        },
+        {
+            "section_title": "Method",
+            "sizing_guidance": "Allocate substantial space to the reference formulation and implementation distinction; no numerical word budget is available.",
+            "subsections": [
+                {
+                    "subsection_title": "Document Units and Transition Profiles",
+                    "content_bullets": [
+                        "From idea.md, define ordered sentence units, source offsets, structural metadata, and fixed L2-normalized embeddings. Do not name an encoder or encoder version.",
+                        "Formalize adjacent embedding distance as velocity, positive increases in velocity as acceleration, trailing-window volatility, and heading or paragraph indicators. Specify exact distance and window details only if verified; otherwise identify them as unspecified.",
+                        "Describe development-only median/IQR normalization and a weighted boundary score subject to minimum, target, and maximum length constraints. Do not invent weights, threshold rules, or hyperparameters."
+                    ],
+                    "citation_candidates": []
+                },
+                {
+                    "subsection_title": "Selective Context and Provenance",
+                    "content_bullets": [
+                        "From idea.md, describe ranking nearby source units by embedding relevance, structural affinity, reference/entity overlap, and distance, then appending units within a declared context-token budget.",
+                        "Specify provenance preservation for chunks and attached units. Do not invent a ranking equation or tie-breaking rule.",
+                        "Clearly label this as the reference design and separate it from implementation details missing in experimental_log.md."
+                    ],
+                    "citation_candidates": []
+                }
+            ]
+        },
+        {
+            "section_title": "Pilot Study and Confirmatory Protocol",
+            "sizing_guidance": "Prioritize the audited results and confounds alongside the future protocol; report only supplied numerical values.",
+            "subsections": [
+                {
+                    "subsection_title": "Pilot Setup and Audit",
+                    "content_bullets": [
+                        "Identify HotpotQA and QASPER as the pilot datasets and distinguish fixed-size, nominal velocity-only, full STP, and selective-context conditions as recorded in experimental_log.md.",
+                        "Call the nominal velocity-only arm velocity + structure when describing its computation. Report that generation metrics use only 25 queries and that 42 of 149 QASPER questions were dropped during evidence alignment.",
+                        "State that every arm passed its top three chunks to the generator, while chunk counts, indexed material, and prompt/context volume differed. Report the approximately 960, 345, and 945 evidence-token audit estimates as estimates from mean chunk lengths, not per-query counts.",
+                        "Do not invent encoder version, structural processing, calibrated weights, decoding, retrieval backend, hardware, or per-query records."
+                    ],
+                    "citation_candidates": []
+                },
+                {
+                    "subsection_title": "Descriptive Pilot Results",
+                    "content_bullets": [
+                        "Report HotpotQA answer F1 of 0.344 for the nominal velocity-only arm, 0.358 for fixed-size, and 0.410 for full STP with context. The respective 0.066 and 0.052 differences are descriptive, not tests or causal effects.",
+                        "Note that the nominal velocity-only arm has the strongest reported HotpotQA Recall@5 and MRR; do not claim full STP wins every metric.",
+                        "Report that fixed-size is best on all four reported QASPER quality metrics; full STP F1 decreases from 0.105 without context to 0.068 with context. Report Recall@5 of 0.379, 0.299, and 0.252 for fixed-size, full STP, and nominal velocity-only, respectively.",
+                        "Report QASPER chunk counts of 47.959 for full STP and 41.796 for nominal velocity-only. Do not infer section preservation.",
+                        "Present the largest reported mean retrieval latency, 3.972 ms, only as an incompletely documented retrieval timing, not end-to-end or deployment latency.",
+                        "State that restored prompt volume is consistent with the HotpotQA context gain and prevents attribution to better context selection. No paired confidence intervals or hypothesis tests are available."
+                    ],
+                    "citation_candidates": [
+                        "Rajpurkar2016Squad100000"
+                    ]
+                },
+                {
+                    "subsection_title": "Confirmatory Evaluation Design",
+                    "content_bullets": [
+                        "Label the protocol as unexecuted. Specify matched document/question splits, one JSONL row per query and arm, matched chunk-length distributions, and matched generator prompt budgets.",
+                        "List the planned arms from experimental_log.md: fixed-size, similarity-threshold, clean velocity-only, structure-only, velocity+volatility, velocity+structure, full STP without structure, full STP, relevance-only context, and profile-guided context.",
+                        "Plan Recall@K, MRR@10, EM/F1, P_k, WindowDiff, evidence split rate, context precision/recovery, index size, build time, retrieval latency, and prompt-token measurements. Define operational measures and evaluation units before execution; do not fabricate outcomes.",
+                        "Plan paired bootstrap or document-cluster bootstrap, a sign-flip permutation test, and Holm correction, with clustering and comparison families specified before analysis."
+                    ],
+                    "citation_note": "Verify primary sources and precise metric definitions. For operational quantities without a uniquely attributable canonical paper, define the measurement explicitly and cite a verified source only if applicable; do not invent a citation.",
+                    "citation_candidates": [
+                        "Aumller2018AnnbenchmarksBenchmarking",
+                        "Ru2024RagcheckerFinegrained",
+                        "Johnson2017BillionscaleSimilarity"
+                    ]
+                }
+            ]
+        },
+        {
+            "section_title": "Limitations and Reproducibility",
+            "subsections": [
+                {
+                    "subsection_title": "Interpretation Limits",
+                    "content_bullets": [
+                        "Reiterate the 25-query generation evaluation, QASPER alignment losses, structurally weighted nominal velocity-only arm, and unmatched retrieval and prompt budgets.",
+                        "Explain that aggregate means lack released paired predictions, confidence intervals, and hypothesis tests; mixed findings do not establish causal effects or broad generalization.",
+                        "Distinguish retrieval timing from end-to-end latency and avoid deployment claims."
+                    ],
+                    "citation_candidates": []
+                },
+                {
+                    "subsection_title": "Reproducibility Gaps",
+                    "content_bullets": [
+                        "List missing encoder version, exact structural processing, calibrated weights, generator decoding, retrieval backend, hardware, and per-query records.",
+                        "Describe the planned query-arm JSONL records and budget controls as future remedies, not existing artifacts.",
+                        "Inspect the listed available figure assets before reuse; their filenames do not establish additional values or statistical evidence."
+                    ],
+                    "citation_candidates": []
+                }
+            ]
+        },
+        {
+            "section_title": "Conclusion",
+            "content_bullets": [
+                "Recap the reference specification and mixed, descriptive pilot findings without claiming a confirmed improvement.",
+                "Identify execution of the matched-budget confirmatory protocol as the next step; do not call the work submission-ready."
+            ],
+            "citation_hints": []
+        },
+        {
+            "section_title": "Appendix",
+            "status": "Optional proposed addition; template.tex contains no appendix section. Add only if permitted by the selected venue and do not present planned materials as completed artifacts.",
+            "content_bullets": [
+                "If added, provide a specification-to-implementation audit checklist and the planned query-arm record schema using only fields justified by the supplied materials.",
+                "Include further descriptive tables or figure details only when their underlying values are available and verified."
+            ],
+            "citation_hints": []
+        }
+    ]
+}

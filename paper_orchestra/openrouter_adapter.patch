@@ -1,0 +1,545 @@
+diff --git a/README.md b/README.md
+index c79a456..33a5aa5 100644
+--- a/README.md
++++ b/README.md
+@@ -36,6 +36,12 @@ Acting like an orchestrated team of specialized agents, it handles outline gener
+     
+     SEMANTIC_SCHOLAR_API_KEY=your_semantic_scholar_api_key
+     OPENAI_API_KEY=your_openai_api_key
++    # For OpenRouter, use model names such as
++    # openrouter/openai/gpt-4.1 or openrouter/anthropic/claude-sonnet-4
++    OPENROUTER_API_KEY=your_openrouter_api_key
++    # Optional OpenRouter attribution headers
++    OPENROUTER_HTTP_REFERER=https://example.com
++    OPENROUTER_APP_TITLE=STP-RAG Paper Orchestra
+     VERTEX_AI_PROJECT=your_vertex_ai_project
+     VERTEX_AI_LOCATION=your_vertex_ai_location
+     GEMINI_API_KEY=your_gemini_api_key
+@@ -76,6 +82,22 @@ python paper_writing_cli.py \
+ *   `--writer_model_name`: LLM for writer and literature agents.
+ *   `--reflection_model_name`: LLM for reflection agents.
+ 
++### OpenRouter
++
++The OpenAI-compatible path also supports OpenRouter. Set `OPENROUTER_API_KEY`
++in your shell or `.env`, then prefix each OpenRouter model with `openrouter/`.
++For example:
++
++```bash
++python paper_writing_cli.py ... \
++  --writer_model_name openrouter/openai/gpt-4.1 \
++  --reflection_model_name openrouter/openai/gpt-4.1
++```
++
++The prefix is intentional: it prevents a provider-qualified model name from
++being sent accidentally to the OpenAI endpoint. API keys are not accepted as
++CLI arguments and should not be committed.
++
+ ### Interactive Demo
+ 
+ We provide an interactive Streamlit demo for the paper generation pipeline. For instructions on how to run and use it, please refer to the [README.md](frontend/README.md) in the `frontend` directory.
+diff --git a/autoraters/agent_review.py b/autoraters/agent_review.py
+index 52aeaec..bd5e0a9 100644
+--- a/autoraters/agent_review.py
++++ b/autoraters/agent_review.py
+@@ -16,7 +16,7 @@ import os
+ import json
+ import numpy as np
+ 
+-from utils.gemini_utils import call_gemini_with_text_prompt
++from utils.llm_backend_utils import call_llm_with_text_prompt
+ 
+ # --- AGENTREVIEW SPECIFIC CONSTANTS (From role_descriptions.py) ---
+ 
+@@ -134,7 +134,7 @@ Here is the paper you are asked to review:
+         parsed_reviews = []
+         for i in range(num_review_ensemble):
+             print(f"Generating ensemble review {i + 1}/{num_review_ensemble}...")
+-            response = call_gemini_with_text_prompt(
++            response = call_llm_with_text_prompt(
+                 prompt=base_prompt,
+                 model_name=model_name,
+                 generation_configs={
+@@ -169,7 +169,7 @@ Here is the paper you are asked to review:
+             if scores:
+                 review[score] = int(round(np.mean(scores)))
+     else:
+-        response = call_gemini_with_text_prompt(
++        response = call_llm_with_text_prompt(
+             prompt=base_prompt,
+             model_name=model_name,
+             generation_configs={
+@@ -197,7 +197,7 @@ Review {i + 1}/{len(reviews)}:
+ ```
+ """
+     base_prompt = AGENTREVIEW_INSTRUCTIONS + review_text
+-    response = call_gemini_with_text_prompt(
++    response = call_llm_with_text_prompt(
+         prompt=base_prompt,
+         model_name=model,
+         generation_configs={
+diff --git a/methods/agents/content_refinement_agent.py b/methods/agents/content_refinement_agent.py
+index c9ba81d..53e17b1 100644
+--- a/methods/agents/content_refinement_agent.py
++++ b/methods/agents/content_refinement_agent.py
+@@ -16,13 +16,13 @@ import os
+ import traceback
+ import json
+ import shutil
+-from google.genai import types  # type: ignore
+ 
+ from utils.pdf_utils import compile_latex, load_paper, pdf_to_grid_images
+-from utils.gemini_utils import (
+-    call_gemini_with_contents,
+-    parse_gemini_json_latex_response,
+-    call_gemini_with_images,
++from utils.gemini_utils import parse_gemini_json_latex_response
++from utils.llm_backend_utils import (
++    call_llm_with_images,
++    call_llm_with_pdf,
++    call_llm_with_text_prompt,
+ )
+ 
+ from autoraters.agent_review import perform_review_agentreview
+@@ -162,7 +162,7 @@ Respond in JSON format with the following structure:
+ ```
+ """
+             )
+-            response_dict = call_gemini_with_images(
++            response_dict = call_llm_with_images(
+                 prompt=prompt,
+                 images=image_paths,
+                 model_name=self.model_name,
+@@ -290,14 +290,10 @@ INSTRUCTION:
+ 
+             print(" >> calling Refinement Agent...")
+             try:
+-                response_dict = call_gemini_with_contents(
+-                    contents=[
+-                        types.Part.from_bytes(
+-                            data=pdf_bytes, mime_type="application/pdf"
+-                        ),
+-                        types.Part.from_text(text=user_prompt_text),
+-                    ],
+-                    generation_configs={"system_instruction": self.system_prompt},
++                response_dict = call_llm_with_pdf(
++                    pdf_path=valid_pdf_for_context,
++                    prompt=user_prompt_text,
++                    system_instruction=self.system_prompt,
+                     model_name=self.model_name,
+                     result_parsing_func=parse_gemini_json_latex_response,
+                 )
+@@ -517,10 +513,8 @@ block.
+ """
+ 
+             try:
+-                response_dict = call_gemini_with_contents(
+-                    contents=[
+-                        types.Part.from_text(text=prompt),
+-                    ],
++                response_dict = call_llm_with_text_prompt(
++                    prompt=prompt,
+                     model_name=self.model_name,
+                     result_parsing_func=lambda x: {"raw_response": x},
+                     check_parsed_response_not_none=False,
+diff --git a/methods/agents/literature_review_agent.py b/methods/agents/literature_review_agent.py
+index f449b11..54bab0d 100644
+--- a/methods/agents/literature_review_agent.py
++++ b/methods/agents/literature_review_agent.py
+@@ -26,6 +26,10 @@ from methods.prompts.literature_review_agent import (
+     literature_review_agent_writter_prompt,
+ )
+ from utils.gemini_utils import call_gemini_with_contents, parse_gemini_latex_results
++from utils.llm_backend_utils import (
++    call_llm_with_text_prompt,
++    is_openai_compatible_model,
++)
+ from utils.scholar_utils import s2_title_search
+ 
+ 
+@@ -461,14 +465,30 @@ class HybridLiteratureAgent:
+             {DiscoveryResult.model_json_schema()}
+             """
+ 
+-        response_dict = call_gemini_with_contents(
+-            model_name="gemini-3-flash-preview",
+-            contents=[prompt],
+-            generation_configs={
+-                "tools": [self.google_search_tool],
+-                "temperature": 0.1 if task.get("search_type") == "targeted" else 0.4,
+-            },
+-        )
++        if is_openai_compatible_model(self.model_name):
++            # OpenRouter exposes the OpenAI-compatible generation API, not
++            # Gemini's Google Search tool. Candidate titles are still verified
++            # against Semantic Scholar below; therefore an unverified model
++            # suggestion never becomes a bibliography entry by itself.
++            response_dict = call_llm_with_text_prompt(
++                prompt=prompt.replace(
++                    "Use Google Search to ",
++                    "Use your knowledge to propose only well-known, real ",
++                ),
++                model_name=self.model_name,
++                generation_configs={
++                    "temperature": 0.1 if task.get("search_type") == "targeted" else 0.4,
++                },
++            )
++        else:
++            response_dict = call_gemini_with_contents(
++                model_name="gemini-3-flash-preview",
++                contents=[prompt],
++                generation_configs={
++                    "tools": [self.google_search_tool],
++                    "temperature": 0.1 if task.get("search_type") == "targeted" else 0.4,
++                },
++            )
+ 
+         if response_dict["parsed_response"]:
+             return response_dict["parsed_response"].get("candidates", [])
+@@ -496,12 +516,20 @@ class HybridLiteratureAgent:
+         )
+ 
+         user_prompt = "Generate the LaTeX for Introduction and Related Work sections."
+-        response_dict = call_gemini_with_contents(
+-            model_name=self.model_name,
+-            contents=[user_prompt, json.dumps(context_payload)],
+-            generation_configs={"system_instruction": writer_system_prompt},
+-            result_parsing_func=parse_gemini_latex_results,
+-        )
++        if is_openai_compatible_model(self.model_name):
++            response_dict = call_llm_with_text_prompt(
++                prompt=user_prompt + "\n\n" + json.dumps(context_payload),
++                model_name=self.model_name,
++                generation_configs={"system_instruction": writer_system_prompt},
++                result_parsing_func=parse_gemini_latex_results,
++            )
++        else:
++            response_dict = call_gemini_with_contents(
++                model_name=self.model_name,
++                contents=[user_prompt, json.dumps(context_payload)],
++                generation_configs={"system_instruction": writer_system_prompt},
++                result_parsing_func=parse_gemini_latex_results,
++            )
+         return response_dict["parsed_response"]
+ 
+     def _generate_key(self, authors_raw, year, title):
+diff --git a/methods/agents/outline_agent.py b/methods/agents/outline_agent.py
+index 6b94ae9..23b05e0 100644
+--- a/methods/agents/outline_agent.py
++++ b/methods/agents/outline_agent.py
+@@ -13,9 +13,8 @@
+ # limitations under the License.
+ 
+ from utils.common_utils import load_md_file
+-from utils.gemini_utils import call_gemini_with_contents
++from utils.llm_backend_utils import call_llm_with_text_prompt
+ import json
+-from google.genai import types  # type: ignore
+ 
+ from methods.prompts.outline_agent import outline_agent_system_prompt
+ 
+@@ -35,21 +34,17 @@ class OutlineAgent:
+         conference_guidelines_file: str,
+         output_filepath: str = None,
+     ):
+-        contents = [
+-            types.Part.from_text(
+-                text=outline_agent_system_prompt.format(cutoff_date=self.cutoff_date)
+-            ),
+-            types.Part.from_text(text="'idea.md':\n" + load_md_file(idea_file)),
+-            types.Part.from_text(
+-                text="'experimental_log.md':\n" + load_md_file(experimental_log_file)
+-            ),
+-            types.Part.from_text(
+-                text="'template.tex':\n" + load_md_file(latex_template_file)
+-            ),
+-            types.Part.from_text(text=load_md_file(conference_guidelines_file)),
+-        ]
+-        response_dict = call_gemini_with_contents(
+-            contents=contents,
++        prompt = "\n\n".join(
++            [
++                outline_agent_system_prompt.format(cutoff_date=self.cutoff_date),
++                "'idea.md':\n" + load_md_file(idea_file),
++                "'experimental_log.md':\n" + load_md_file(experimental_log_file),
++                "'template.tex':\n" + load_md_file(latex_template_file),
++                "'conference_guidelines.md':\n" + load_md_file(conference_guidelines_file),
++            ]
++        )
++        response_dict = call_llm_with_text_prompt(
++            prompt=prompt,
+             model_name=self.model_name,
+         )
+         json_result = response_dict["parsed_response"]
+diff --git a/methods/paper_writer.py b/methods/paper_writer.py
+index 8287943..309928f 100644
+--- a/methods/paper_writer.py
++++ b/methods/paper_writer.py
+@@ -23,7 +23,6 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
+ from methods.agents.outline_agent import OutlineAgent
+ from methods.agents.literature_review_agent import HybridLiteratureAgent
+ from methods.agents.section_writing_agent import SectionWritingAgent
+-from methods.agents.content_refinement_agent import ContentRefinementAgent
+ 
+ from utils.common_utils import (
+     create_log_folder,
+@@ -164,6 +163,11 @@ def write_single_paper(
+                 dirs_exist_ok=True,
+             )
+ 
++            # Import only when the optional PDF-refinement stage begins. This
++            # lets outline, literature, and draft writing run in lightweight
++            # OpenRouter environments before vision/PDF extras are installed.
++            from methods.agents.content_refinement_agent import ContentRefinementAgent
++
+             content_refinement_agent = ContentRefinementAgent(
+                 experimental_log_path=experimental_log_file_path,
+                 citation_map_path=citation_map_path,
+diff --git a/utils/llm_backend_utils.py b/utils/llm_backend_utils.py
+index b823192..d02db15 100644
+--- a/utils/llm_backend_utils.py
++++ b/utils/llm_backend_utils.py
+@@ -28,23 +28,25 @@ from utils.openai_utils import (
+     call_openai_models_with_content,
+     parse_openai_json_results,
+     get_openai_image_part_from_path,
++    is_openrouter_model,
+ )
+-from utils.pdf_utils import load_paper
+ 
+ 
+ def identity_parse(response: str):
+     return response
+ 
+ 
++def is_openai_compatible_model(model_name: str) -> bool:
++    """Whether a model is called through the OpenAI chat-completions API."""
++    name = model_name.lower()
++    return is_openrouter_model(model_name) or any(tag in name for tag in ("gpt", "o1", "o3"))
++
++
+ def get_llm_parser(model_name: str, return_json: bool = True) -> Callable:
+     if not return_json:
+         return identity_parse
+ 
+-    if (
+-        "gpt" in model_name.lower()
+-        or "o1" in model_name.lower()
+-        or "o3" in model_name.lower()
+-    ):
++    if is_openai_compatible_model(model_name):
+         return parse_openai_json_results
+     else:
+         return parse_gemini_json_results
+@@ -70,11 +72,7 @@ def call_llm_with_text_prompt(
+     if generation_configs is None:
+         generation_configs = {}
+ 
+-    if (
+-        "gpt" in model_name.lower()
+-        or "o1" in model_name.lower()
+-        or "o3" in model_name.lower()
+-    ):
++    if is_openai_compatible_model(model_name):
+         system_prompt = None
+         configs_for_openai = dict(generation_configs) if generation_configs else {}
+         if "system_instruction" in configs_for_openai:
+@@ -123,11 +121,7 @@ def call_llm_with_images(
+     if generation_configs is None:
+         generation_configs = {}
+ 
+-    if (
+-        "gpt" in model_name.lower()
+-        or "o1" in model_name.lower()
+-        or "o3" in model_name.lower()
+-    ):
++    if is_openai_compatible_model(model_name):
+         system_prompt = None
+         # Copy to avoid side-effects on caller's dictionary
+         configs_for_openai = dict(generation_configs) if generation_configs else {}
+@@ -181,11 +175,9 @@ def call_llm_with_pdf(
+         else get_llm_parser(model_name, return_json)
+     )
+ 
+-    if (
+-        "gpt" in model_name.lower()
+-        or "o1" in model_name.lower()
+-        or "o3" in model_name.lower()
+-    ):
++    if is_openai_compatible_model(model_name):
++        from utils.pdf_utils import load_paper
++
+         paper_text = load_paper(pdf_path, min_size=100)
+         full_prompt = f"Paper Content:\n{paper_text}\n\nTask:\n{prompt}"
+ 
+diff --git a/utils/openai_utils.py b/utils/openai_utils.py
+index f188477..121c25a 100644
+--- a/utils/openai_utils.py
++++ b/utils/openai_utils.py
+@@ -19,7 +19,6 @@ import time
+ import os
+ import sys
+ import threading
+-import cv2  # type: ignore
+ import base64
+ 
+ from openai import OpenAI  # type: ignore
+@@ -28,25 +27,64 @@ from dotenv import load_dotenv  # type: ignore
+ dot_file = os.path.join(os.path.dirname(__file__), "../.env")
+ load_dotenv(dot_file)
+ 
+-_openai_client = None
++_openai_clients = {}
+ _openai_client_lock = threading.Lock()
+ 
+ 
+-def get_openai_client() -> OpenAI:
+-    """Returns a shared OpenAI client, creating it on first use.
++def is_openrouter_model(model_name: str) -> bool:
++    """Return whether ``model_name`` opts into the OpenRouter endpoint.
+ 
+-    The client is created lazily so that OPENAI_API_KEY is only required when
+-    an OpenAI model is actually called (e.g. Gemini-only setups don't need it).
++    Paper Orchestra historically selected OpenAI by recognizing a few OpenAI
++    model prefixes.  OpenRouter model identifiers are provider-qualified (for
++    example ``openai/gpt-4.1``), so requiring an explicit ``openrouter/``
++    prefix avoids accidentally sending those identifiers to api.openai.com.
+     """
+-    global _openai_client
+-    if _openai_client is None:
++    return model_name.lower().startswith(("openrouter/", "openrouter:"))
++
++
++def provider_model_name(model_name: str) -> str:
++    """Strip the local OpenRouter routing prefix before sending a request."""
++    if model_name.lower().startswith("openrouter/"):
++        return model_name[len("openrouter/") :]
++    if model_name.lower().startswith("openrouter:"):
++        return model_name[len("openrouter:") :]
++    return model_name
++
++
++def get_openai_client(model_name: str) -> OpenAI:
++    """Return a shared OpenAI-compatible client for OpenAI or OpenRouter.
++
++    Use ``openrouter/<provider>/<model>`` in CLI arguments to route a request
++    through OpenRouter.  Credentials remain environment variables and are
++    never written to repository files.
++    """
++    global _openai_clients
++    provider = "openrouter" if is_openrouter_model(model_name) else "openai"
++    if provider not in _openai_clients:
+         with _openai_client_lock:
+-            if _openai_client is None:
+-                openai_api_key = os.environ.get("OPENAI_API_KEY")
+-                if not openai_api_key:
+-                    raise ValueError("OPENAI_API_KEY must be set to use OpenAI models.")
+-                _openai_client = OpenAI(api_key=openai_api_key)
+-    return _openai_client
++            if provider not in _openai_clients:
++                if provider == "openrouter":
++                    api_key = os.environ.get("OPENROUTER_API_KEY")
++                    if not api_key:
++                        raise ValueError(
++                            "OPENROUTER_API_KEY must be set for openrouter/<model>."
++                        )
++                    headers = {}
++                    if os.environ.get("OPENROUTER_HTTP_REFERER"):
++                        headers["HTTP-Referer"] = os.environ["OPENROUTER_HTTP_REFERER"]
++                    if os.environ.get("OPENROUTER_APP_TITLE"):
++                        headers["X-Title"] = os.environ["OPENROUTER_APP_TITLE"]
++                    _openai_clients[provider] = OpenAI(
++                        api_key=api_key,
++                        base_url="https://openrouter.ai/api/v1",
++                        default_headers=headers or None,
++                    )
++                else:
++                    api_key = os.environ.get("OPENAI_API_KEY")
++                    if not api_key:
++                        raise ValueError("OPENAI_API_KEY must be set to use OpenAI models.")
++                    _openai_clients[provider] = OpenAI(api_key=api_key)
++    return _openai_clients[provider]
+ 
+ 
+ def parse_openai_json_results(response: str):
+@@ -121,19 +159,20 @@ def call_openai_models_with_content(
+ ):
+     raw_response = None
+     parsed_response = None
+-    openai_client = get_openai_client()
++    openai_client = get_openai_client(model_name)
++    request_model_name = provider_model_name(model_name)
+ 
+     for attempt in range(max_retries):
+         try:
+             messages = []
+             if system_prompt:
+-                role = "developer" if model_name.startswith(("o1", "o3")) else "system"
++                role = "developer" if request_model_name.startswith(("o1", "o3")) else "system"
+                 messages.append({"role": role, "content": system_prompt})
+ 
+             messages.append({"role": "user", "content": content})
+ 
+             response = openai_client.chat.completions.create(
+-                model=model_name,
++                model=request_model_name,
+                 messages=messages,
+                 **generation_configs,
+             )
+diff --git a/utils/scholar_utils.py b/utils/scholar_utils.py
+index 7ecdbf1..bd65e81 100644
+--- a/utils/scholar_utils.py
++++ b/utils/scholar_utils.py
+@@ -24,8 +24,13 @@ from dotenv import load_dotenv  # type: ignore
+ 
+ cur_dir = os.path.dirname(os.path.realpath(__file__))
+ load_dotenv(os.path.join(cur_dir, "../.env"))
+-S2_API_KEY = os.environ.get("SEMANTIC_SCHOLAR_API_KEY")
+-print(f"Using S2 API Key: {S2_API_KEY}")
++# Accept the documented name and the spelling Semantic Scholar's approval e-mail uses.
++S2_API_KEY = (
++    os.environ.get("SEMANTIC_SCHOLAR_API_KEY")
++    or os.environ.get("S2_API_KEY")
++    or os.environ.get("S2_API_Key")
++)
++print(f"Semantic Scholar API key: {'set' if S2_API_KEY else 'not set (public rate limit)'}")
+ 
+ 
+ # --- SEMANTIC SCHOLAR UTILS ---
+@@ -59,17 +64,25 @@ def s2_title_search(
+             return True
+ 
+     try:
+-        rsp = requests.get(
+-            "https://api.semanticscholar.org/graph/v1/paper/search",
+-            headers=headers,
+-            params={
+-                "query": title_query,
+-                "limit": 3,
+-                "fields": "title,authors,venue,year,abstract,citationCount,journal,publicationDate",
+-            },
+-            timeout=5,
+-        )
+-        if rsp.status_code != 200:
++        # Without an API key the shared public pool often answers 429; wait and
++        # retry rather than silently dropping a real paper from the bibliography.
++        rsp = None
++        for attempt in range(8):
++            rsp = requests.get(
++                "https://api.semanticscholar.org/graph/v1/paper/search",
++                headers=headers,
++                params={
++                    "query": title_query,
++                    "limit": 3,
++                    "fields": "title,authors,venue,year,abstract,citationCount,journal,publicationDate",
++                },
++                timeout=15,
++            )
++            if rsp.status_code not in (429, 500, 502, 503, 504):
++                break
++            time.sleep(min(30, 2 * 2**attempt))
++        if rsp is None or rsp.status_code != 200:
++            print(f"      ⚠️ S2 lookup failed for '{title_query[:60]}' (HTTP {rsp.status_code if rsp is not None else 'none'})")
+             return None
+         results = rsp.json().get("data", [])
+         if not results:

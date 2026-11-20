@@ -129,7 +129,7 @@ def table(slide, headers, rows, horizontal, vertical, widths, row_height=91, fon
 
 
 def read_results():
-    with Path("results/summary_metrics.csv").open(newline="") as handle:
+    with Path("archive/v1_paper/results/summary_metrics.csv").open(newline="") as handle:
         rows = list(csv.DictReader(handle))
     return {(row["dataset"], row["method"]): row for row in rows}
 
@@ -447,7 +447,7 @@ def write_pptx(path):
 def main():
     ROOT.mkdir(exist_ok=True)
     PREVIEWS.mkdir(parents=True, exist_ok=True)
-    protected = [Path('STP_RAG_Research_Paper_Revised.tex'), Path('STP_RAG_Research_Paper_Revised.pdf'), Path('references.bib'), Path('MANUSCRIPT_NOTES.md')] + list(Path('results').rglob('*'))
+    protected = [Path('archive/v1_paper/STP_RAG_Research_Paper_Revised.tex'), Path('archive/v1_paper/STP_RAG_Research_Paper_Revised.pdf'), Path('archive/v1_paper/references.bib'), Path('archive/v1_paper/MANUSCRIPT_NOTES.md')] + list(Path('archive/v1_paper/results').rglob('*'))
     before = {str(path): hashlib.sha256(path.read_bytes()).hexdigest() for path in protected if path.is_file()}
     results = read_results()
     build_slides(results)

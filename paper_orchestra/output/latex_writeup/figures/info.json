@@ -1,0 +1,14 @@
+[
+  {
+    "name": "pareto_latency_recall.png",
+    "caption": "Descriptive latency--Recall@5 trade-off across pilot arms; error bars are across-seed standard deviations and are not paired confidence intervals."
+  },
+  {
+    "name": "delta_vs_baseline.png",
+    "caption": "Rounded pilot mean differences relative to the nominal velocity-only arm; values do not support significance claims."
+  },
+  {
+    "name": "structure_breakdown.png",
+    "caption": "Descriptive relationship between chunk count and answer F1 across datasets and pilot arms."
+  }
+]

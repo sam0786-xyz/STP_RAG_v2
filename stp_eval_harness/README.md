@@ -1,6 +1,6 @@
 # stp_eval: evaluation harness for the STP-RAG confirmatory protocol
 
-This package implements Section 5 of `research_paper_v2/STP_RAG_Research_Paper_v2.tex`. It also contains a reference implementation of Algorithm 1 and Eqs. 1–9 from the same paper, so the confirmatory run can be checked against the specification.
+This package implements Section 5 of `paper/STP_RAG_Research_Paper_v2.tex`. It also contains a reference implementation of Algorithm 1 and Eqs. 1–9 from the same paper, so the confirmatory run can be checked against the specification.
 
 It has **not** been run against the pilot `stp_rag/` system, and it produces no results by itself. It is the instrument for the confirmatory run.
 

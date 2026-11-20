@@ -1,4 +1,4 @@
-/** Content transcribed from research_paper_v2 (Tables 3 and 4, Sections 4-5). */
+/** Content transcribed from paper/STP_RAG_Research_Paper_v2_full.tex (Tables 3 and 4, Sections 4-5). */
 
 export type Status = "Consistent" | "Partial" | "Unverified" | "Differs" | "Conflict" | "Contaminated" | "Missing" | "Branch B (inferred)";
 

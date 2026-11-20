@@ -101,7 +101,7 @@ Run `node scripts/fetch_model.mjs` once. It saves the model (about 65 MB) to `pu
 Run these from the project root:
 
 ```bash
-cd research_paper_v2 && python3 scripts/make_results.py && cd ..   # pilot numbers (shared with the paper)
+cd paper && python3 scripts/make_results.py && cd ..   # pilot numbers (shared with the paper)
 cd dashboard
 python3 scripts/build_demo.py           # the paper document; needs: pip install fastembed
 python3 scripts/build_playground.py     # the Playground samples (after build_demo.py)

@@ -1,0 +1,118 @@
+Semantic Scholar API key: not set (public rate limit)
+🚀 Starting Paper Generation (WITHOUT PLOTTING), with figures stored in /Users/sameer/Documents/STP_RAG_Research_Paper_Revised_Overleaf/paper_orchestra_inputs/raw_materials/figures
+outline.json output written to /Users/sameer/Documents/STP_RAG_Research_Paper_Revised_Overleaf/paper_orchestra_output/outline.json
+🚀 Starting Fast Hybrid Literature Agent (Cutoff: 2026-11, Threads: 3)...
+📚 Phase 1: Analyzing Plan & Executing Search Tasks...
+    -> Identified 27 distinct search tasks.
+   🔎 Phase 1a: Google Candidates Discovery (MaxPool=10)...
+   🔎 Exploration [Introduction]: 'Find foundational retrieval-augmented generation papers and broad surveys describing the role of retrieved evidence in generation.'
+   🔎 Exploration [Introduction]: 'Find surveys or reviews of document segmentation and retrieval context construction, prioritizing broad problem framing over individual competing systems.'
+   🔎 Exploration [Introduction]: 'Find evidence of practical consequences of fragmented or irrelevant retrieved context, checking whether the tasks and datasets support the proposed framing.'
+   🔎 Exploration [Introduction]: 'Identify 3–5 foundational papers establishing retrieval-augmented generation, text segmentation, and evidence-grounded question answering; verify their exact contributions and separate them from the Related Work technical comparison set.'
+   🔎 Exploration [Related Work: 2.1 Passage segmentation and chunking]: 'fixed-size passage chunking splits qualifications from definitions retrieval'
+   🔎 Exploration [Related Work: 2.1 Passage segmentation and chunking]: 'similarity-threshold text segmentation boundary errors evidence fragmentation'
+   🔎 Exploration [Related Work: 2.2 Semantic and structural boundary signals]: 'adjacent sentence embedding distance segmentation false boundaries local variation'
+   🔎 Exploration [Related Work: 2.2 Semantic and structural boundary signals]: 'document heading structure semantic segmentation ablation boundary attribution'
+   🔎 Exploration [Related Work: 2.3 Retrieval context selection and expansion]: 'retrieval context expansion irrelevant neighboring sentences token budget'
+   🔎 Exploration [Related Work: 2.3 Retrieval context selection and expansion]: 'retrieval augmented generation context selection matched prompt token budget provenance'
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - 4.1 Pilot setup and audit]: 'research paper or technical report introducing 'HotpotQA''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - 4.1 Pilot setup and audit]: 'research paper or technical report introducing 'QASPER''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - 4.2 Descriptive pilot results]: 'research paper or technical report introducing 'answer F1''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - 4.2 Descriptive pilot results]: 'research paper or technical report introducing 'Recall@K''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - 4.2 Descriptive pilot results]: 'research paper or technical report introducing 'mean reciprocal rank (MRR)''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - 4.3 Confirmatory design and measurements]: 'research paper or technical report introducing 'fixed-size chunking''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - 4.3 Confirmatory design and measurements]: 'research paper or technical report introducing 'similarity-threshold text segmentation''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - 4.3 Confirmatory design and measurements]: 'research paper or technical report introducing 'Recall@K''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - 4.3 Confirmatory design and measurements]: 'research paper or technical report introducing 'mean reciprocal rank (MRR)''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - 4.3 Confirmatory design and measurements]: 'research paper or technical report introducing 'exact match (EM) for question answering''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - 4.3 Confirmatory design and measurements]: 'research paper or technical report introducing 'answer F1''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - 4.3 Confirmatory design and measurements]: 'research paper or technical report introducing 'P_k text segmentation metric''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - 4.3 Confirmatory design and measurements]: 'research paper or technical report introducing 'WindowDiff text segmentation metric''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - 4.4 Planned statistical analysis]: 'research paper or technical report introducing 'paired bootstrap''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - 4.4 Planned statistical analysis]: 'research paper or technical report introducing 'cluster bootstrap''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - 4.4 Planned statistical analysis]: 'research paper or technical report introducing 'sign-flip permutation test''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - 4.4 Planned statistical analysis]: 'research paper or technical report introducing 'Holm correction''
+   📊 Phase 1b: Semantic Scholar Enrichment (Rate-limited, sequential)...
+      ⚠️ S2 lookup failed for 'TextTiling: Segmenting Text into Multi-paragraph Subtopic Pa' (HTTP 429)
+      ⚠️ S2 lookup failed for 'Advances in Domain Independent Linear Text Segmentation' (HTTP 429)
+      ⚠️ S2 lookup failed for 'A Critique and Improvement of an Evaluation Metric for Text ' (HTTP 429)
+      -> 📚 Added enriched paper: Text Segmentation as a Supervised Learning Task
+      -> 📚 Added enriched paper: SECTOR: A Neural Model for Coherent Topic Segmentation and Classification
+      -> 📚 Added enriched paper: Is Semantic Chunking Worth the Computational Cost?
+      ⚠️ S2 lookup failed for 'Dense Passage Retrieval for Open-Domain Question Answering' (HTTP 429)
+      ⚠️ S2 lookup failed for 'Dense X Retrieval: What Retrieval Granularity Should We Use?' (HTTP 429)
+      ⚠️ S2 lookup failed for 'Late Chunking: Contextual Chunk Embeddings Using Long-Contex' (HTTP 429)
+      ⚠️ S2 lookup failed for 'RAPTOR: Recursive Abstractive Processing for Tree-Organized ' (HTTP 429)
+      -> 📚 Added enriched paper: HotpotQA: A Dataset for Diverse, Explainable Multi-hop Question Answering
+      ⚠️ S2 lookup failed for 'A Dataset of Information-Seeking Questions and Answers Ancho' (HTTP 429)
+      -> 📚 Added enriched paper: Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks
+      ⚠️ S2 lookup failed for 'REALM: Retrieval-Augmented Language Model Pre-Training' (HTTP 429)
+      ⚠️ S2 lookup failed for 'Leveraging Passage Retrieval with Generative Models for Open' (HTTP 429)
+      ⚠️ S2 lookup failed for 'Improving Language Models by Retrieving from Trillions of To' (HTTP 429)
+      ⚠️ S2 lookup failed for 'Atlas: Few-shot Learning with Retrieval Augmented Language M' (HTTP 429)
+      -> 📚 Added enriched paper: REPLUG: Retrieval-Augmented Black-Box Language Models
+      ⚠️ S2 lookup failed for 'Active Retrieval Augmented Generation' (HTTP 429)
+      ⚠️ S2 lookup failed for 'Self-RAG: Learning to Retrieve, Generate, and Critique throu' (HTTP 429)
+      ⚠️ S2 lookup failed for 'RARR: Researching and Revising What Language Models Say, Usi' (HTTP 429)
+      ⚠️ S2 lookup failed for 'WebGPT: Browser-assisted question-answering with human feedb' (HTTP 429)
+      ⚠️ S2 lookup failed for 'Lost in the Middle: How Language Models Use Long Contexts' (HTTP 429)
+      -> 📚 Added enriched paper: Retrieval-Augmented Generation for Large Language Models: A Survey
+      -> 📚 Added enriched paper: A Dataset of Information-Seeking Questions and Answers Anchored in Research Papers
+      ⚠️ S2 lookup failed for 'TextTiling: Segmenting Text into Multi-paragraph Subtopic Pa' (HTTP 429)
+      ⚠️ S2 lookup failed for 'Dense Passage Retrieval for Open-Domain Question Answering' (HTTP 429)
+      -> 📚 Added enriched paper: Leveraging Passage Retrieval with Generative Models for Open Domain Question Answering
+      -> 📚 Added enriched paper: Dense X Retrieval: What Retrieval Granularity Should We Use?
+      ⚠️ S2 lookup failed for 'Advances in Domain Independent Linear Text Segmentation' (HTTP 429)
+      -> 📚 Added enriched paper: Lost in the Middle: How Language Models Use Long Contexts
+      ⚠️ S2 lookup failed for 'Enabling Large Language Models to Generate Text with Citatio' (HTTP 429)
+      ⚠️ S2 lookup failed for 'Improving Language Models by Retrieving from Trillions of To' (HTTP 429)
+      ⚠️ S2 lookup failed for 'Advances in Domain Independent Linear Text Segmentation' (HTTP 429)
+      ⚠️ S2 lookup failed for 'Minimum Cut Model for Spoken Lecture Segmentation' (HTTP 429)
+      -> 📚 Added enriched paper: Bayesian Unsupervised Topic Segmentation
+      ⚠️ S2 lookup failed for 'TopicTiling: A Text Segmentation Algorithm Based on LDA' (HTTP 429)
+      ⚠️ S2 lookup failed for 'Unsupervised Text Segmentation Using Semantic Relatedness Gr' (HTTP 429)
+      -> 📚 Added enriched paper: Text Segmentation by Cross Segment Attention
+      ⚠️ S2 lookup failed for 'Unsupervised Topic Segmentation of Meetings with BERT Embedd' (HTTP 429)
+      -> 📚 Added enriched paper: Dense Passage Retrieval for Open-Domain Question Answering
+      ⚠️ S2 lookup failed for 'Late Chunking: Contextual Chunk Embeddings Using Long-Contex' (HTTP 429)
+      ⚠️ S2 lookup failed for 'RAPTOR: Recursive Abstractive Processing for Tree-Organized ' (HTTP 429)
+      ⚠️ S2 lookup failed for 'RECOMP: Improving Retrieval-Augmented LMs with Compression a' (HTTP 429)
+      ⚠️ S2 lookup failed for 'LongLLMLingua: Accelerating and Enhancing LLMs in Long Conte' (HTTP 429)
+      -> 📚 Added enriched paper: LLMLingua: Compressing Prompts for Accelerated Inference of Large Language Models
+      ⚠️ S2 lookup failed for 'Self-RAG: Learning to Retrieve, Generate, and Critique throu' (HTTP 429)
+      ⚠️ S2 lookup failed for 'Active Retrieval Augmented Generation' (HTTP 429)
+      ⚠️ S2 lookup failed for 'Enabling Large Language Models to Generate Text with Citatio' (HTTP 429)
+      ⚠️ S2 lookup failed for 'RARR: Researching and Revising What Language Models Say, Usi' (HTTP 429)
+      -> 📚 Added enriched paper: From Local to Global: A Graph RAG Approach to Query-Focused Summarization
+      ⚠️ S2 lookup failed for 'SQuAD: 100,000+ Questions for Machine Comprehension of Text' (HTTP 429)
+      ⚠️ S2 lookup failed for 'TextTiling: Segmenting Text into Multi-paragraph Subtopic Pa' (HTTP 429)
+      ⚠️ S2 lookup failed for 'Advances in Domain Independent Linear Text Segmentation' (HTTP 429)
+      ⚠️ S2 lookup failed for 'Bayesian Segmentation of Text' (HTTP 429)
+      ⚠️ S2 lookup failed for 'LongRAG: Enhancing Retrieval-Augmented Generation with Long-' (HTTP 429)
+      -> 📚 Added enriched paper: RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval
+      ⚠️ S2 lookup failed for 'LongRAG: Enhancing Retrieval-Augmented Generation with Long-' (HTTP 429)
+      ⚠️ S2 lookup failed for 'Improving Language Models by Retrieving from Trillions of To' (HTTP 429)
+      -> 📚 Added enriched paper: Late Chunking: Contextual Chunk Embeddings Using Long-Context Embedding Models
+      ⚠️ S2 lookup failed for 'RECOMP: Improving Retrieval-Augmented LMs with Compression a' (HTTP 429)
+      ⚠️ S2 lookup failed for 'LongLLMLingua: Accelerating and Enhancing LLMs in Long Conte' (HTTP 429)
+      -> 📚 Added enriched paper: Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection
+      ⚠️ S2 lookup failed for 'Active Retrieval Augmented Generation' (HTTP 429)
+      ⚠️ S2 lookup failed for 'Interleaving Retrieval with Chain-of-Thought Reasoning for K' (HTTP 429)
+      ⚠️ S2 lookup failed for 'RARR: Researching and Revising What Language Models Say, Usi' (HTTP 429)
+      -> 📚 Added enriched paper: Enabling Large Language Models to Generate Text with Citations
+      ⚠️ S2 lookup failed for 'The TREC-8 Question Answering Track Report' (HTTP 429)
+      ⚠️ S2 lookup failed for 'Advances in Domain Independent Linear Text Segmentation' (HTTP 429)
+      ⚠️ S2 lookup failed for 'A Statistical Model for Domain-Independent Text Segmentation' (HTTP 429)
+      ⚠️ S2 lookup failed for 'Minimum Cut Model for Spoken Lecture Segmentation' (HTTP 429)
+      ⚠️ S2 lookup failed for 'TopicTiling: A Text Segmentation Algorithm Based on LDA' (HTTP 429)
+      ⚠️ S2 lookup failed for 'Unsupervised Text Segmentation Using Semantic Relatedness Gr' (HTTP 429)
+      -> 📚 Added enriched paper: Unsupervised Topic Segmentation of Meetings with BERT Embeddings
+      ⚠️ S2 lookup failed for 'Large Language Models Can Be Easily Distracted by Irrelevant' (HTTP 429)
+      ⚠️ S2 lookup failed for 'RECOMP: Improving Retrieval-Augmented LMs with Compression a' (HTTP 429)
+      -> 📚 Added enriched paper: LongRAG: Enhancing Retrieval-Augmented Generation with Long-context LLMs
+      ⚠️ S2 lookup failed for 'Multi-Paragraph Segmentation of Expository Text' (HTTP 429)
+      ⚠️ S2 lookup failed for 'SQuAD: 100,000+ Questions for Machine Comprehension of Text' (HTTP 429)
+      ⚠️ S2 lookup failed for 'The TREC-8 Question Answering Track Report' (HTTP 429)
+      ⚠️ S2 lookup failed for 'SQuAD: 100,000+ Questions for Machine Comprehension of Text' (HTTP 429)
+      ⚠️ S2 lookup failed for 'A Simple Sequentially Rejective Multiple Test Procedure' (HTTP 429)
+      ⚠️ S2 lookup failed for 'Statistical Models for Text Segmentation' (HTTP 429)

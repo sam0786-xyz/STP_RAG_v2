@@ -1,0 +1,24 @@
+# secrets (any folder)
+.env
+# macOS
+.DS_Store
+# vendored third-party tool with its own virtualenv and git history;
+# our changes to it are kept in paper_orchestra/openrouter_adapter.patch
+tools/
+# Paper Orchestra intermediate files (about 45 MB); final PDFs and logs are kept
+paper_orchestra/output/content_refinement_workdir/
+# LaTeX build files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+!paper_orchestra/logs/*.log
+*.out
+*.run.xml
+*.synctex.gz
+
+# university report (contains student registration numbers); kept locally only
+report/

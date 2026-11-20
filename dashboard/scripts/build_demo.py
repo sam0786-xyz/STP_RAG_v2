@@ -30,8 +30,8 @@ sys.path.insert(0, str(ROOT / "stp_eval_harness"))
 
 from stp_eval import budget, context, metrics, profile, segment  # noqa: E402
 
-TEX = ROOT / "research_paper_v2" / "STP_RAG_Research_Paper_v2.tex"
-PILOT = ROOT / "research_paper_v2" / "results" / "pilot_metrics.json"
+TEX = ROOT / "paper" / "STP_RAG_Research_Paper_v2_full.tex"  # full version: the six-page file is condensed
+PILOT = ROOT / "paper" / "results" / "pilot_metrics.json"
 OUT = HERE.parent / "public" / "data"
 MODEL = "BAAI/bge-small-en-v1.5"
 

@@ -1,0 +1,180 @@
+Semantic Scholar API key: set
+🚀 Starting Paper Generation (WITHOUT PLOTTING), with figures stored in /Users/sameer/Documents/STP_RAG_Research_Paper_Revised_Overleaf/paper_orchestra_inputs/raw_materials/figures
+outline.json output written to /Users/sameer/Documents/STP_RAG_Research_Paper_Revised_Overleaf/paper_orchestra_output/outline.json
+🚀 Starting Fast Hybrid Literature Agent (Cutoff: 2026-11, Threads: 3)...
+📚 Phase 1: Analyzing Plan & Executing Search Tasks...
+    -> Identified 33 distinct search tasks.
+   🔎 Phase 1a: Google Candidates Discovery (MaxPool=10)...
+   🔎 Exploration [Introduction]: 'Find foundational work establishing retrieval-augmented generation and the role of retrieved passages in question answering.'
+   🔎 Exploration [Introduction]: 'Find surveys or reviews of retrieval-augmented generation, document segmentation, and retrieval evaluation.'
+   🔎 Exploration [Introduction]: 'Find papers documenting practical consequences of splitting evidence or including irrelevant context in question-answering systems, without assuming these effects were measured in this pilot.'
+   🔎 Exploration [Introduction]: 'Identify 3–5 foundational papers on semantic text segmentation, sentence representation, or retrieval-based question answering; verify their relevance and primary-source details.'
+   🔎 Exploration [Related Work: Fixed and Similarity-Based Segmentation]: 'fixed-size passage segmentation split evidence question answering evaluation'
+   🔎 Exploration [Related Work: Fixed and Similarity-Based Segmentation]: 'similarity-threshold text segmentation boundary errors heterogeneous documents'
+   🔎 Exploration [Related Work: Transition- and Structure-Aware Segmentation]: 'semantic transition text segmentation sensitivity local similarity boundaries'
+   🔎 Exploration [Related Work: Transition- and Structure-Aware Segmentation]: 'document heading structure segmentation semantic boundary disagreement'
+   🔎 Exploration [Related Work: Selective Context Around Retrieved Passages]: 'retrieval context expansion question answering matched prompt token budget'
+   🔎 Exploration [Related Work: Selective Context Around Retrieved Passages]: 'retrieved passage neighboring context selection relevance evidence precision'
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - Pilot Setup and Audit]: 'research paper or technical report introducing 'HotpotQA''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - Pilot Setup and Audit]: 'research paper or technical report introducing 'QASPER''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - Descriptive Pilot Results]: 'research paper or technical report introducing 'answer F1''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - Descriptive Pilot Results]: 'research paper or technical report introducing 'Recall@5''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - Descriptive Pilot Results]: 'research paper or technical report introducing 'mean reciprocal rank (MRR)''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - Descriptive Pilot Results]: 'research paper or technical report introducing 'retrieval latency''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - Confirmatory Evaluation Design]: 'research paper or technical report introducing 'Recall@K''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - Confirmatory Evaluation Design]: 'research paper or technical report introducing 'MRR@10''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - Confirmatory Evaluation Design]: 'research paper or technical report introducing 'exact match (EM)''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - Confirmatory Evaluation Design]: 'research paper or technical report introducing 'F1 score''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - Confirmatory Evaluation Design]: 'research paper or technical report introducing 'P_k segmentation metric''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - Confirmatory Evaluation Design]: 'research paper or technical report introducing 'WindowDiff''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - Confirmatory Evaluation Design]: 'research paper or technical report introducing 'evidence split rate''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - Confirmatory Evaluation Design]: 'research paper or technical report introducing 'context precision''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - Confirmatory Evaluation Design]: 'research paper or technical report introducing 'context recovery''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - Confirmatory Evaluation Design]: 'research paper or technical report introducing 'index size''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - Confirmatory Evaluation Design]: 'research paper or technical report introducing 'build time''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - Confirmatory Evaluation Design]: 'research paper or technical report introducing 'retrieval latency''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - Confirmatory Evaluation Design]: 'research paper or technical report introducing 'prompt token count''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - Confirmatory Evaluation Design]: 'research paper or technical report introducing 'paired bootstrap''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - Confirmatory Evaluation Design]: 'research paper or technical report introducing 'document-cluster bootstrap''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - Confirmatory Evaluation Design]: 'research paper or technical report introducing 'sign-flip permutation test''
+   🎯 Targeted Search [Pilot Study and Confirmatory Protocol - Confirmatory Evaluation Design]: 'research paper or technical report introducing 'Holm correction''
+   📊 Phase 1b: Semantic Scholar Enrichment (Rate-limited, sequential)...
+      -> 📚 Added enriched paper: Reading Wikipedia to Answer Open-Domain Questions
+      -> 📚 Added enriched paper: HotpotQA: A Dataset for Diverse, Explainable Multi-hop Question Answering
+      -> 📚 Added enriched paper: Latent Retrieval for Weakly Supervised Open Domain Question Answering
+      -> 📚 Added enriched paper: Dense Passage Retrieval for Open-Domain Question Answering
+      -> 📚 Added enriched paper: REALM: Retrieval-Augmented Language Model Pre-Training
+      -> 📚 Added enriched paper: Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks
+      -> 📚 Added enriched paper: Leveraging Passage Retrieval with Generative Models for Open Domain Question Answering
+      -> 📚 Added enriched paper: Answering Complex Open-Domain Questions with Multi-Hop Dense Retrieval
+      -> 📚 Added enriched paper: Baleen: Robust Multi-Hop Reasoning at Scale via Condensed Retrieval
+      -> 📚 Added enriched paper: A Dataset of Information-Seeking Questions and Answers Anchored in Research Papers
+      -> 📚 Added enriched paper: KILT: a Benchmark for Knowledge Intensive Language Tasks
+      -> 📚 Added enriched paper: Few-shot Learning with Retrieval Augmented Language Models
+      -> 📚 Added enriched paper: Lost in the Middle: How Language Models Use Long Contexts
+      -> 📚 Added enriched paper: Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection
+      -> 📚 Added enriched paper: Advances in domain independent linear text segmentation
+      -> 📚 Added enriched paper: Unsupervised Text Segmentation Using Semantic Relatedness Graphs
+      -> 📚 Added enriched paper: Text Segmentation based on Semantic Word Embeddings
+      -> 📚 Added enriched paper: A Statistical Model for Domain-Independent Text Segmentation
+      -> 📚 Added enriched paper: Bayesian Unsupervised Topic Segmentation
+      -> 📚 Added enriched paper: Text Segmentation as a Supervised Learning Task
+      -> 📚 Added enriched paper: SECTOR: A Neural Model for Coherent Topic Segmentation and Classification
+      ⚠️ S2 lookup failed for 'Is Semantic Chunking Worth the Computational Cost?' (HTTP 429)
+      -> 📚 Added enriched paper: Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks
+      -> 📚 Added enriched paper: Dense X Retrieval: What Retrieval Granularity Should We Use?
+      -> 📚 Added enriched paper: LongRAG: Enhancing Retrieval-Augmented Generation with Long-context LLMs
+      -> 📚 Added enriched paper: RECOMP: Improving Retrieval-Augmented LMs with Compression and Selective Augmentation
+      -> 📚 Added enriched paper: LongLLMLingua: Accelerating and Enhancing LLMs in Long Context Scenarios via Prompt Compression
+      -> 📚 Added enriched paper: LLMLingua: Compressing Prompts for Accelerated Inference of Large Language Models
+      -> 📚 Added enriched paper: RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval
+      -> 📚 Added enriched paper: RankRAG: Unifying Context Ranking with Retrieval-Augmented Generation in LLMs
+      -> 📚 Added enriched paper: Active Retrieval Augmented Generation
+      -> 📚 Added enriched paper: Retrieval Augmented Generation or Long-Context LLMs? A Comprehensive Study and Hybrid Approach
+      -> 📚 Added enriched paper: Minimum Cut Model for Spoken Lecture Segmentation
+      -> 📚 Added enriched paper: Text Segmentation by Cross Segment Attention
+      -> 📚 Added enriched paper: Is Semantic Chunking Worth the Computational Cost?
+      -> 📚 Added enriched paper: Searching for Best Practices in Retrieval-Augmented Generation
+      -> 📚 Added enriched paper: LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding
+      -> 📚 Added enriched paper: SQuAD: 100,000+ Questions for Machine Comprehension of Text
+      -> 📚 Added enriched paper: Late Chunking: Contextual Chunk Embeddings Using Long-Context Embedding Models
+      -> 📚 Added enriched paper: Segmentation Similarity and Agreement
+      -> 📚 Added enriched paper: Large Language Models Can Be Easily Distracted by Irrelevant Context
+      -> 📚 Added enriched paper: Adversarial Examples for Evaluating Reading Comprehension Systems
+      -> 📚 Added enriched paper: ♫ MuSiQue: Multihop Questions via Single-hop Question Composition
+      -> 📚 Added enriched paper: Interleaving Retrieval with Chain-of-Thought Reasoning for Knowledge-Intensive Multi-Step Questions
+      -> 📚 Added enriched paper: RULER: What's the Real Context Size of Your Long-Context Language Models?
+      -> 📚 Added enriched paper: Chain-of-Note: Enhancing Robustness in Retrieval-Augmented Language Models
+      ⚠️ S2 lookup failed for 'Framing Image Description as a Ranking Task: Data, Models an' (HTTP 429)
+      -> 📚 Added enriched paper: ANN-Benchmarks: A Benchmarking Tool for Approximate Nearest Neighbor Algorithms
+      -> 📚 Added enriched paper: RAGChecker: A Fine-grained Framework for Diagnosing Retrieval-Augmented Generation
+      -> 📚 Added enriched paper: Billion-Scale Similarity Search with GPUs
+      -> 📚 Added enriched paper: Retrieval-Augmented Generation for Large Language Models: A Survey
+      -> 📚 Added enriched paper: A Survey on RAG Meeting LLMs: Towards Retrieval-Augmented Large Language Models
+      -> 📚 Added enriched paper: Retrieval-Augmented Generation for AI-Generated Content: A Survey
+      -> 📚 Added enriched paper: Evaluation of Retrieval-Augmented Generation: A Survey
+      -> 📚 Added enriched paper: Dense Text Retrieval Based on Pretrained Language Models: A Survey
+      -> 📚 Added enriched paper: Pretrained Transformers for Text Ranking: BERT and Beyond
+      -> 📚 Added enriched paper: Large Language Models for Information Retrieval: A Survey
+
+✨ Final Count: 55 unique enriched papers retrieved.
+🔄 Injecting citations back into Outline...
+✍️  Phase 3: Writing Introduction & Related Work...
+✅ Done! Literature Review Outputs saved to /Users/sameer/Documents/STP_RAG_Research_Paper_Revised_Overleaf/paper_orchestra_output/literature_agent_output/
+ > Agent SectionWritingAgent starting...
+ > Generating paper content with Multimodal Images...
+ > Paper saved to /Users/sameer/Documents/STP_RAG_Research_Paper_Revised_Overleaf/paper_orchestra_output/latex_writeup/raw_draft_paper.tex
+ >> Work directory: /Users/sameer/Documents/STP_RAG_Research_Paper_Revised_Overleaf/paper_orchestra_output/content_refinement_workdir
+
+=== Initial Baseline Review ===
+ >> Initial PDF saved to /Users/sameer/Documents/STP_RAG_Research_Paper_Revised_Overleaf/paper_orchestra_output/content_refinement_workdir/initial_draft.pdf
+ >> Generating snapshots for V0...
+ >> [AgentReview] Generating feedback for initial paper...
+Start paper reviewing using model: `openrouter/openai/gpt-6.1-terra`
+Generating ensemble review 1/3...
+Generating ensemble review 2/3...
+Generating ensemble review 3/3...
+ >> [Reviewer] Score for initial: 4/10
+
+=== Refinement Iteration 1/3 ===
+ >> calling Refinement Agent...
+ >> Compiling new draft...
+ >> New PDF saved to /Users/sameer/Documents/STP_RAG_Research_Paper_Revised_Overleaf/paper_orchestra_output/content_refinement_workdir/refined_paper_v1.pdf
+ >> Generating snapshots for v1...
+ >> [AgentReview] Generating feedback for v1 paper...
+Start paper reviewing using model: `openrouter/openai/gpt-6.1-terra`
+Generating ensemble review 1/3...
+Generating ensemble review 2/3...
+Generating ensemble review 3/3...
+ >> [Reviewer] Score for v1: 5/10
+ >> Score Analysis v1:
+    Overall: 4.0 -> 5.0
+    Sub-axes Gain: +0.0 | Drop: -0.0
+    Sub-axes Deltas: {'Originality': 0.0, 'Quality': 0.0, 'Clarity': 0.0, 'Significance': 0.0, 'Soundness': 0.0, 'Presentation': 0.0, 'Contribution': 0.0}
+ >> SUCCESS: Overall Score increased! Progressing to next iteration...
+
+=== Refinement Iteration 2/3 ===
+ >> calling Refinement Agent...
+ >> Compiling new draft...
+ >> New PDF saved to /Users/sameer/Documents/STP_RAG_Research_Paper_Revised_Overleaf/paper_orchestra_output/content_refinement_workdir/refined_paper_v2.pdf
+ >> Generating snapshots for v2...
+ >> [AgentReview] Generating feedback for v2 paper...
+Start paper reviewing using model: `openrouter/openai/gpt-6.1-terra`
+Generating ensemble review 1/3...
+Generating ensemble review 2/3...
+Generating ensemble review 3/3...
+ >> [Reviewer] Score for v2: 5/10
+ >> Score Analysis v2:
+    Overall: 5.0 -> 5.0
+    Sub-axes Gain: +0.0 | Drop: -0.0
+    Sub-axes Deltas: {'Originality': 0.0, 'Quality': 0.0, 'Clarity': 0.0, 'Significance': 0.0, 'Soundness': 0.0, 'Presentation': 0.0, 'Contribution': 0.0}
+ >> ACCEPT & CONTINUE: Overall same, internal metrics stable/improved. Progressing to next iteration...
+
+=== Refinement Iteration 3/3 ===
+ >> calling Refinement Agent...
+ >> Compiling new draft...
+ >> New PDF saved to /Users/sameer/Documents/STP_RAG_Research_Paper_Revised_Overleaf/paper_orchestra_output/content_refinement_workdir/refined_paper_v3.pdf
+ >> Generating snapshots for v3...
+ >> [AgentReview] Generating feedback for v3 paper...
+Start paper reviewing using model: `openrouter/openai/gpt-6.1-terra`
+Generating ensemble review 1/3...
+Generating ensemble review 2/3...
+Generating ensemble review 3/3...
+ >> [Reviewer] Score for v3: 5/10
+ >> Score Analysis v3:
+    Overall: 5.0 -> 5.0
+    Sub-axes Gain: +0.0 | Drop: -0.0
+    Sub-axes Deltas: {'Originality': 0.0, 'Quality': 0.0, 'Clarity': 0.0, 'Significance': 0.0, 'Soundness': 0.0, 'Presentation': 0.0, 'Contribution': 0.0}
+ >> ACCEPT & CONTINUE: Overall same, internal metrics stable/improved. Progressing to next iteration...
+ >> Generating snapshots for format v0...
+ >> Starting dedicated formatting loop...
+
+=== Formatting Iteration 1/1 ===
+ >> [VLM] Generating formatting feedback for fmt_loop_1 paper...
+ >> No critical formatting issues found. Breaking loop.
+ >> Process Complete. Final Score: 5.0, Final PDF at: /Users/sameer/Documents/STP_RAG_Research_Paper_Revised_Overleaf/paper_orchestra_output/content_refinement_workdir/final_refined_paper.pdf
+ >> Copying final PDF from  /Users/sameer/Documents/STP_RAG_Research_Paper_Revised_Overleaf/paper_orchestra_output/content_refinement_workdir/final_refined_paper.pdf to /Users/sameer/Documents/STP_RAG_Research_Paper_Revised_Overleaf/paper_orchestra_output/final_paper.pdf...
+
+ >> Final PDF saved to:
+ /Users/sameer/Documents/STP_RAG_Research_Paper_Revised_Overleaf/paper_orchestra_output/final_paper.pdf
+exit 0

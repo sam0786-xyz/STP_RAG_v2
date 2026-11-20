@@ -1,0 +1,826 @@
+{
+    "Chen2017ReadingWikipedia": {
+        "citation_key": "Chen2017ReadingWikipedia",
+        "title": "Reading Wikipedia to Answer Open-Domain Questions",
+        "authors": [
+            "Danqi Chen",
+            "Adam Fisch",
+            "J. Weston",
+            "Antoine Bordes"
+        ],
+        "venue": "Annual Meeting of the Association for Computational Linguistics",
+        "year": 2017,
+        "abstract": "This paper proposes to tackle open-domain question answering using Wikipedia as the unique knowledge source: the answer to any factoid question is a text span in a Wikipedia article. This task of machine reading at scale combines the challenges of document retrieval (finding the relevant articles) with that of machine comprehension of text (identifying the answer spans from those articles). Our approach combines a search component based on bigram hashing and TF-IDF matching with a multi-layer recurrent neural network model trained to detect answers in Wikipedia paragraphs. Our experiments on multiple existing QA datasets indicate that (1) both modules are highly competitive with respect to existing counterparts and (2) multitask learning using distant supervision on their combination is an effective complete system on this challenging task."
+    },
+    "Yang2018HotpotqaDataset": {
+        "citation_key": "Yang2018HotpotqaDataset",
+        "title": "HotpotQA: A Dataset for Diverse, Explainable Multi-hop Question Answering",
+        "authors": [
+            "Zhi-Lin Yang",
+            "Peng Qi",
+            "Sai-Zheng Zhang",
+            "Yoshua Bengio",
+            "William W. Cohen",
+            "R. Salakhutdinov",
+            "Christopher D. Manning"
+        ],
+        "venue": "Conference on Empirical Methods in Natural Language Processing",
+        "year": 2018,
+        "abstract": "Existing question answering (QA) datasets fail to train QA systems to perform complex reasoning and provide explanations for answers. We introduce HotpotQA, a new dataset with 113k Wikipedia-based question-answer pairs with four key features: (1) the questions require finding and reasoning over multiple supporting documents to answer; (2) the questions are diverse and not constrained to any pre-existing knowledge bases or knowledge schemas; (3) we provide sentence-level supporting facts required for reasoning, allowing QA systems to reason with strong supervision and explain the predictions; (4) we offer a new type of factoid comparison questions to test QA systems\u2019 ability to extract relevant facts and perform necessary comparison. We show that HotpotQA is challenging for the latest QA systems, and the supporting facts enable models to improve performance and make explainable predictions."
+    },
+    "Lee2019LatentRetrieval": {
+        "citation_key": "Lee2019LatentRetrieval",
+        "title": "Latent Retrieval for Weakly Supervised Open Domain Question Answering",
+        "authors": [
+            "Kenton Lee",
+            "Ming-Wei Chang",
+            "K. Toutanova"
+        ],
+        "venue": "Annual Meeting of the Association for Computational Linguistics",
+        "year": 2019,
+        "abstract": "Recent work on open domain question answering (QA) assumes strong supervision of the supporting evidence and/or assumes a blackbox information retrieval (IR) system to retrieve evidence candidates. We argue that both are suboptimal, since gold evidence is not always available, and QA is fundamentally different from IR. We show for the first time that it is possible to jointly learn the retriever and reader from question-answer string pairs and without any IR system. In this setting, evidence retrieval from all of Wikipedia is treated as a latent variable. Since this is impractical to learn from scratch, we pre-train the retriever with an Inverse Cloze Task. We evaluate on open versions of five QA datasets. On datasets where the questioner already knows the answer, a traditional IR system such as BM25 is sufficient. On datasets where a user is genuinely seeking an answer, we show that learned retrieval is crucial, outperforming BM25 by up to 19 points in exact match."
+    },
+    "Karpukhin2020DensePassage": {
+        "citation_key": "Karpukhin2020DensePassage",
+        "title": "Dense Passage Retrieval for Open-Domain Question Answering",
+        "authors": [
+            "Vladimir Karpukhin",
+            "Barlas O\u011fuz",
+            "Sewon Min",
+            "Patrick Lewis",
+            "Ledell Yu Wu",
+            "Sergey Edunov",
+            "Danqi Chen",
+            "Wen-tau Yih"
+        ],
+        "venue": "Conference on Empirical Methods in Natural Language Processing",
+        "year": 2020,
+        "abstract": "Open-domain question answering relies on efficient passage retrieval to select candidate contexts, where traditional sparse vector space models, such as TF-IDF or BM25, are the de facto method. In this work, we show that retrieval can be practically implemented using dense representations alone, where embeddings are learned from a small number of questions and passages by a simple dual-encoder framework. When evaluated on a wide range of open-domain QA datasets, our dense retriever outperforms a strong Lucene-BM25 system largely by 9%-19% absolute in terms of top-20 passage retrieval accuracy, and helps our end-to-end QA system establish new state-of-the-art on multiple open-domain QA benchmarks."
+    },
+    "Guu2020RealmRetrievalaugmented": {
+        "citation_key": "Guu2020RealmRetrievalaugmented",
+        "title": "REALM: Retrieval-Augmented Language Model Pre-Training",
+        "authors": [
+            "Kelvin Guu",
+            "Kenton Lee",
+            "Zora Tung",
+            "Panupong Pasupat",
+            "Ming-Wei Chang"
+        ],
+        "venue": "International Conference on Machine Learning",
+        "year": 2020,
+        "abstract": "Language model pre-training has been shown to capture a surprising amount of world knowledge, crucial for NLP tasks such as question answering. However, this knowledge is stored implicitly in the parameters of a neural network, requiring ever-larger networks to cover more facts. \nTo capture knowledge in a more modular and interpretable way, we augment language model pre-training with a latent knowledge retriever, which allows the model to retrieve and attend over documents from a large corpus such as Wikipedia, used during pre-training, fine-tuning and inference. For the first time, we show how to pre-train such a knowledge retriever in an unsupervised manner, using masked language modeling as the learning signal and backpropagating through a retrieval step that considers millions of documents. \nWe demonstrate the effectiveness of Retrieval-Augmented Language Model pre-training (REALM) by fine-tuning on the challenging task of Open-domain Question Answering (Open-QA). We compare against state-of-the-art models for both explicit and implicit knowledge storage on three popular Open-QA benchmarks, and find that we outperform all previous methods by a significant margin (4-16% absolute accuracy), while also providing qualitative benefits such as interpretability and modularity."
+    },
+    "Lewis2020RetrievalaugmentedGeneration": {
+        "citation_key": "Lewis2020RetrievalaugmentedGeneration",
+        "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+        "authors": [
+            "Patrick Lewis",
+            "Ethan Perez",
+            "Aleksandra Piktus",
+            "F. Petroni",
+            "Vladimir Karpukhin",
+            "Naman Goyal",
+            "Heinrich K\u00fcttler",
+            "M. Lewis",
+            "Wen-tau Yih",
+            "Tim Rockt\u00e4schel",
+            "Sebastian Riedel",
+            "Douwe Kiela"
+        ],
+        "venue": "Neural Information Processing Systems",
+        "year": 2020,
+        "abstract": "Large pre-trained language models have been shown to store factual knowledge in their parameters, and achieve state-of-the-art results when fine-tuned on downstream NLP tasks. However, their ability to access and precisely manipulate knowledge is still limited, and hence on knowledge-intensive tasks, their performance lags behind task-specific architectures. Additionally, providing provenance for their decisions and updating their world knowledge remain open research problems. Pre-trained models with a differentiable access mechanism to explicit non-parametric memory can overcome this issue, but have so far been only investigated for extractive downstream tasks. We explore a general-purpose fine-tuning recipe for retrieval-augmented generation (RAG) -- models which combine pre-trained parametric and non-parametric memory for language generation. We introduce RAG models where the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever. We compare two RAG formulations, one which conditions on the same retrieved passages across the whole generated sequence, the other can use different passages per token. We fine-tune and evaluate our models on a wide range of knowledge-intensive NLP tasks and set the state-of-the-art on three open domain QA tasks, outperforming parametric seq2seq models and task-specific retrieve-and-extract architectures. For language generation tasks, we f... [Truncated]"
+    },
+    "Izacard2020LeveragingPassage": {
+        "citation_key": "Izacard2020LeveragingPassage",
+        "title": "Leveraging Passage Retrieval with Generative Models for Open Domain Question Answering",
+        "authors": [
+            "Gautier Izacard",
+            "E. Grave"
+        ],
+        "venue": "Conference of the European Chapter of the Association for Computational Linguistics",
+        "year": 2020,
+        "abstract": "Generative models for open domain question answering have proven to be competitive, without resorting to external knowledge. While promising, this approach requires to use models with billions of parameters, which are expensive to train and query. In this paper, we investigate how much these models can benefit from retrieving text passages, potentially containing evidence. We obtain state-of-the-art results on the Natural Questions and TriviaQA open benchmarks. Interestingly, we observe that the performance of this method significantly improves when increasing the number of retrieved passages. This is evidence that sequence-to-sequence models offers a flexible framework to efficiently aggregate and combine evidence from multiple passages."
+    },
+    "Xiong2020AnsweringComplex": {
+        "citation_key": "Xiong2020AnsweringComplex",
+        "title": "Answering Complex Open-Domain Questions with Multi-Hop Dense Retrieval",
+        "authors": [
+            "Wenhan Xiong",
+            "Xiang Lorraine Li",
+            "Srini Iyer",
+            "Jing-Fei Du",
+            "Patrick Lewis",
+            "William Yang Wang",
+            "Yashar Mehdad",
+            "Wen-tau Yih",
+            "Sebastian Riedel",
+            "Douwe Kiela",
+            "Barlas O\u011fuz"
+        ],
+        "venue": "International Conference on Learning Representations",
+        "year": 2020,
+        "abstract": "We propose a simple and efficient multi-hop dense retrieval approach for answering complex open-domain questions, which achieves state-of-the-art performance on two multi-hop datasets, HotpotQA and multi-evidence FEVER. Contrary to previous work, our method does not require access to any corpus-specific information, such as inter-document hyperlinks or human-annotated entity markers, and can be applied to any unstructured text corpus. Our system also yields a much better efficiency-accuracy trade-off, matching the best published accuracy on HotpotQA while being 10 times faster at inference time."
+    },
+    "Khattab2021BaleenRobust": {
+        "citation_key": "Khattab2021BaleenRobust",
+        "title": "Baleen: Robust Multi-Hop Reasoning at Scale via Condensed Retrieval",
+        "authors": [
+            "O. Khattab",
+            "Christopher Potts",
+            "M. Zaharia"
+        ],
+        "venue": "Neural Information Processing Systems",
+        "year": 2021,
+        "abstract": "Multi-hop reasoning (i.e., reasoning across two or more documents) is a key ingredient for NLP models that leverage large corpora to exhibit broad knowledge. To retrieve evidence passages, multi-hop models must contend with a fast-growing search space across the hops, represent complex queries that combine multiple information needs, and resolve ambiguity about the best order in which to hop between training passages. We tackle these problems via Baleen, a system that improves the accuracy of multi-hop retrieval while learning robustly from weak training signals in the many-hop setting. To tame the search space, we propose condensed retrieval, a pipeline that summarizes the retrieved passages after each hop into a single compact context. To model complex queries, we introduce a focused late interaction retriever that allows different parts of the same query representation to match disparate relevant passages. Lastly, to infer the hopping dependencies among unordered training passages, we devise latent hop ordering, a weak-supervision strategy in which the trained retriever itself selects the sequence of hops. We evaluate Baleen on retrieval for two-hop question answering and many-hop claim verification, establishing state-of-the-art performance."
+    },
+    "Dasigi2021DatasetInformationseeking": {
+        "citation_key": "Dasigi2021DatasetInformationseeking",
+        "title": "A Dataset of Information-Seeking Questions and Answers Anchored in Research Papers",
+        "authors": [
+            "Pradeep Dasigi",
+            "Kyle Lo",
+            "Iz Beltagy",
+            "Arman Cohan",
+            "Noah A. Smith",
+            "Matt Gardner"
+        ],
+        "venue": "North American Chapter of the Association for Computational Linguistics",
+        "year": 2021,
+        "abstract": "Readers of academic research papers often read with the goal of answering specific questions. Question Answering systems that can answer those questions can make consumption of the content much more efficient. However, building such tools requires data that reflect the difficulty of the task arising from complex reasoning about claims made in multiple parts of a paper. In contrast, existing information-seeking question answering datasets usually contain questions about generic factoid-type information. We therefore present Qasper, a dataset of 5049 questions over 1585 Natural Language Processing papers. Each question is written by an NLP practitioner who read only the title and abstract of the corresponding paper, and the question seeks information present in the full text. The questions are then answered by a separate set of NLP practitioners who also provide supporting evidence to answers. We find that existing models that do well on other QA tasks do not perform well on answering these questions, underperforming humans by at least 27 F1 points when answering them from entire papers, motivating further research in document-grounded, information-seeking QA, which our dataset is designed to facilitate."
+    },
+    "Petroni2020KiltBenchmark": {
+        "citation_key": "Petroni2020KiltBenchmark",
+        "title": "KILT: a Benchmark for Knowledge Intensive Language Tasks",
+        "authors": [
+            "F. Petroni",
+            "Aleksandra Piktus",
+            "Angela Fan",
+            "Patrick Lewis",
+            "Majid Yazdani",
+            "Nicola De Cao",
+            "James Thorne",
+            "Yacine Jernite",
+            "Vladimir Karpukhin",
+            "J. Maillard",
+            "Vassilis Plachouras",
+            "Tim Rockt\u00e4schel",
+            "Sebastian Riedel"
+        ],
+        "venue": "North American Chapter of the Association for Computational Linguistics",
+        "year": 2020,
+        "abstract": "Challenging problems such as open-domain question answering, fact checking, slot filling and entity linking require access to large, external knowledge sources. While some models do well on individual tasks, developing general models is difficult as each task might require computationally expensive indexing of custom knowledge sources, in addition to dedicated infrastructure. To catalyze research on models that condition on specific information in large textual resources, we present a benchmark for knowledge-intensive language tasks (KILT). All tasks in KILT are grounded in the same snapshot of Wikipedia, reducing engineering turnaround through the re-use of components, as well as accelerating research into task-agnostic memory architectures. We test both task-specific and general baselines, evaluating downstream performance in addition to the ability of the models to provide provenance. We find that a shared dense vector index coupled with a seq2seq model is a strong baseline, outperforming more tailor-made approaches for fact checking, open-domain question answering and dialogue, and yielding competitive results on entity linking and slot filling, by generating disambiguated text. KILT data and code are available at https://github.com/facebookresearch/KILT."
+    },
+    "Izacard2022FewshotLearning": {
+        "citation_key": "Izacard2022FewshotLearning",
+        "title": "Few-shot Learning with Retrieval Augmented Language Models",
+        "authors": [
+            "Gautier Izacard",
+            "Patrick Lewis",
+            "M. Lomeli",
+            "Lucas Hosseini",
+            "F. Petroni",
+            "Timo Schick",
+            "Jane Dwivedi-Yu",
+            "A. Joulin",
+            "Sebastian Riedel",
+            "E. Grave"
+        ],
+        "venue": "Journal of machine learning research",
+        "year": 2022,
+        "abstract": "Large language models have shown impressive few-shot results on a wide range of tasks. However, when knowledge is key for such results, as is the case for tasks such as question answering and fact checking, massive parameter counts to store knowledge seem to be needed. Retrieval augmented models are known to excel at knowledge intensive tasks without the need for as many parameters, but it is unclear whether they work in few-shot settings. In this work we present Atlas, a carefully designed and pre-trained retrieval augmented language model able to learn knowledge intensive tasks with very few training examples. We perform evaluations on a wide range of tasks, including MMLU, KILT and NaturalQuestions, and study the impact of the content of the document index, showing that it can easily be updated. Notably, Atlas reaches over 42% accuracy on Natural Questions using only 64 examples, outperforming a 540B parameters model by 3% despite having 50x fewer parameters."
+    },
+    "Liu2023LostMiddle": {
+        "citation_key": "Liu2023LostMiddle",
+        "title": "Lost in the Middle: How Language Models Use Long Contexts",
+        "authors": [
+            "Nelson F. Liu",
+            "Kevin Lin",
+            "John Hewitt",
+            "Ashwin Paranjape",
+            "Michele Bevilacqua",
+            "F. Petroni",
+            "Percy Liang"
+        ],
+        "venue": "Transactions of the Association for Computational Linguistics",
+        "year": 2023,
+        "abstract": "While recent language models have the ability to take long contexts as input, relatively little is known about how well they use longer context. We analyze the performance of language models on two tasks that require identifying relevant information in their input contexts: multi-document question answering and key-value retrieval. We find that performance can degrade significantly when changing the position of relevant information, indicating that current language models do not robustly make use of information in long input contexts. In particular, we observe that performance is often highest when relevant information occurs at the beginning or end of the input context, and significantly degrades when models must access relevant information in the middle of long contexts, even for explicitly long-context models. Our analysis provides a better understanding of how language models use their input context and provides new evaluation protocols for future long-context language models."
+    },
+    "Asai2023SelfragLearning": {
+        "citation_key": "Asai2023SelfragLearning",
+        "title": "Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection",
+        "authors": [
+            "Akari Asai",
+            "Zeqiu Wu",
+            "Yizhong Wang",
+            "Avirup Sil",
+            "Hannaneh Hajishirzi"
+        ],
+        "venue": "International Conference on Learning Representations",
+        "year": 2023,
+        "abstract": "Despite their remarkable capabilities, large language models (LLMs) often produce responses containing factual inaccuracies due to their sole reliance on the parametric knowledge they encapsulate. Retrieval-Augmented Generation (RAG), an ad hoc approach that augments LMs with retrieval of relevant knowledge, decreases such issues. However, indiscriminately retrieving and incorporating a fixed number of retrieved passages, regardless of whether retrieval is necessary, or passages are relevant, diminishes LM versatility or can lead to unhelpful response generation. We introduce a new framework called Self-Reflective Retrieval-Augmented Generation (Self-RAG) that enhances an LM's quality and factuality through retrieval and self-reflection. Our framework trains a single arbitrary LM that adaptively retrieves passages on-demand, and generates and reflects on retrieved passages and its own generations using special tokens, called reflection tokens. Generating reflection tokens makes the LM controllable during the inference phase, enabling it to tailor its behavior to diverse task requirements. Experiments show that Self-RAG (7B and 13B parameters) significantly outperforms state-of-the-art LLMs and retrieval-augmented models on a diverse set of tasks. Specifically, Self-RAG outperforms ChatGPT and retrieval-augmented Llama2-chat on Open-domain QA, reasoning and fact verification tasks, and it shows significant gains in improving factuality and citation accuracy for long-form gener... [Truncated]"
+    },
+    "Choi2000AdvancesDomain": {
+        "citation_key": "Choi2000AdvancesDomain",
+        "title": "Advances in domain independent linear text segmentation",
+        "authors": [
+            "F. Choi"
+        ],
+        "venue": "Applied Natural Language Processing Conference",
+        "year": 2000,
+        "abstract": "This paper describes a method for linear text segmentation which is twice as accurate and over seven times as fast as the state-of-the-art (Reynar, 1998). Inter-sentence similarity is replaced by rank in the local context. Boundary locations are discovered by divisive clustering."
+    },
+    "Glavas2016UnsupervisedText": {
+        "citation_key": "Glavas2016UnsupervisedText",
+        "title": "Unsupervised Text Segmentation Using Semantic Relatedness Graphs",
+        "authors": [
+            "Goran Glavas",
+            "F. Nanni",
+            "Simone Paolo Ponzetto"
+        ],
+        "venue": "International Workshop on Semantic Evaluation",
+        "year": 2016,
+        "abstract": "Segmenting text into semantically coherent \nfragments improves readability of text \nand facilitates tasks like text summarization \nand passage retrieval. In this paper, \nwe present a novel unsupervised algorithm \nfor linear text segmentation (TS) \nthat exploits word embeddings and a measure \nof semantic relatedness of short texts \nto construct a semantic relatedness graph \nof the document. Semantically coherent \nsegments are then derived from maximal \ncliques of the relatedness graph. The algorithm \nperforms competitively on a standard \nsynthetic dataset and outperforms the \nbest-performing method on a real-world \n(i.e., non-artificial) dataset of political manifestos."
+    },
+    "Alemi2015TextSegmentation": {
+        "citation_key": "Alemi2015TextSegmentation",
+        "title": "Text Segmentation based on Semantic Word Embeddings",
+        "authors": [
+            "Alexander A. Alemi",
+            "P. Ginsparg"
+        ],
+        "venue": "arXiv.org",
+        "year": 2015,
+        "abstract": "We explore the use of semantic word embeddings in text segmentation algorithms, including the C99 segmentation algorithm and new algorithms inspired by the distributed word vector representation. By developing a general framework for discussing a class of segmentation objectives, we study the effectiveness of greedy versus exact optimization approaches and suggest a new iterative refinement technique for improving the performance of greedy strategies. We compare our results to known benchmarks, using known metrics. We demonstrate state-of-the-art performance for an untrained method with our Content Vector Segmentation (CVS) on the Choi test set. Finally, we apply the segmentation procedure to an in-the-wild dataset consisting of text extracted from scholarly articles in the arXiv.org database."
+    },
+    "Utiyama2001StatisticalModel": {
+        "citation_key": "Utiyama2001StatisticalModel",
+        "title": "A Statistical Model for Domain-Independent Text Segmentation",
+        "authors": [
+            "M. Utiyama",
+            "H. Isahara"
+        ],
+        "venue": "Annual Meeting of the Association for Computational Linguistics",
+        "year": 2001,
+        "abstract": "We propose a statistical method that finds the maximum-probability segmentation of a given text. This method does not require training data because it estimates probabilities from the given text. Therefore, it can be applied to any text in any domain. An experiment showed that the method is more accurate than or at least as accurate as a state-of-the-art text segmentation system."
+    },
+    "Eisenstein2008BayesianUnsupervised": {
+        "citation_key": "Eisenstein2008BayesianUnsupervised",
+        "title": "Bayesian Unsupervised Topic Segmentation",
+        "authors": [
+            "Jacob Eisenstein",
+            "R. Barzilay"
+        ],
+        "venue": "Conference on Empirical Methods in Natural Language Processing",
+        "year": 2008,
+        "abstract": "This paper describes a novel Bayesian approach to unsupervised topic segmentation. Unsupervised systems for this task are driven by lexical cohesion: the tendency of well-formed segments to induce a compact and consistent lexical distribution. We show that lexical cohesion can be placed in a Bayesian context by modeling the words in each topic segment as draws from a multinomial language model associated with the segment; maximizing the observation likelihood in such a model yields a lexically-cohesive segmentation. This contrasts with previous approaches, which relied on hand-crafted cohesion metrics. The Bayesian framework provides a principled way to incorporate additional features such as cue phrases, a powerful indicator of discourse structure that has not been previously used in unsupervised segmentation systems. Our model yields consistent improvements over an array of state-of-the-art systems on both text and speech datasets. We also show that both an entropy-based analysis and a well-known previous technique can be derived as special cases of the Bayesian framework."
+    },
+    "Koshorek2018TextSegmentation": {
+        "citation_key": "Koshorek2018TextSegmentation",
+        "title": "Text Segmentation as a Supervised Learning Task",
+        "authors": [
+            "Omri Koshorek",
+            "Adir Cohen",
+            "Noam Mor",
+            "Michael Rotman",
+            "Jonathan Berant"
+        ],
+        "venue": "North American Chapter of the Association for Computational Linguistics",
+        "year": 2018,
+        "abstract": "Text segmentation, the task of dividing a document into contiguous segments based on its semantic structure, is a longstanding challenge in language understanding. Previous work on text segmentation focused on unsupervised methods such as clustering or graph search, due to the paucity in labeled data. In this work, we formulate text segmentation as a supervised learning problem, and present a large new dataset for text segmentation that is automatically extracted and labeled from Wikipedia. Moreover, we develop a segmentation model based on this dataset and show that it generalizes well to unseen natural text."
+    },
+    "Arnold2019SectorNeural": {
+        "citation_key": "Arnold2019SectorNeural",
+        "title": "SECTOR: A Neural Model for Coherent Topic Segmentation and Classification",
+        "authors": [
+            "Sebastian Arnold",
+            "Rudolf Schneider",
+            "P. Cudr\u00e9-Mauroux",
+            "Felix Alexander Gers",
+            "Alexander L\u00f6ser"
+        ],
+        "venue": "Transactions of the Association for Computational Linguistics",
+        "year": 2019,
+        "abstract": "When searching for information, a human reader first glances over a document, spots relevant sections, and then focuses on a few sentences for resolving her intention. However, the high variance of document structure complicates the identification of the salient topic of a given section at a glance. To tackle this challenge, we present SECTOR, a model to support machine reading systems by segmenting documents into coherent sections and assigning topic labels to each section. Our deep neural network architecture learns a latent topic embedding over the course of a document. This can be leveraged to classify local topics from plain text and segment a document at topic shifts. In addition, we contribute WikiSection, a publicly available data set with 242k labeled sections in English and German from two distinct domains: diseases and cities. From our extensive evaluation of 20 architectures, we report a highest score of 71.6% F1 for the segmentation and classification of 30 topics from the English city domain, scored by our SECTOR long short-term memory model with Bloom filter embeddings and bidirectional segmentation. This is a significant improvement of 29.5 points F1 over state-of-the-art CNN classifiers with baseline segmentation."
+    },
+    "Reimers2019SentencebertSentence": {
+        "citation_key": "Reimers2019SentencebertSentence",
+        "title": "Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks",
+        "authors": [
+            "Nils Reimers",
+            "Iryna Gurevych"
+        ],
+        "venue": "Conference on Empirical Methods in Natural Language Processing",
+        "year": 2019,
+        "abstract": "BERT (Devlin et al., 2018) and RoBERTa (Liu et al., 2019) has set a new state-of-the-art performance on sentence-pair regression tasks like semantic textual similarity (STS). However, it requires that both sentences are fed into the network, which causes a massive computational overhead: Finding the most similar pair in a collection of 10,000 sentences requires about 50 million inference computations (~65 hours) with BERT. The construction of BERT makes it unsuitable for semantic similarity search as well as for unsupervised tasks like clustering. In this publication, we present Sentence-BERT (SBERT), a modification of the pretrained BERT network that use siamese and triplet network structures to derive semantically meaningful sentence embeddings that can be compared using cosine-similarity. This reduces the effort for finding the most similar pair from 65 hours with BERT / RoBERTa to about 5 seconds with SBERT, while maintaining the accuracy from BERT. We evaluate SBERT and SRoBERTa on common STS tasks and transfer learning tasks, where it outperforms other state-of-the-art sentence embeddings methods."
+    },
+    "Chen2023DenseX": {
+        "citation_key": "Chen2023DenseX",
+        "title": "Dense X Retrieval: What Retrieval Granularity Should We Use?",
+        "authors": [
+            "Tong Chen",
+            "Hong-Wei Wang",
+            "Sihao Chen",
+            "Wen-Hao Yu",
+            "Kaixin Ma",
+            "Xinran Zhao",
+            "Hong-Ming Zhang",
+            "Dong Yu"
+        ],
+        "venue": "Conference on Empirical Methods in Natural Language Processing",
+        "year": 2023,
+        "abstract": "Dense retrieval has become a prominent method to obtain relevant context or world knowledge in open-domain NLP tasks. When we use a learned dense retriever on a retrieval corpus at inference time, an often-overlooked design choice is the retrieval unit in which the corpus is indexed, e.g. document, passage, or sentence. We discover that the retrieval unit choice significantly impacts the performance of both retrieval and downstream tasks. Distinct from the typical approach of using passages or sentences, we introduce a novel retrieval unit, proposition, for dense retrieval. Propositions are defined as atomic expressions within text, each encapsulating a distinct factoid and presented in a concise, self-contained natural language format. We conduct an empirical comparison of different retrieval granularity. Our experiments reveal that indexing a corpus by fine-grained units such as propositions significantly outperforms passage-level units in retrieval tasks. Moreover, constructing prompts with fine-grained retrieved units for retrieval-augmented language models improves the performance of downstream QA tasks given a specific computation budget."
+    },
+    "Jiang2024LongragEnhancing": {
+        "citation_key": "Jiang2024LongragEnhancing",
+        "title": "LongRAG: Enhancing Retrieval-Augmented Generation with Long-context LLMs",
+        "authors": [
+            "Ziyan Jiang",
+            "Xue-Guang Ma",
+            "Wen-Hu Chen"
+        ],
+        "venue": "arXiv.org",
+        "year": 2024,
+        "abstract": "In traditional RAG framework, the basic retrieval units are normally short. The common retrievers like DPR normally work with 100-word Wikipedia paragraphs. Such a design forces the retriever to search over a large corpus to find the `needle' unit. In contrast, the readers only need to generate answers from the short retrieved units. The imbalanced `heavy' retriever and `light' reader design can lead to sub-optimal performance. The loss of contextual information in the short, chunked units may increase the likelihood of introducing hard negatives during the retrieval stage. Additionally, the reader might not fully leverage the capabilities of recent advancements in LLMs. In order to alleviate the imbalance, we propose a new framework LongRAG, consisting of a `long retriever' and a `long reader'. In the two Wikipedia-based datasets, NQ and HotpotQA, LongRAG processes the entire Wikipedia corpus into 4K-token units by grouping related documents. By increasing the unit size, we significantly reduce the total number of units. This greatly reduces the burden on the retriever, resulting in strong retrieval performance with only a few (less than 8) top units. Without requiring any training, LongRAG achieves an EM of 62.7% on NQ and 64.3% on HotpotQA, which are on par with the (fully-trained) SoTA model. Furthermore, we test on two non-Wikipedia-based datasets, Qasper and MultiFieldQA-en. LongRAG processes each individual document as a single (long) unit rather than chunking them int... [Truncated]"
+    },
+    "Xu2023RecompImproving": {
+        "citation_key": "Xu2023RecompImproving",
+        "title": "RECOMP: Improving Retrieval-Augmented LMs with Compression and Selective Augmentation",
+        "authors": [
+            "Fangyuan Xu",
+            "Wei-Jia Shi",
+            "Eunsol Choi"
+        ],
+        "venue": "International Conference on Learning Representations",
+        "year": 2023,
+        "abstract": "Retrieving documents and prepending them in-context at inference time improves performance of language model (LMs) on a wide range of tasks. However, these documents, often spanning hundreds of words, make inference substantially more expensive. We propose compressing the retrieved documents into textual summaries prior to in-context integration. This not only reduces the computational costs but also relieves the burden of LMs to identify relevant information in long retrieved documents. We present two compressors -- an extractive compressor which selects useful sentences from retrieved documents and an abstractive compressor which generates summaries by synthesizing information from multiple documents. Both compressors are trained to improve LMs' performance on end tasks when the generated summaries are prepended to the LMs' input, while keeping the summary concise.If the retrieved documents are irrelevant to the input or offer no additional information to LM, our compressor can return an empty string, implementing selective augmentation.We evaluate our approach on language modeling task and open domain question answering task. We achieve a compression rate of as low as 6% with minimal loss in performance for both tasks, significantly outperforming the off-the-shelf summarization models. We show that our compressors trained for one LM can transfer to other LMs on the language modeling task and provide summaries largely faithful to the retrieved documents."
+    },
+    "Jiang2023LongllmlinguaAccelerating": {
+        "citation_key": "Jiang2023LongllmlinguaAccelerating",
+        "title": "LongLLMLingua: Accelerating and Enhancing LLMs in Long Context Scenarios via Prompt Compression",
+        "authors": [
+            "Huiqiang Jiang",
+            "Qianhui Wu",
+            "Xufang Luo",
+            "Dongsheng Li",
+            "Chin-Yew Lin",
+            "Yu-Qing Yang",
+            "Lili Qiu"
+        ],
+        "venue": "Annual Meeting of the Association for Computational Linguistics",
+        "year": 2023,
+        "abstract": "In long context scenarios, large language models (LLMs) face three main challenges: higher computational cost, performance reduction, and position bias. Research indicates that LLM performance hinges on the density and position of key information in the input prompt. Inspired by these findings, we propose LongLLMLingua for prompt compression towards improving LLMs' perception of the key information to simultaneously address the three challenges. Our extensive evaluation across various long context scenarios demonstrates that LongLLMLingua not only enhances performance but also significantly reduces costs and latency. For instance, in the NaturalQuestions benchmark, LongLLMLingua boosts performance by up to 21.4% with around 4x fewer tokens in GPT-3.5-Turbo, leading to substantial cost savings. It achieves a 94.0% cost reduction in the LooGLE benchmark. Moreover, when compressing prompts of about 10k tokens at ratios of 2x-6x, LongLLMLingua can accelerate end-to-end latency by 1.4x-2.6x. Our code is available at https://aka.ms/LongLLMLingua."
+    },
+    "Jiang2023LlmlinguaCompressing": {
+        "citation_key": "Jiang2023LlmlinguaCompressing",
+        "title": "LLMLingua: Compressing Prompts for Accelerated Inference of Large Language Models",
+        "authors": [
+            "Huiqiang Jiang",
+            "Qianhui Wu",
+            "Chin-Yew Lin",
+            "Yu-Qing Yang",
+            "Lili Qiu"
+        ],
+        "venue": "Conference on Empirical Methods in Natural Language Processing",
+        "year": 2023,
+        "abstract": "Large language models (LLMs) have been applied in various applications due to their astonishing capabilities. With advancements in technologies such as chain-of-thought (CoT) prompting and in-context learning (ICL), the prompts fed to LLMs are becoming increasingly lengthy, even exceeding tens of thousands of tokens. To accelerate model inference and reduce cost, this paper presents LLMLingua, a coarse-to-fine prompt compression method that involves a budget controller to maintain semantic integrity under high compression ratios, a token-level iterative compression algorithm to better model the interdependence between compressed contents, and an instruction tuning based method for distribution alignment between language models. We conduct experiments and analysis over four datasets from different scenarios, i.e., GSM8K, BBH, ShareGPT, and Arxiv-March23; showing that the proposed approach yields state-of-the-art performance and allows for up to 20x compression with little performance loss. Our code is available at https://aka.ms/LLMLingua."
+    },
+    "Sarthi2024RaptorRecursive": {
+        "citation_key": "Sarthi2024RaptorRecursive",
+        "title": "RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval",
+        "authors": [
+            "Parth Sarthi",
+            "Salman Abdullah",
+            "Aditi Tuli",
+            "Shubh Khanna",
+            "Anna Goldie",
+            "Christopher D. Manning"
+        ],
+        "venue": "International Conference on Learning Representations",
+        "year": 2024,
+        "abstract": "Retrieval-augmented language models can better adapt to changes in world state and incorporate long-tail knowledge. However, most existing methods retrieve only short contiguous chunks from a retrieval corpus, limiting holistic understanding of the overall document context. We introduce the novel approach of recursively embedding, clustering, and summarizing chunks of text, constructing a tree with differing levels of summarization from the bottom up. At inference time, our RAPTOR model retrieves from this tree, integrating information across lengthy documents at different levels of abstraction. Controlled experiments show that retrieval with recursive summaries offers significant improvements over traditional retrieval-augmented LMs on several tasks. On question-answering tasks that involve complex, multi-step reasoning, we show state-of-the-art results; for example, by coupling RAPTOR retrieval with the use of GPT-4, we can improve the best performance on the QuALITY benchmark by 20% in absolute accuracy."
+    },
+    "Yu2024RankragUnifying": {
+        "citation_key": "Yu2024RankragUnifying",
+        "title": "RankRAG: Unifying Context Ranking with Retrieval-Augmented Generation in LLMs",
+        "authors": [
+            "Yue Yu",
+            "Wei Ping",
+            "Zi-Han Liu",
+            "Bo-Xin Wang",
+            "Jiaxuan You",
+            "Chao Zhang",
+            "Mohammad Shoeybi",
+            "B. Catanzaro"
+        ],
+        "venue": "Neural Information Processing Systems",
+        "year": 2024,
+        "abstract": "Large language models (LLMs) typically utilize the top-k contexts from a retriever in retrieval-augmented generation (RAG). In this work, we propose a novel instruction fine-tuning framework RankRAG, which instruction-tunes a single LLM for the dual purpose of context ranking and answer generation in RAG. In particular, the instruction-tuned LLMs work surprisingly well by adding a small fraction of ranking data into the training blend, and outperform existing expert ranking models, including the same LLM exclusively fine-tuned on a large amount of ranking data. For generation, we compare our model with many strong baselines, including GPT-4-0613, GPT-4-turbo-2024-0409, and ChatQA-1.5, an open-sourced model with the state-of-the-art performance on RAG benchmarks. Specifically, our Llama3-RankRAG significantly outperforms Llama3-ChatQA-1.5 and GPT-4 models on nine knowledge-intensive benchmarks. In addition, it also performs comparably to GPT-4 on five RAG benchmarks in the biomedical domain without instruction fine-tuning on biomedical data, demonstrating its superb capability for generalization to new domains."
+    },
+    "Jiang2023ActiveRetrieval": {
+        "citation_key": "Jiang2023ActiveRetrieval",
+        "title": "Active Retrieval Augmented Generation",
+        "authors": [
+            "Zhengbao Jiang",
+            "Frank F. Xu",
+            "Luyu Gao",
+            "Zhiqing Sun",
+            "Qian Liu",
+            "Jane Dwivedi-Yu",
+            "Yiming Yang",
+            "James P. Callan",
+            "Graham Neubig"
+        ],
+        "venue": "Conference on Empirical Methods in Natural Language Processing",
+        "year": 2023,
+        "abstract": "Despite the remarkable ability of large language models (LMs) to comprehend and generate language, they have a tendency to hallucinate and create factually inaccurate output. Augmenting LMs by retrieving information from external knowledge resources is one promising solution. Most existing retrieval augmented LMs employ a retrieve-and-generate setup that only retrieves information once based on the input. This is limiting, however, in more general scenarios involving generation of long texts, where continually gathering information throughout generation is essential. In this work, we provide a generalized view of active retrieval augmented generation, methods that actively decide when and what to retrieve across the course of the generation. We propose Forward-Looking Active REtrieval augmented generation (FLARE), a generic method which iteratively uses a prediction of the upcoming sentence to anticipate future content, which is then utilized as a query to retrieve relevant documents to regenerate the sentence if it contains low-confidence tokens. We test FLARE along with baselines comprehensively over 4 long-form knowledge-intensive generation tasks/datasets. FLARE achieves superior or competitive performance on all tasks, demonstrating the effectiveness of our method. Code and datasets are available at https://github.com/jzbjyb/FLARE."
+    },
+    "Li2024RetrievalAugmented": {
+        "citation_key": "Li2024RetrievalAugmented",
+        "title": "Retrieval Augmented Generation or Long-Context LLMs? A Comprehensive Study and Hybrid Approach",
+        "authors": [
+            "Zhuowan Li",
+            "Cheng Li",
+            "Mingyang Zhang",
+            "Q. Mei",
+            "Michael Bendersky"
+        ],
+        "venue": "Conference on Empirical Methods in Natural Language Processing",
+        "year": 2024,
+        "abstract": "Retrieval Augmented Generation (RAG) has been a powerful tool for Large Language Models (LLMs) to efficiently process overly lengthy contexts. However, recent LLMs like Gemini-1.5 and GPT-4 show exceptional capabilities to understand long contexts directly. We conduct a comprehensive comparison between RAG and long-context (LC) LLMs, aiming to leverage the strengths of both. We benchmark RAG and LC across various public datasets using three latest LLMs. Results reveal that when resourced sufficiently, LC consistently outperforms RAG in terms of average performance. However, RAG\u2019s significantly lower cost remains a distinct advantage. Based on this observation, we propose Self-Route, a simple yet effective method that routes queries to RAG or LC based on model self-reflection. Self-Route significantly reduces the computation cost while maintaining a comparable performance to LC. Our findings provide a guideline for long-context applications of LLMs using RAG and LC."
+    },
+    "Malioutov2006MinimumCut": {
+        "citation_key": "Malioutov2006MinimumCut",
+        "title": "Minimum Cut Model for Spoken Lecture Segmentation",
+        "authors": [
+            "Igor Malioutov",
+            "R. Barzilay"
+        ],
+        "venue": "Annual Meeting of the Association for Computational Linguistics",
+        "year": 2006,
+        "abstract": "We consider the task of unsupervised lecture segmentation. We formalize segmentation as a graph-partitioning task that optimizes the normalized cut criterion. Our approach moves beyond localized comparisons and takes into account long-range cohesion dependencies. Our results demonstrate that global analysis improves the segmentation accuracy and is robust in the presence of speech recognition errors."
+    },
+    "Lukasik2020TextSegmentation": {
+        "citation_key": "Lukasik2020TextSegmentation",
+        "title": "Text Segmentation by Cross Segment Attention",
+        "authors": [
+            "Michal Lukasik",
+            "Boris Dadachev",
+            "K. Papineni",
+            "Gon\u00e7alo Sim\u00f5es"
+        ],
+        "venue": "Conference on Empirical Methods in Natural Language Processing",
+        "year": 2020,
+        "abstract": "Document and discourse segmentation are two fundamental NLP tasks pertaining to breaking up text into constituents, which are commonly used to help downstream tasks such as information retrieval or text summarization. In this work, we propose three transformer-based architectures and provide comprehensive comparisons with previously proposed approaches on three standard datasets. We establish a new state-of-the-art, reducing in particular the error rates by a large margin in all cases. We further analyze model sizes and find that we can build models with many fewer parameters while keeping good performance, thus facilitating real-world applications."
+    },
+    "Qu2024SemanticChunking": {
+        "citation_key": "Qu2024SemanticChunking",
+        "title": "Is Semantic Chunking Worth the Computational Cost?",
+        "authors": [
+            "Renyi Qu",
+            "Ruixuan Tu",
+            "Forrest Sheng Bao"
+        ],
+        "venue": "arXiv.org",
+        "year": 2024,
+        "abstract": "Recent advances in Retrieval-Augmented Generation (RAG) systems have popularized semantic chunking, which aims to improve retrieval performance by dividing documents into semantically coherent segments. Despite its growing adoption, the actual benefits over simpler fixed-size chunking, where documents are split into consecutive, fixed-size segments, remain unclear. This study systematically evaluates the effectiveness of semantic chunking using three common retrieval-related tasks: document retrieval, evidence retrieval, and retrieval-based answer generation. The results show that the computational costs associated with semantic chunking are not justified by consistent performance gains. These findings challenge the previous assumptions about semantic chunking and highlight the need for more efficient chunking strategies in RAG systems."
+    },
+    "Wang2024SearchingBest": {
+        "citation_key": "Wang2024SearchingBest",
+        "title": "Searching for Best Practices in Retrieval-Augmented Generation",
+        "authors": [
+            "Xiao-Hua Wang",
+            "Zheng-Hua Wang",
+            "Xuan Gao",
+            "Fei-Ran Zhang",
+            "Yi-Xin Wu",
+            "Zhibo Xu",
+            "Tianyuan Shi",
+            "Zheng-Yuan Wang",
+            "Shizheng Li",
+            "Qi Qian",
+            "Rui-Cheng Yin",
+            "Changze Lv",
+            "Xiao-Qing Zheng",
+            "Xuan-Jing Huang"
+        ],
+        "venue": "Conference on Empirical Methods in Natural Language Processing",
+        "year": 2024,
+        "abstract": "Retrieval-augmented generation (RAG) techniques have proven to be effective in integrating up-to-date information, mitigating hallucinations, and enhancing response quality, particularly in specialized domains. While many RAG approaches have been proposed to enhance large language models through query-dependent retrievals, these approaches still suffer from their complex implementation and prolonged response times. Typically, a RAG workflow involves multiple processing steps, each of which can be executed in various ways. Here, we investigate existing RAG approaches and their potential combinations to identify optimal RAG practices. Through extensive experiments, we suggest several strategies for deploying RAG that balance both performance and efficiency. Moreover, we demonstrate that multimodal retrieval techniques can significantly enhance question-answering capabilities about visual inputs and accelerate the generation of multimodal content using a \u201cretrieval as generation\u201d strategy."
+    },
+    "Bai2023LongbenchBilingual": {
+        "citation_key": "Bai2023LongbenchBilingual",
+        "title": "LongBench: A Bilingual, Multitask Benchmark for Long Context Understanding",
+        "authors": [
+            "Yushi Bai",
+            "Xin Lv",
+            "Jia-Jie Zhang",
+            "Hong Lyu",
+            "Jiankai Tang",
+            "Zhi-Dian Huang",
+            "Zheng-Xiao Du",
+            "Xiao Liu",
+            "Ao-Han Zeng",
+            "Lei Hou",
+            "Yu-Xiao Dong",
+            "Jie Tang",
+            "Juan-Zi Li"
+        ],
+        "venue": "Annual Meeting of the Association for Computational Linguistics",
+        "year": 2023,
+        "abstract": "Although large language models (LLMs) demonstrate impressive performance for many language tasks, most of them can only handle texts a few thousand tokens long, limiting their applications on longer sequence inputs, such as books, reports, and codebases. Recent works have proposed methods to improve LLMs' long context capabilities by extending context windows and more sophisticated memory mechanisms. However, comprehensive benchmarks tailored for evaluating long context understanding are lacking. In this paper, we introduce LongBench, the first bilingual, multi-task benchmark for long context understanding, enabling a more rigorous evaluation of long context understanding. LongBench comprises 21 datasets across 6 task categories in both English and Chinese, with an average length of 6,711 words (English) and 13,386 characters (Chinese). These tasks cover key long-text application areas including single-doc QA, multi-doc QA, summarization, few-shot learning, synthetic tasks, and code completion. All datasets in LongBench are standardized into a unified format, allowing for effortless automatic evaluation of LLMs. Upon comprehensive evaluation of 8 LLMs on LongBench, we find that: (1) Commercial model (GPT-3.5-Turbo-16k) outperforms other open-sourced models, but still struggles on longer contexts. (2) Scaled position embedding and fine-tuning on longer sequences lead to substantial improvement on long context understanding. (3) Context compression technique such as retrieval b... [Truncated]"
+    },
+    "Rajpurkar2016Squad100000": {
+        "citation_key": "Rajpurkar2016Squad100000",
+        "title": "SQuAD: 100,000+ Questions for Machine Comprehension of Text",
+        "authors": [
+            "Pranav Rajpurkar",
+            "Jian Zhang",
+            "Konstantin Lopyrev",
+            "Percy Liang"
+        ],
+        "venue": "Conference on Empirical Methods in Natural Language Processing",
+        "year": 2016,
+        "abstract": "We present the Stanford Question Answering Dataset (SQuAD), a new reading comprehension dataset consisting of 100,000+ questions posed by crowdworkers on a set of Wikipedia articles, where the answer to each question is a segment of text from the corresponding reading passage. We analyze the dataset to understand the types of reasoning required to answer the questions, leaning heavily on dependency and constituency trees. We build a strong logistic regression model, which achieves an F1 score of 51.0%, a significant improvement over a simple baseline (20%). However, human performance (86.8%) is much higher, indicating that the dataset presents a good challenge problem for future research. \nThe dataset is freely available at this https URL"
+    },
+    "Gunther2024LateChunking": {
+        "citation_key": "Gunther2024LateChunking",
+        "title": "Late Chunking: Contextual Chunk Embeddings Using Long-Context Embedding Models",
+        "authors": [
+            "Michael Gunther",
+            "Isabelle Mohr",
+            "Daniel J. Williams",
+            "Bo Wang",
+            "Han Xiao"
+        ],
+        "venue": "arXiv.org",
+        "year": 2024,
+        "abstract": "Many use cases require retrieving smaller portions of text, and dense vector-based retrieval systems often perform better with shorter text segments, as the semantics are less likely to be over-compressed in the embeddings. Consequently, practitioners often split text documents into smaller chunks and encode them separately. However, chunk embeddings created in this way can lose contextual information from surrounding chunks, resulting in sub-optimal representations. In this paper, we introduce a novel method called late chunking, which leverages long context embedding models to first embed all tokens of the long text, with chunking applied after the transformer model and just before mean pooling - hence the term late in its naming. The resulting chunk embeddings capture the full contextual information, leading to superior results across various retrieval tasks. The method is generic enough to be applied to a wide range of long-context embedding models and works without additional training. To further increase the effectiveness of late chunking, we propose a dedicated fine-tuning approach for embedding models."
+    },
+    "Fournier2012SegmentationSimilarity": {
+        "citation_key": "Fournier2012SegmentationSimilarity",
+        "title": "Segmentation Similarity and Agreement",
+        "authors": [
+            "C. Fournier",
+            "D. Inkpen"
+        ],
+        "venue": "North American Chapter of the Association for Computational Linguistics",
+        "year": 2012,
+        "abstract": "We propose a new segmentation evaluation metric, called segmentation similarity (S), that quantifies the similarity between two segmentations as the proportion of boundaries that are not transformed when comparing them using edit distance, essentially using edit distance as a penalty function and scaling penalties by segmentation size. We propose several adapted inter-annotator agreement coefficients which use S that are suitable for segmentation. We show that S is configurable enough to suit a wide variety of segmentation evaluations, and is an improvement upon the state of the art. We also propose using inter-annotator agreement coefficients to evaluate automatic segmenters in terms of human performance."
+    },
+    "Shi2023LargeLanguage": {
+        "citation_key": "Shi2023LargeLanguage",
+        "title": "Large Language Models Can Be Easily Distracted by Irrelevant Context",
+        "authors": [
+            "Freda Shi",
+            "Xin-Yun Chen",
+            "Kanishka Misra",
+            "Nathan Scales",
+            "David Dohan",
+            "Ed H. Chi",
+            "Nathanael Sch\u00e4rli",
+            "Denny Zhou"
+        ],
+        "venue": "International Conference on Machine Learning",
+        "year": 2023,
+        "abstract": "Large language models have achieved impressive performance on various natural language processing tasks. However, so far they have been evaluated primarily on benchmarks where all information in the input context is relevant for solving the task. In this work, we investigate the distractibility of large language models, i.e., how the model problem-solving accuracy can be influenced by irrelevant context. In particular, we introduce Grade-School Math with Irrelevant Context (GSM-IC), an arithmetic reasoning dataset with irrelevant information in the problem description. We use this benchmark to measure the distractibility of cutting-edge prompting techniques for large language models, and find that the model performance is dramatically decreased when irrelevant information is included. We also identify several approaches for mitigating this deficiency, such as decoding with self-consistency and adding to the prompt an instruction that tells the language model to ignore the irrelevant information."
+    },
+    "Jia2017AdversarialExamples": {
+        "citation_key": "Jia2017AdversarialExamples",
+        "title": "Adversarial Examples for Evaluating Reading Comprehension Systems",
+        "authors": [
+            "Robin Jia",
+            "Percy Liang"
+        ],
+        "venue": "Conference on Empirical Methods in Natural Language Processing",
+        "year": 2017,
+        "abstract": "Standard accuracy metrics indicate that reading comprehension systems are making rapid progress, but the extent to which these systems truly understand language remains unclear. To reward systems with real language understanding abilities, we propose an adversarial evaluation scheme for the Stanford Question Answering Dataset (SQuAD). Our method tests whether systems can answer questions about paragraphs that contain adversarially inserted sentences, which are automatically generated to distract computer systems without changing the correct answer or misleading humans. In this adversarial setting, the accuracy of sixteen published models drops from an average of 75% F1 score to 36%; when the adversary is allowed to add ungrammatical sequences of words, average accuracy on four models decreases further to 7%. We hope our insights will motivate the development of new models that understand language more precisely."
+    },
+    "Trivedi2021MusiqueMultihop": {
+        "citation_key": "Trivedi2021MusiqueMultihop",
+        "title": "\u266b MuSiQue: Multihop Questions via Single-hop Question Composition",
+        "authors": [
+            "H. Trivedi",
+            "Niranjan Balasubramanian",
+            "Tushar Khot",
+            "Ashish Sabharwal"
+        ],
+        "venue": "Transactions of the Association for Computational Linguistics",
+        "year": 2021,
+        "abstract": "Multihop reasoning remains an elusive goal as existing multihop benchmarks are known to be largely solvable via shortcuts. Can we create a question answering (QA) dataset that, by construction, requires proper multihop reasoning? To this end, we introduce a bottom\u2013up approach that systematically selects composable pairs of single-hop questions that are connected, that is, where one reasoning step critically relies on information from another. This bottom\u2013up methodology lets us explore a vast space of questions and add stringent filters as well as other mechanisms targeting connected reasoning. It provides fine-grained control over the construction process and the properties of the resulting k-hop questions. We use this methodology to create MuSiQue-Ans, a new multihop QA dataset with 25K 2\u20134 hop questions. Relative to existing datasets, MuSiQue-Ans is more difficult overall (3\u00d7 increase in human\u2013machine gap), and harder to cheat via disconnected reasoning (e.g., a single-hop model has a 30-point drop in F1). We further add unanswerable contrast questions to produce a more stringent dataset, MuSiQue-Full. We hope our datasets will help the NLP community develop models that perform genuine multihop reasoning.1"
+    },
+    "Trivedi2022InterleavingRetrieval": {
+        "citation_key": "Trivedi2022InterleavingRetrieval",
+        "title": "Interleaving Retrieval with Chain-of-Thought Reasoning for Knowledge-Intensive Multi-Step Questions",
+        "authors": [
+            "H. Trivedi",
+            "Niranjan Balasubramanian",
+            "Tushar Khot",
+            "Ashish Sabharwal"
+        ],
+        "venue": "Annual Meeting of the Association for Computational Linguistics",
+        "year": 2022,
+        "abstract": "Prompting-based large language models (LLMs) are surprisingly powerful at generating natural language reasoning steps or Chains-of-Thoughts (CoT) for multi-step question answering (QA). They struggle, however, when the necessary knowledge is either unavailable to the LLM or not up-to-date within its parameters. While using the question to retrieve relevant text from an external knowledge source helps LLMs, we observe that this one-step retrieve-and-read approach is insufficient for multi-step QA. Here, what to retrieve depends on what has already been derived, which in turn may depend on what was previously retrieved. To address this, we propose IRCoT, a new approach for multi-step QA that interleaves retrieval with steps (sentences) in a CoT, guiding the retrieval with CoT and in turn using retrieved results to improve CoT. Using IRCoT with GPT3 substantially improves retrieval (up to 21 points) as well as downstream QA (up to 15 points) on four datasets: HotpotQA, 2WikiMultihopQA, MuSiQue, and IIRC. We observe similar substantial gains in out-of-distribution (OOD) settings as well as with much smaller models such as Flan-T5-large without additional training. IRCoT reduces model hallucination, resulting in factually more accurate CoT reasoning."
+    },
+    "Hsieh2024RulerWhats": {
+        "citation_key": "Hsieh2024RulerWhats",
+        "title": "RULER: What's the Real Context Size of Your Long-Context Language Models?",
+        "authors": [
+            "Cheng-Ping Hsieh",
+            "Simeng Sun",
+            "Samuel Kriman",
+            "Shantanu Acharya",
+            "Dima Rekesh",
+            "Fei Jia",
+            "Yang Zhang",
+            "Boris Ginsburg"
+        ],
+        "venue": "arXiv.org",
+        "year": 2024,
+        "abstract": "The needle-in-a-haystack (NIAH) test, which examines the ability to retrieve a piece of information (the\"needle\") from long distractor texts (the\"haystack\"), has been widely adopted to evaluate long-context language models (LMs). However, this simple retrieval-based test is indicative of only a superficial form of long-context understanding. To provide a more comprehensive evaluation of long-context LMs, we create a new synthetic benchmark RULER with flexible configurations for customized sequence length and task complexity. RULER expands upon the vanilla NIAH test to encompass variations with diverse types and quantities of needles. Moreover, RULER introduces new task categories multi-hop tracing and aggregation to test behaviors beyond searching from context. We evaluate 17 long-context LMs with 13 representative tasks in RULER. Despite achieving nearly perfect accuracy in the vanilla NIAH test, almost all models exhibit large performance drops as the context length increases. While these models all claim context sizes of 32K tokens or greater, only half of them can maintain satisfactory performance at the length of 32K. Our analysis of Yi-34B, which supports context length of 200K, reveals large room for improvement as we increase input length and task complexity. We open source RULER to spur comprehensive evaluation of long-context LMs."
+    },
+    "Yu2023ChainofnoteEnhancing": {
+        "citation_key": "Yu2023ChainofnoteEnhancing",
+        "title": "Chain-of-Note: Enhancing Robustness in Retrieval-Augmented Language Models",
+        "authors": [
+            "W. Yu",
+            "Hong-Ming Zhang",
+            "Xiao-Man Pan",
+            "Pei-Xin Cao",
+            "Kaixin Ma",
+            "Jian Li",
+            "Hong-Wei Wang",
+            "Dong Yu"
+        ],
+        "venue": "Conference on Empirical Methods in Natural Language Processing",
+        "year": 2023,
+        "abstract": "Retrieval-augmented language model (RALM) represents a significant advancement in mitigating factual hallucination by leveraging external knowledge sources. However, the reliability of the retrieved information is not always guaranteed, and the retrieval of irrelevant data can mislead the response generation. Moreover, standard RALMs frequently neglect their intrinsic knowledge due to the interference from retrieved information. In instances where the retrieved information is irrelevant, RALMs should ideally utilize their intrinsic knowledge or, in the absence of both intrinsic and retrieved knowledge, opt to respond with \u201cunknown\u201d to avoid hallucination. In this paper, we introduces Chain-of-Note (CoN), a novel approach to improve robustness of RALMs in facing noisy, irrelevant documents and in handling unknown scenarios. The core idea of CoN is to generate sequential reading notes for each retrieved document, enabling a thorough evaluation of their relevance to the given question and integrating this information to formulate the final answer. Our experimental results show that GPT-4, when equipped with CoN, outperforms the Chain-of-Thought approach. Besides, we utilized GPT-4 to create 10K CoN data, subsequently trained on smaller models like OPT and LLaMa-2. Our experiments across four open-domain QA benchmarks show that fine-tuned RALMs equipped with CoN significantly outperform standard fine-tuned RALMs."
+    },
+    "Aumller2018AnnbenchmarksBenchmarking": {
+        "citation_key": "Aumller2018AnnbenchmarksBenchmarking",
+        "title": "ANN-Benchmarks: A Benchmarking Tool for Approximate Nearest Neighbor Algorithms",
+        "authors": [
+            "Martin Aum\u00fcller",
+            "Erik Bernhardsson",
+            "A. Faithfull"
+        ],
+        "venue": "Similarity Search and Applications",
+        "year": 2018,
+        "abstract": "This paper describes ANN-Benchmarks, a tool for evaluating the performance of in-memory approximate nearest neighbor algorithms. It provides a standard interface for measuring the performance and quality achieved by nearest neighbor algorithms on different standard data sets. It supports several different ways of integrating k-NN algorithms, and its configuration system automatically tests a range of parameter settings for each algorithm. Algorithms are compared with respect to many different (approximate) quality measures, and adding more is easy and fast; the included plotting front-ends can visualise these as images, Open image in new window plots, and websites with interactive plots. ANN-Benchmarks aims to provide a constantly updated overview of the current state of the art of k-NN algorithms. In the short term, this overview allows users to choose the correct k-NN algorithm and parameters for their similarity search task; in the longer term, algorithm designers will be able to use this overview to test and refine automatic parameter tuning. The paper gives an overview of the system, evaluates the results of the benchmark, and points out directions for future work. Interestingly, very different approaches to k-NN search yield comparable quality-performance trade-offs. The system is available at http://sss.projects.itu.dk/ann-benchmarks/."
+    },
+    "Ru2024RagcheckerFinegrained": {
+        "citation_key": "Ru2024RagcheckerFinegrained",
+        "title": "RAGChecker: A Fine-grained Framework for Diagnosing Retrieval-Augmented Generation",
+        "authors": [
+            "Dongyu Ru",
+            "Lin Qiu",
+            "Xiangkun Hu",
+            "Tian-Hang Zhang",
+            "Peng Shi",
+            "Shuaichen Chang",
+            "Cheng Jiayang",
+            "Cunxiang Wang",
+            "Shichao Sun",
+            "Huan Li",
+            "Zi-Zhao Zhang",
+            "Bin-Jie Wang",
+            "Jiarong Jiang",
+            "Tong He",
+            "Zhiguo Wang",
+            "Peng-Fei Liu",
+            "Yue Zhang",
+            "Zheng Zhang"
+        ],
+        "venue": "Neural Information Processing Systems",
+        "year": 2024,
+        "abstract": "Despite Retrieval-Augmented Generation (RAG) showing promising capability in leveraging external knowledge, a comprehensive evaluation of RAG systems is still challenging due to the modular nature of RAG, evaluation of long-form responses and reliability of measurements. In this paper, we propose a fine-grained evaluation framework, RAGChecker, that incorporates a suite of diagnostic metrics for both the retrieval and generation modules. Meta evaluation verifies that RAGChecker has significantly better correlations with human judgments than other evaluation metrics. Using RAGChecker, we evaluate 8 RAG systems and conduct an in-depth analysis of their performance, revealing insightful patterns and trade-offs in the design choices of RAG architectures. The metrics of RAGChecker can guide researchers and practitioners in developing more effective RAG systems. This work has been open sourced at https://github.com/amazon-science/RAGChecker."
+    },
+    "Johnson2017BillionscaleSimilarity": {
+        "citation_key": "Johnson2017BillionscaleSimilarity",
+        "title": "Billion-Scale Similarity Search with GPUs",
+        "authors": [
+            "Jeff Johnson",
+            "M. Douze",
+            "H. J\u00e9gou"
+        ],
+        "venue": "IEEE Transactions on Big Data",
+        "year": 2017,
+        "abstract": "Similarity search finds application in database systems handling complex data such as images or videos, which are typically represented by high-dimensional features and require specific indexing structures. This paper tackles the problem of better utilizing GPUs for this task. While GPUs excel at data parallel tasks such as distance computation, prior approaches in this domain are bottlenecked by algorithms that expose less parallelism, such as <inline-formula><tex-math notation=\"LaTeX\">$k$</tex-math><alternatives><mml:math><mml:mi>k</mml:mi></mml:math><inline-graphic xlink:href=\"johnson-ieq1-2921572.gif\"/></alternatives></inline-formula>-min selection, or make poor use of the memory hierarchy. We propose a novel design for <inline-formula><tex-math notation=\"LaTeX\">$k$</tex-math><alternatives><mml:math><mml:mi>k</mml:mi></mml:math><inline-graphic xlink:href=\"johnson-ieq2-2921572.gif\"/></alternatives></inline-formula>-selection. We apply it in different similarity search scenarios, by optimizing brute-force, approximate and compressed-domain search based on product quantization. In all these setups, we outperform the state of the art by large margins. Our implementation operates at up to 55 percent of theoretical peak performance, enabling a nearest neighbor implementation that is 8.5 \u00d7 faster than prior GPU state of the art. It enables the construction of a high accuracy <inline-formula><tex-math notation=\"LaTeX\">$k$</tex-math><alternatives><mml:math><mml:mi>k</mml:mi></mml:... [Truncated]"
+    },
+    "Gao2023RetrievalaugmentedGeneration": {
+        "citation_key": "Gao2023RetrievalaugmentedGeneration",
+        "title": "Retrieval-Augmented Generation for Large Language Models: A Survey",
+        "authors": [
+            "Yun-Fan Gao",
+            "Yun Xiong",
+            "Xin-Yu Gao",
+            "Kang-Xiang Jia",
+            "Jin Pan",
+            "Yuxi Bi",
+            "Yi Dai",
+            "Jia-Wei Sun",
+            "Qian-Yu Guo",
+            "Meng Wang",
+            "Hao-Fen Wang"
+        ],
+        "venue": "arXiv.org",
+        "year": 2023,
+        "abstract": "Large Language Models (LLMs) showcase impressive capabilities but encounter challenges like hallucination, outdated knowledge, and non-transparent, untraceable reasoning processes. Retrieval-Augmented Generation (RAG) has emerged as a promising solution by incorporating knowledge from external databases. This enhances the accuracy and credibility of the generation, particularly for knowledge-intensive tasks, and allows for continuous knowledge updates and integration of domain-specific information. RAG synergistically merges LLMs' intrinsic knowledge with the vast, dynamic repositories of external databases. This comprehensive review paper offers a detailed examination of the progression of RAG paradigms, encompassing the Naive RAG, the Advanced RAG, and the Modular RAG. It meticulously scrutinizes the tripartite foundation of RAG frameworks, which includes the retrieval, the generation and the augmentation techniques. The paper highlights the state-of-the-art technologies embedded in each of these critical components, providing a profound understanding of the advancements in RAG systems. Furthermore, this paper introduces up-to-date evaluation framework and benchmark. At the end, this article delineates the challenges currently faced and points out prospective avenues for research and development."
+    },
+    "Fan2024SurveyRag": {
+        "citation_key": "Fan2024SurveyRag",
+        "title": "A Survey on RAG Meeting LLMs: Towards Retrieval-Augmented Large Language Models",
+        "authors": [
+            "Wen-Qi Fan",
+            "Yujuan Ding",
+            "Liang-Bo Ning",
+            "Shijie Wang",
+            "Hengyun Li",
+            "Da-Wei Yin",
+            "Tat-Seng Chua",
+            "Qing Li"
+        ],
+        "venue": "Knowledge Discovery and Data Mining",
+        "year": 2024,
+        "abstract": "As one of the most advanced techniques in AI, Retrieval-Augmented Generation (RAG) can offer reliable and up-to-date external knowledge, providing huge convenience for numerous tasks. Particularly in the era of AI-Generated Content (AIGC), the powerful capacity of retrieval in providing additional knowledge enables RAG to assist existing generative AI in producing high-quality outputs. Recently, Large Language Models (LLMs) have demonstrated revolutionary abilities in language understanding and generation, while still facing inherent limitations such as hallucinations and out-of-date internal knowledge. Given the powerful abilities of RAG in providing the latest and helpful auxiliary information, Retrieval-Augmented Large Language Models (RA-LLMs) have emerged to harness external and authoritative knowledge bases, rather than solely relying on the model's internal knowledge, to augment the quality of the generated content of LLMs. In this survey, we comprehensively review existing research studies in RA-LLMs, covering three primary technical perspectives: Furthermore, to deliver deeper insights, we discuss current limitations and several promising directions for future research. Updated information about this survey can be found at: https://advanced-recommender-systems.github.io/RAG-Meets-LLMs/"
+    },
+    "Zhao2024RetrievalaugmentedGeneration": {
+        "citation_key": "Zhao2024RetrievalaugmentedGeneration",
+        "title": "Retrieval-Augmented Generation for AI-Generated Content: A Survey",
+        "authors": [
+            "Peng-Hao Zhao",
+            "Hailin Zhang",
+            "Qinhan Yu",
+            "Zheng-Ren Wang",
+            "Yunteng Geng",
+            "Fang-Cheng Fu",
+            "Ling Yang",
+            "Wen-Tao Zhang",
+            "Jie Jiang",
+            "Bin Cui"
+        ],
+        "venue": "Data Science and Engineering",
+        "year": 2024,
+        "abstract": "Advancements in model algorithms, the growth of foundational models, and access to high-quality datasets have propelled the evolution of Artificial Intelligence Generated Content (AIGC). Despite its notable successes, AIGC still faces hurdles such as updating knowledge, handling long-tail data, mitigating data leakage, and managing high training and inference costs. Retrieval-Augmented Generation (RAG) has recently emerged as a paradigm to address such challenges. In particular, RAG introduces the information retrieval process, which enhances the generation process by retrieving relevant objects from available data stores, leading to higher accuracy and better robustness. In this paper, we comprehensively review existing efforts that integrate RAG technique into AIGC scenarios. We first classify RAG foundations according to how the retriever augments the generator, distilling the fundamental abstractions of the augmentation methodologies for various retrievers and generators. This unified perspective encompasses all RAG scenarios, illuminating advancements and pivotal technologies that help with potential future progress. We also summarize additional enhancements methods for RAG, facilitating effective engineering and implementation of RAG systems. Then from another view, we survey on practical applications of RAG across different modalities and tasks, offering valuable references for researchers and practitioners. Furthermore, we introduce the benchmarks for RAG, discuss the... [Truncated]"
+    },
+    "Yu2024EvaluationRetrievalaugmented": {
+        "citation_key": "Yu2024EvaluationRetrievalaugmented",
+        "title": "Evaluation of Retrieval-Augmented Generation: A Survey",
+        "authors": [
+            "Hao Yu",
+            "Ao-Ran Gan",
+            "Kai Zhang",
+            "Shi-Wei Tong",
+            "Qi Liu",
+            "Zhao-Feng Liu"
+        ],
+        "venue": "arXiv.org",
+        "year": 2024,
+        "abstract": "Retrieval-Augmented Generation (RAG) has recently gained traction in natural language processing. Numerous studies and real-world applications are leveraging its ability to enhance generative models through external information retrieval. Evaluating these RAG systems, however, poses unique challenges due to their hybrid structure and reliance on dynamic knowledge sources. To better understand these challenges, we conduct A Unified Evaluation Process of RAG (Auepora) and aim to provide a comprehensive overview of the evaluation and benchmarks of RAG systems. Specifically, we examine and compare several quantifiable metrics of the Retrieval and Generation components, such as relevance, accuracy, and faithfulness, within the current RAG benchmarks, encompassing the possible output and ground truth pairs. We then analyze the various datasets and metrics, discuss the limitations of current benchmarks, and suggest potential directions to advance the field of RAG benchmarks."
+    },
+    "Zhao2022DenseText": {
+        "citation_key": "Zhao2022DenseText",
+        "title": "Dense Text Retrieval Based on Pretrained Language Models: A Survey",
+        "authors": [
+            "W. Zhao",
+            "Jing Liu",
+            "Ruiyang Ren",
+            "Ji-Rong Wen"
+        ],
+        "venue": "ACM Trans. Inf. Syst.",
+        "year": 2022,
+        "abstract": "Text retrieval is a long-standing research topic on information seeking, where a system is required to return relevant information resources to user\u2019s queries in natural language. From heuristic-based retrieval methods to learning-based ranking functions, the underlying retrieval models have been continually evolved with the ever-lasting technical innovation. To design effective retrieval models, a key point lies in how to learn text representations and model the relevance matching. The recent success of pretrained language models (PLM) sheds light on developing more capable text-retrieval approaches by leveraging the excellent modeling capacity of PLMs. With powerful PLMs, we can effectively learn the semantic representations of queries and texts in the latent representation space, and further construct the semantic matching function between the dense vectors for relevance modeling. Such a retrieval approach is called dense retrieval, since it employs dense vectors to represent the texts. Considering the rapid progress on dense retrieval, this survey systematically reviews the recent progress on PLM-based dense retrieval. Different from previous surveys on dense retrieval, we take a new perspective to organize the related studies by four major aspects, including architecture, training, indexing and integration, and thoroughly summarize the mainstream techniques for each aspect. We extensively collect the recent advances on this topic, and include 300+ reference papers. To su... [Truncated]"
+    },
+    "Yates2020PretrainedTransformers": {
+        "citation_key": "Yates2020PretrainedTransformers",
+        "title": "Pretrained Transformers for Text Ranking: BERT and Beyond",
+        "authors": [
+            "Andrew Yates",
+            "Rodrigo Nogueira",
+            "Jimmy Lin"
+        ],
+        "venue": "North American Chapter of the Association for Computational Linguistics",
+        "year": 2020,
+        "abstract": "The goal of text ranking is to generate an ordered list of texts retrieved from a corpus in response to a query for a particular task. Although the most common formulation of text ranking is search, instances of the task can also be found in many text processing applications. This tutorial provides an overview of text ranking with neural network architectures known as transformers, of which BERT (Bidirectional Encoder Representations from Transformers) is the best-known example. These models produce high quality results across many domains, tasks, and settings. This tutorial, which is based on the preprint of a forthcoming book to be published by Morgan and & Claypool under the Synthesis Lectures on Human Language Technologies series, provides an overview of existing work as a single point of entry for practitioners who wish to deploy transformers for text ranking in real-world applications and researchers who wish to pursue work in this area. We cover a wide range of techniques, grouped into two categories: transformer models that perform reranking in multi-stage ranking architectures and learned dense representations that perform ranking directly."
+    },
+    "Zhu2023LargeLanguage": {
+        "citation_key": "Zhu2023LargeLanguage",
+        "title": "Large Language Models for Information Retrieval: A Survey",
+        "authors": [
+            "Yutao Zhu",
+            "Huaying Yuan",
+            "Shuting Wang",
+            "Jiongnan Liu",
+            "Wen-Han Liu",
+            "Chen-Long Deng",
+            "Hao-Nan Chen",
+            "Zheng Liu",
+            "Zhicheng Dou",
+            "Ji-Rong Wen"
+        ],
+        "venue": "ACM Trans. Inf. Syst.",
+        "year": 2023,
+        "abstract": "As a primary means of information acquisition, information retrieval (IR) systems, such as search engines, have integrated themselves into our daily lives. These systems also serve as components of dialogue, question-answering, and recommender systems. The trajectory of IR has evolved dynamically from its origins in term-based methods to its integration with advanced neural models. While the neural models excel at capturing complex contextual signals and semantic nuances, they still face challenges such as data scarcity, interpretability, and the generation of contextually plausible yet potentially inaccurate responses. This evolution requires a combination of traditional methods (such as term-based sparse retrieval methods with rapid response) and modern neural architectures (such as language models with powerful language understanding capacity). Meanwhile, the emergence of large language models (LLMs) has revolutionized natural language processing due to their remarkable language understanding, generation, and reasoning abilities. Consequently, recent research has sought to leverage LLMs to improve IR systems. Given the rapid evolution of this research trajectory, it is necessary to consolidate existing methodologies and provide nuanced insights through a comprehensive overview. In this survey, we delve into the confluence of LLMs and IR systems, including crucial aspects such as query rewriters, retrievers, rerankers, readers, and search agents."
+    }
+}

@@ -1,7 +1,7 @@
 """Generate every result table and PGFPlots figure in the v2 manuscript.
 
 Single source of truth: data/pilot_summary_metrics.csv (the audited pilot
-aggregates, unchanged). Run from the research_paper_v2 directory:
+aggregates, unchanged). Run from the paper/ directory:
 
     python3 scripts/make_results.py
 
